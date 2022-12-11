@@ -26,9 +26,13 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset("images/logo.jpg",width: 40,height: 20,),
+                ),
+                Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomText(
-                        text: "What would you like to eat?", size: 18)),
+                        text: "Hungry Craving", size: 18)),
                 Stack(
                   children: <Widget>[
                     IconButton(
