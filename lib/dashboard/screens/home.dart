@@ -66,16 +66,16 @@ class _HomeState extends State<Home> {
                 ),
                 child: ListTile(
                   leading: Icon(
-                    Icons.search,
+                    Icons.filter_list,
                     color: Colors.red,
                   ),
                   title: TextField(
                     decoration: InputDecoration(
-                        hintText: "Find food and resturants",
+                        hintText: "Search",
                         border: InputBorder.none),
                   ),
                   trailing: Icon(
-                    Icons.filter_list,
+                    Icons.search,
                     color: Colors.red,
                   ),
                 ),
