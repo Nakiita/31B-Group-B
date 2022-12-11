@@ -8,9 +8,9 @@ import 'commons.dart';
 
 List<Product> productList=[
   Product(name:"Cereals",image:"cereals.jpg",price:5.99, rating:4.2, vendor:"GoodFood", whishList:true),
-  Product(name:"Cereals",image:"burger.jpg",price:6.99, rating:4.7, vendor:"GoodFood", whishList:true),
-  Product(name:"Cereals",image:"pizza.jpg",price:6.00, rating:4.8, vendor:"GoodFood", whishList:true),
-  Product(name:"Cereals",image:"steak.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true),
+  Product(name:"Burger",image:"burger.jpg",price:6.99, rating:4.7, vendor:"GoodFood", whishList:true),
+  Product(name:"Pizza",image:"pizza.jpg",price:6.00, rating:4.8, vendor:"GoodFood", whishList:true),
+  Product(name:"Steak",image:"steak.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true),
 ];
 
 class Featured extends StatelessWidget {

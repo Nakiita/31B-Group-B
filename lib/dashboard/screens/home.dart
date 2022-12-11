@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 // import 'package:31B-Group-B/dashboard/widgets/categories.dart';
 // import 'package:31B-Group-B/dashboard/widgets/featured_products.dart';
@@ -32,7 +34,7 @@ class _HomeState extends State<Home> {
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: CustomText(
-                        text: "Hungry Craving", size: 18)),
+                        text: "HuNGRy CraVInGs", size: 18)),
                 Stack(
                   children: <Widget>[
                     IconButton(
