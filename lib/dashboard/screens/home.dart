@@ -166,15 +166,19 @@ class _HomeState extends State<Home> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset("images/home.jpg",width: 26,height: 26,),
+              child: Image.asset("images/review.jpg",width: 26,height: 26,),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset("images/home.jpg",width: 26,height: 26,),
+              child: Image.asset("images/shop.jpg",width: 26,height: 26,),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset("images/home.jpg",width: 26,height: 26,),
+              child: Image.asset("images/you.jpg",width: 26,height: 26,),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset("images/cart.jpg",width: 26,height: 26,),
             ),
           ],
         ) ,
