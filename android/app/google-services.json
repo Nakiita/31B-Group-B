@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "186525932363",
+    "project_id": "food-deliveryd",
+    "storage_bucket": "food-deliveryd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186525932363:android:a5a2015854f6caba1166ce",
+        "android_client_info": {
+          "package_name": "com.softnepal.foodDelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186525932363-ka2p52udttkri3gntfjfnf5f5701vju2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFi4NycNxKmx3pXdRve6rcMriYmpydLqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186525932363-ka2p52udttkri3gntfjfnf5f5701vju2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

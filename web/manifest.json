@@ -1,6 +1,6 @@
 {
-    "name": "hunger_cravings",
-    "short_name": "hunger_cravings",
+    "name": "food_delivery",
+    "short_name": "food_delivery",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

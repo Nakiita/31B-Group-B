@@ -1,16 +1,16 @@
-// import 'package:arithmetic/screen/Page1.dart';
-import 'package:arithmetic/screen/register/Register_Screen.dart';
-import 'package:arithmetic/screen/register/login_screen.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-// import 'package:flutter_class/screenshot/Homescreen.dart';
-// import 'package:flutter_class/screenshot/Login/Login_screen.dart';
-// import 'package:flutter_class/screenshot/Page1.dart';
-// import 'package:flutter_class/screenshot/calculator.dart';
-// import 'package:flutter_class/screenshot/input_demo.dart';
-// import 'Layout_demo.dart';
 
-void main() => runApp(MyApp());
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:food_delivery/screen/contactDetails/ContactDetails.dart';
+import 'package:food_delivery/screen/register/Register_Screen.dart';
+
+
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
     // LayoutDemo(),
     // CalculatorDemo(),
     // Homescreen(),
+
     Text("Email")
   ];
 
