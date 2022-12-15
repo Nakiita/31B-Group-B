@@ -20,7 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var _isVisible = false;
 
   // String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-  RegExp regExp =  RegExp("r'(^(?:[+0]9)?[0-9]{10,12})'");
+  // RegExp regExp =  RegExp("r'(^(?:[+0]9)?[0-9]{10,12})'");
   final formkey = GlobalKey<FormState>();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -127,7 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validator: (value) {
                             if (value==null || value.isEmpty) {
                               return 'Please enter mobile number';
-                            } else if (!regExp.hasMatch(value!)) {
+                            } else if (value.length<10 || value.length>10) {
                               return 'Please enter valid mobile number';
                             }
                             return null;
@@ -171,7 +171,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         SizedBox(height: constraints.maxHeight * 0.04),
                         TextFormField(
-                          controller: password,
+                          controller: confirmPassword,
                           obscureText: _isVisible ? false : true,
                           validator: (value){
                             if(value==null || value.isEmpty){
