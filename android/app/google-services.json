@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "186525932363",
-    "project_id": "food-deliveryd",
-    "storage_bucket": "food-deliveryd.appspot.com"
+    "project_number": "863288001385",
+    "firebase_url": "https://hunger-cravings-default-rtdb.firebaseio.com",
+    "project_id": "hunger-cravings",
+    "storage_bucket": "hunger-cravings.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:186525932363:android:a5a2015854f6caba1166ce",
+        "mobilesdk_app_id": "1:863288001385:android:a5b06bce80d5bc9de9b3f8",
         "android_client_info": {
-          "package_name": "com.softnepal.foodDelivery"
+          "package_name": "com.android.application"
         }
       },
       "oauth_client": [
         {
-          "client_id": "186525932363-ka2p52udttkri3gntfjfnf5f5701vju2.apps.googleusercontent.com",
+          "client_id": "863288001385-nnj328sjv88dmhd11aiuaqd1dgrvj8j8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCFi4NycNxKmx3pXdRve6rcMriYmpydLqY"
+          "current_key": "AIzaSyC0k1PkEQEfRBmR9pfvYKQOJeh5MjQAIPU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "186525932363-ka2p52udttkri3gntfjfnf5f5701vju2.apps.googleusercontent.com",
+              "client_id": "863288001385-nnj328sjv88dmhd11aiuaqd1dgrvj8j8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
