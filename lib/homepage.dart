@@ -1,5 +1,3 @@
-import 'package:first_app/switch_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,19 +8,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool value = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      body: SafeArea(
+      body: Container(
         child: Center(
-          child: Column(children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Center(
+              child: Container(
+                child: Image.asset('images/Logo.jpg'),
+                height: 100,
+                width: 400,
+              ),
+            ),
+
             //Heading
-            Text(
-              'ADD ADDRESS',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 50,
+            Center(
+              child: Text(
+                'ADD ADDRESS',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50,
+                ),
               ),
             ),
             SizedBox(height: 20),
@@ -91,7 +102,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SizedBox(height: 20),
-            //Alternate Phone Number
+            //Set as
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Container(
@@ -111,12 +122,27 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
-            SizedBox(height: 40),
-            //Add button
-            ElevatedButton(
-              onPressed: () {},
-              child: Text('Add'),
+            Padding(
+              padding: EdgeInsets.only(left: 30.0),
+              child: Switch(
+                value: value,
+                onChanged: (onChanged) {
+                  setState(() {
+                    value = onChanged;
+                  });
+                },
+                activeColor: Colors.purple,
+                inactiveTrackColor: Colors.red,
+                thumbColor: MaterialStateProperty.all(value
+                    ? const Color.fromARGB(245, 241, 238, 238)
+                    : const Color.fromARGB(245, 51, 4, 143)),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text('Add'),
+              ),
             )
           ]),
         ),
