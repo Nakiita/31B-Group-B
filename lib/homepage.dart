@@ -13,20 +13,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       body: Container(
         child: Center(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Center(
-              child: Container(
-                child: Image.asset('images/Logo.jpg'),
-                height: 100,
-                width: 400,
+            Padding(
+              padding: const EdgeInsets.symmetric(),
+              child: Center(
+                child: Container(
+                  child: Image.asset('assets/images/Logo.jpg'),
+                ),
               ),
             ),
 
             //Heading
+
             Center(
               child: Text(
                 'ADD ADDRESS',
@@ -102,7 +104,7 @@ class _HomePageState extends State<HomePage> {
             ),
 
             SizedBox(height: 20),
-            //Set as
+            //Set as Default address
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Container(
