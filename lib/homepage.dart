@@ -13,6 +13,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey,
+        centerTitle: true,
+        title: const Text(
+          'ADD ADDRESS',
+          style: TextStyle(
+            fontSize: 50,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Container(
         child: Center(
@@ -26,19 +37,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-
-            //Heading
-
-            Center(
-              child: Text(
-                'ADD ADDRESS',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             //Address Title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -59,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             //Detail Address Direction
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -81,7 +80,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             //Alternate Phone Number
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -103,7 +102,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             //Set as Default address
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
