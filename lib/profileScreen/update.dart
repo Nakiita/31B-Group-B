@@ -24,7 +24,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: Text("Edit profile"),
       ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Form(
+            key: form,
+            child: Column(
+              children: [
+                Container(
+                  height: deviceHeight * 0.03,
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(horizontal: 120),
+                  child: const Text(
+                    '',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
 
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
