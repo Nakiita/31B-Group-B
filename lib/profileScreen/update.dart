@@ -1,14 +1,15 @@
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class ChangePassword extends StatefulWidget {
-  const ChangePassword({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ChangePasswordState extends State<ChangePassword> {
+class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController emailController = TextEditingController();
   final form = GlobalKey<FormState>();
   var _isVisible = false;
@@ -21,7 +22,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         .height;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Change password"),
+        title: Text("Edit profile"),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -66,7 +67,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               child: TextFormField(
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Enter Old Password',
+                                  hintText: 'Username',
                                 ),
                               ),
                             ),
@@ -84,7 +85,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Enter New Password"),
+                                    hintText: "Email"),
                               ),
                             ),
                           ),
@@ -101,7 +102,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Conform Password"),
+                                    hintText: "Phone No."),
                               ),
                             ),
                           ),
@@ -124,7 +125,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               ),
                             ),
                             child: const Text(
-                              'Change',
+                              'Update',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 22,
@@ -144,3 +145,4 @@ class _ChangePasswordState extends State<ChangePassword> {
     );
   }
 }
+
