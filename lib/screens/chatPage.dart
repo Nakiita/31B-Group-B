@@ -15,12 +15,12 @@ class _ChatPageState extends State<ChatPage> {
   List<ChatUsers> chatUsers = [
     ChatUsers(
         name: "Sita",
-        messageText: "Can I order 2 plates of MO:MO?",
+        messageText: "Hello?",
         imageURL: "assets/images/Sita.jpg",
         time: "Now"),
     ChatUsers(
         name: "Rita",
-        messageText: "I like this UI",
+        messageText: "I have some queries. Can you please reply?",
         imageURL: "assets/images/Sita.jpg",
         time: "Yesterday"),
   ];
