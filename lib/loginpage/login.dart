@@ -10,7 +10,7 @@ class LoginScreens extends StatefulWidget {
 }
 
 class _LoginScreensState extends State<LoginScreens> {
-  TextEditingController emailController= TextEditingController();
+  TextEditingController emailController = TextEditingController();
   final form = GlobalKey<FormState>();
   var _isVisible = false;
   @override
@@ -35,7 +35,7 @@ class _LoginScreensState extends State<LoginScreens> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                         SizedBox(height: constraints.maxHeight * 0.04),
+                        SizedBox(height: constraints.maxHeight * 0.04),
                         Container(
                           height: constraints.maxHeight * 0.12,
                           decoration: BoxDecoration(
@@ -49,7 +49,8 @@ class _LoginScreensState extends State<LoginScreens> {
                                 validator: (value) {
                                   if (value != null || value!.isEmpty) {
                                     final bool isValid =
-                                    EmailValidator.validate(emailController.text.trim());
+                                        EmailValidator.validate(
+                                            emailController.text.trim());
                                     if (!isValid) {
                                       return "Invalid email";
                                     }
@@ -156,7 +157,8 @@ class _LoginScreensState extends State<LoginScreens> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
-                                recognizer: TapGestureRecognizer()..onTap = () {},
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {},
                               )
                             ],
                           ),
