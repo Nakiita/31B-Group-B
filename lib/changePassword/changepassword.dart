@@ -101,7 +101,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: "Conform Password"),
+                                    hintText: "Confirm Password"),
                               ),
                             ),
                           ),
