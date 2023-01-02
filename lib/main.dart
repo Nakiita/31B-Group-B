@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:chatappp/screens/homePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,13 +26,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: MyHomePage(
+        title: 'Payments',
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
