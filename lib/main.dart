@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         initialRoute: "/address",
         routes: {
           "/address": (BuildContext context) => AddAddressScreen(),
-          "/edit-address": (BuildContext context) => EditAddressScreen(),
-          "/home-page": (BuildContext context) => HomePage(),
+          "/edit-address": (BuildContext context) => HomePage(),
+          "/home-page": (BuildContext context) => EditAddressScreen(),
           "/database": (BuildContext context) => FirebaseDatabaseScreen(),
         });
   }
