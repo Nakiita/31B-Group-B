@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hunger_cravings/screens/firestore/add_address.dart';
 import 'package:hunger_cravings/screens/firestore/database.dart';
 import 'package:hunger_cravings/screens/firestore/edit_address.dart';
-import 'screens/homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -24,8 +23,7 @@ class MyApp extends StatelessWidget {
         initialRoute: "/address",
         routes: {
           "/address": (BuildContext context) => AddAddressScreen(),
-          "/edit-address": (BuildContext context) => HomePage(),
-          "/home-page": (BuildContext context) => EditAddressScreen(),
+          "/edit-address": (BuildContext context) => EditAddressScreen(),
           "/database": (BuildContext context) => FirebaseDatabaseScreen(),
         });
   }
