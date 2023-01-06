@@ -1,4 +1,4 @@
-import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +10,30 @@ class LoginScreens extends StatefulWidget {
 }
 
 class _LoginScreensState extends State<LoginScreens> {
-  TextEditingController emailController = TextEditingController();
   final form = GlobalKey<FormState>();
   var _isVisible = false;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> login() async {
+    try {
+      final user = (await _auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text))
+          .user;
+      if (user != null) {
+        print("Login Sucessful");
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Colors.green, content: Text("Login Sucessful")));
+        Navigator.of(context).pushReplacementNamed("/home");
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
@@ -24,6 +45,7 @@ class _LoginScreensState extends State<LoginScreens> {
             child: Column(
               children: [
                 Container(
+                  padding: EdgeInsets.only(left: 40),
                   height: deviceHeight * 0.30,
                   child: Image.asset('assets/images/home.jpg'),
                 ),
@@ -46,16 +68,6 @@ class _LoginScreensState extends State<LoginScreens> {
                             child: Center(
                               child: TextFormField(
                                 controller: emailController,
-                                validator: (value) {
-                                  if (value != null || value!.isEmpty) {
-                                    final bool isValid =
-                                        EmailValidator.validate(
-                                            emailController.text.trim());
-                                    if (!isValid) {
-                                      return "Invalid email";
-                                    }
-                                  }
-                                },
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: 'Email',
@@ -74,6 +86,7 @@ class _LoginScreensState extends State<LoginScreens> {
                             padding: const EdgeInsets.only(left: 10),
                             child: Center(
                               child: TextField(
+                                controller: passwordController,
                                 obscureText: _isVisible ? false : true,
                                 decoration: InputDecoration(
                                     suffixIcon: IconButton(
@@ -105,7 +118,9 @@ class _LoginScreensState extends State<LoginScreens> {
                             top: constraints.maxHeight * 0.01,
                           ),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              login();
+                            },
                             style: ElevatedButton.styleFrom(
                               primary: Colors.black,
                               shape: RoundedRectangleBorder(
@@ -158,7 +173,10 @@ class _LoginScreensState extends State<LoginScreens> {
                                   fontSize: 18,
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
+                                  ..onTap = () {
+                                    Navigator.of(context)
+                                        .pushNamed("/register");
+                                  },
                               )
                             ],
                           ),
