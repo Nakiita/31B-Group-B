@@ -9,6 +9,7 @@ import '../widgets/commons.dart';
 import '../widgets/featured_products.dart';
 import '../widgets/small_floating_button.dart';
 import '../widgets/title.dart';
+import 'location_screens.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,24 +34,25 @@ class _HomeState extends State<Home> {
                   child: Image.asset("images/logo.jpg",width: 40,height: 20,),
                 ),
                 Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomText(
-                        text: "HuNGRy CraVInGs", size: 18)),
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomText(
+                      text: "Hungry Craving", size: 18),
+                ),
                 Stack(
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.notifications_none),onPressed: () {}),
+                        icon: Icon(Icons.notifications_none,),onPressed: () {}),
                     Positioned(
                       top: 12,
                       right: 12,
                       child: Container(
-                          height: 10,
-                          width: 10,
-                          decoration: BoxDecoration(
-                              color: red,
-                              borderRadius: BorderRadius.circular(20)),
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                            color: red,
+                            borderRadius: BorderRadius.circular(20)),
                       ),
-                    )
+                    ),
                   ],
                 )
               ],
@@ -58,31 +61,54 @@ class _HomeState extends State<Home> {
               height: 5,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: white,
-                  boxShadow: [
-                    BoxShadow(color: grey, offset: Offset(1, 1), blurRadius: 4),
-                  ],
-                ),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.filter_list,
-                    color: Colors.red,
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: white,
+                    boxShadow: [
+                      BoxShadow(color: grey, offset: Offset(1, 1), blurRadius: 4),
+                    ],
                   ),
-                  title: TextField(
-                    decoration: InputDecoration(
-                        hintText: "Search",
-                        border: InputBorder.none),
+                  child: ListTile(
+                    leading:
+                    IconButton(
+                        icon: Icon(Icons.filter_list,color: Colors.red,),
+                        onPressed: () {}
+                    ),
+
+                    title: TextField(
+                      decoration: InputDecoration(
+                          hintText: "Find food and resturants",
+                          border: InputBorder.none),
+                    ),
+                    trailing: Wrap(
+                      children: [
+                        // IconButton(
+                        // icon: Icon(Icons.location_on,color: Colors.red,),
+                        //     onPressed: () {}
+                        // ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(//Replacement
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => LocationScreen(),
+                              ),
+                            );
+                          },
+                          child:Icon(
+                            Icons.location_on,
+                            color: Colors.red,),
+                        ),
+                        IconButton(
+                            icon: Icon(Icons.search,
+                              color: Colors.red,),
+                            onPressed: () {}
+                        ),
+                      ],
+                    ),
+
                   ),
-                  trailing: Icon(
-                    Icons.search,
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-            ),
+                )),
             SizedBox(
               height: 6,
             ),
@@ -94,7 +120,7 @@ class _HomeState extends State<Home> {
                   size: 20
               ),
             ),
-            
+
             Featured(),
 
             Padding(
@@ -112,7 +138,7 @@ class _HomeState extends State<Home> {
                 children:<Widget> [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40)
+                        borderRadius: BorderRadius.circular(40)
                     ),
                     child:  Padding(
                       padding:const EdgeInsets.all(0),
@@ -138,7 +164,7 @@ class _HomeState extends State<Home> {
                             child: Row(
                               children: <Widget>[
                                 Padding(padding: const EdgeInsets.all(2.0),
-                                child: Icon(Icons.star,color: Colors.yellow,size: 20,),
+                                  child: Icon(Icons.star,color: Colors.yellow,size: 20,),
                                 ),
                                 Text("4.5")
                               ],
@@ -152,7 +178,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            
+
 
           ],
         ),
