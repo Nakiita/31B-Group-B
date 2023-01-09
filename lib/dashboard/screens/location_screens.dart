@@ -11,20 +11,18 @@ class LocationScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          ElevatedButton(onPressed: (){
-            const Icon(Icons.maps_home_work);
-          }
-              ,child: CustomText(
-                  text: "map location", size: 18)),
+          ElevatedButton(
+              onPressed: () {
+                const Icon(Icons.maps_home_work);
+              },
+              child: CustomText(text: "map location", size: 18)),
           Container(
               height: MediaQuery.of(context).size.height,
-              width:double.infinity ,
+              width: double.infinity,
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
-                    target: LatLng(
-                        27.72232896074384, 85.31875074239964
-                    ),
-                    zoom:15),
+                    target: LatLng(27.72232896074384, 85.31875074239964),
+                    zoom: 15),
               )),
         ],
       ),
