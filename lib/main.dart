@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/screens/firestore/add_address.dart';
 import 'package:hunger_cravings/screens/firestore/database.dart';
 import 'package:hunger_cravings/screens/firestore/edit_address.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
