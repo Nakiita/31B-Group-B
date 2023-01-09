@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         // other app settings
+        debugShowCheckedModeBanner: false,
         initialRoute: "/address",
         routes: {
           "/address": (BuildContext context) => AddAddressScreen(),
