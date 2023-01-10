@@ -23,6 +23,15 @@ class LocationScreen extends StatelessWidget {
                 initialCameraPosition: CameraPosition(
                     target: LatLng(27.72232896074384, 85.31875074239964),
                     zoom: 15),
+                markers: {
+                  Marker(
+                    markerId: MarkerId('nyc'),
+                    position: LatLng(27.72232896074384, 85.31875074239964),
+                    infoWindow: InfoWindow(
+                      title: 'Your Current Location',
+                    ),
+                  ),
+                },
               )),
         ],
       ),
