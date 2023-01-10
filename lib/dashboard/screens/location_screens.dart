@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../widgets/title.dart';
 
+
 class LocationScreen extends StatelessWidget {
   const LocationScreen({Key? key}) : super(key: key);
 
@@ -11,28 +12,31 @@ class LocationScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          ElevatedButton(
-              onPressed: () {
-                const Icon(Icons.maps_home_work);
-              },
-              child: CustomText(text: "map location", size: 18)),
           Container(
               height: MediaQuery.of(context).size.height,
-              width: double.infinity,
+              width:double.infinity ,
               child: GoogleMap(
                 initialCameraPosition: CameraPosition(
-                    target: LatLng(27.72232896074384, 85.31875074239964),
-                    zoom: 15),
+                    target: LatLng(
+                        27.72232896074384, 85.31875074239964
+                    ),
+                    zoom:15),
                 markers: {
                   Marker(
                     markerId: MarkerId('nyc'),
-                    position: LatLng(27.72232896074384, 85.31875074239964),
+                    position: LatLng( 27.72232896074384, 85.31875074239964),
                     infoWindow: InfoWindow(
-                      title: 'Your Current Location',
+                      title: 'New York City',
                     ),
                   ),
                 },
               )),
+
+          ElevatedButton(onPressed: (){
+            const Icon(Icons.maps_home_work);
+          }
+              ,child: CustomText(
+                  text: "map location", size: 18)),
         ],
       ),
     );
