@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key, required this.image, required this.name, required this.price});
   final String image;
@@ -20,7 +22,15 @@ class _DetailScreenState extends State<DetailScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         leading: IconButton(icon: Icon(Icons.arrow_back,color: Colors.black,),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              //Replacement
+              MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    Home(),
+              ),
+            );
+          },
         ),
         actions: <Widget>[
           IconButton(
