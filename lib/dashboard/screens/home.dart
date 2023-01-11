@@ -174,22 +174,6 @@ class Homepage extends StatelessWidget {
                   ),
                   trailing: Wrap(
                     children: [
-                      // IconButton(
-                      // icon: Icon(Icons.location_on,color: Colors.red,),
-                      //     onPressed: () {}
-                      // ),
-                      //     ElevatedButton(
-                      //         onPressed: () {
-                      //           Navigator.of(context).push(//Replacement
-                      //             MaterialPageRoute(
-                      //               builder: (BuildContext context) => LocationScreen(),
-                      //             ),
-                      //           );
-                      //         },
-                      //         child:Icon(
-                      //           Icons.location_on,
-                      //           color: Colors.black,),
-                      //         ),
                       IconButton(
                           icon: Icon(
                             Icons.location_on,
