@@ -26,7 +26,7 @@ class LocationScreen extends StatelessWidget {
                     markerId: MarkerId('nyc'),
                     position: LatLng( 27.72232896074384, 85.31875074239964),
                     infoWindow: InfoWindow(
-                      title: 'New York City',
+                      title: 'Your Current Location',
                     ),
                   ),
                 },
