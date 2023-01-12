@@ -91,11 +91,7 @@ packages:
       name: firebase_auth
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "4.2.4"
-=======
     version: "4.2.5"
->>>>>>> login
   firebase_auth_platform_interface:
     dependency: transitive
     description:
@@ -152,29 +148,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.1+19"
-<<<<<<< HEAD
-  firebase_storage:
-    dependency: "direct main"
-    description:
-      name: firebase_storage
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "11.0.10"
-  firebase_storage_platform_interface:
-    dependency: transitive
-    description:
-      name: firebase_storage_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.1.26"
-  firebase_storage_web:
-    dependency: transitive
-    description:
-      name: firebase_storage_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.3.19"
-=======
   firebase_messaging:
     dependency: "direct main"
     description:
@@ -196,7 +169,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.11"
->>>>>>> login
+  firebase_storage:
+    dependency: "direct main"
+    description:
+      name: firebase_storage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "11.0.10"
+  firebase_storage_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_storage_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.26"
+  firebase_storage_web:
+    dependency: transitive
+    description:
+      name: firebase_storage_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.19"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -226,7 +219,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   google_maps_flutter:
     dependency: "direct main"
     description:
@@ -262,8 +254,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.13.5"
-=======
->>>>>>> login
   http_parser:
     dependency: transitive
     description:
@@ -272,11 +262,7 @@ packages:
     source: hosted
     version: "4.0.2"
   intl:
-<<<<<<< HEAD
     dependency: "direct main"
-=======
-    dependency: transitive
->>>>>>> login
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -338,7 +324,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-<<<<<<< HEAD
   provider:
     dependency: "direct main"
     description:
@@ -346,8 +331,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.5"
-=======
->>>>>>> login
   sky_engine:
     dependency: transitive
     description: flutter
