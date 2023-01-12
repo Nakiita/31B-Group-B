@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'forgetpassword.dart';
+
 class LoginScreens extends StatefulWidget {
   const LoginScreens({Key? key}) : super(key: key);
 
@@ -145,7 +147,12 @@ class _LoginScreensState extends State<LoginScreens> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                    builder: (BuildContext context) => ForgotScreen(),
+                                  ));
+                                },
+
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(color: Colors.black),

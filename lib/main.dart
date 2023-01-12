@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         // other app settings
         debugShowCheckedModeBanner: false,
-        initialRoute: "/home",
+        initialRoute: "/login",
         routes: {
           "/forgotpassword": (BuildContext context) => ForgotScreen(),
           "/login": (BuildContext context) => LoginScreens(),
