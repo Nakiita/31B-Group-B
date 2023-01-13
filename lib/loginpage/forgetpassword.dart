@@ -53,6 +53,29 @@ class _ForgotScreenState extends State<ForgotScreen> {
                           .then((value) => Navigator.of(context));
                     },
                     child: Text("Reset")),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (BuildContext context) => LoginScreens(),
+                          ));
+                        },
+                        child: Text(
+                          "Back to login",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+
 
 
 
