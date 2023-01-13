@@ -48,6 +48,9 @@ class _ForgotScreenState extends State<ForgotScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
+                      if(email.text.isEmpty ){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email required.")));
+                      }
                       _auth
                           .sendPasswordResetEmail(email: email.text)
                           .then((value) => Navigator.of(context));
