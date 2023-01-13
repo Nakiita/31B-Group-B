@@ -26,7 +26,12 @@ class _ForgotScreenState extends State<ForgotScreen> {
         body: SingleChildScrollView(
           child: Form(
             key: form,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
 
+              ],
+            ),
           ),
         ),
       ),
