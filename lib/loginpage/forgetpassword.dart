@@ -29,6 +29,13 @@ class _ForgotScreenState extends State<ForgotScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Container(
+                  width: double.infinity,
+                  child: Image.asset(
+                    "assets/images/Logo.jpg",
+                    height: 300,
+                  ),
+                ),
 
               ],
             ),
