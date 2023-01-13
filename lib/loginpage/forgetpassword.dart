@@ -18,61 +18,68 @@ class _ForgotScreenState extends State<ForgotScreen> {
   final form = GlobalKey<FormState>();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-          key: form,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child: Image.asset(
-                  "images/website.jpg",
-                  height: 100,
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Form(
+            key: form,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: double.infinity,
+                  child: Image.asset(
+                    "assets/images/Logo.jpg",
+                    height: 300,
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: TextFormField(
-                  controller: email,
-                  decoration: InputDecoration(
-                      label: Text("Email"),
-                      hintText: "Please enter your email",
-                      prefixIcon: Icon(Icons.accessibility_outlined)),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: TextFormField(
+                    controller: email,
+                    decoration: InputDecoration(
+                        label: Text("Email"),
+                        hintText: "Please enter your email",
+                        prefixIcon: Icon(Icons.accessibility_outlined)),
+                  ),
                 ),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    _auth
-                        .sendPasswordResetEmail(email: email.text)
-                        .then((value) => Navigator.of(context));
-                  },
-                  child: Text("Reset")),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (BuildContext context) => LoginScreens(),
-                        ));
-                      },
-                      child: Text(
-                        "Back to login",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.blue),
-                      ),
-                    )
-                  ],
+                ElevatedButton(
+                    onPressed: () {
+                      if(email.text.isEmpty ){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email required.")));
+                      }
+                      _auth
+                          .sendPasswordResetEmail(email: email.text)
+                          .then((value) => Navigator.of(context));
+                    },
+                    child: Text("Reset")),
+                SizedBox(
+                  height: 10,
                 ),
-              )
-            ],
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (BuildContext context) => LoginScreens(),
+                          ));
+                        },
+                        child: Text(
+                          "Back to login",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

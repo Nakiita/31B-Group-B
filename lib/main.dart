@@ -30,6 +30,9 @@ class MyApp extends StatelessWidget {
           "/login": (BuildContext context) => LoginScreens(),
           "/home": (BuildContext context) => Home(),
           "/address": (BuildContext context) => AddAddressScreen(),
+          "/login": (BuildContext context) => LoginScreens(),
+
+          "/forgot": (BuildContext context) => ForgotScreen(),
           "/edit-address": (BuildContext context) => EditAddressScreen(),
           "/database": (BuildContext context) => FirebaseDatabaseScreen(),
         });
