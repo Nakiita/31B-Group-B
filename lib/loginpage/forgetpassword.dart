@@ -75,11 +75,6 @@ class _ForgotScreenState extends State<ForgotScreen> {
                     ],
                   ),
                 )
-
-
-
-
-
               ],
             ),
           ),
