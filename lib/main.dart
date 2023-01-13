@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/dashboard/screens/home.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
+import 'package:hunger_cravings/profileScreen/ContactDetails.dart';
 import 'package:hunger_cravings/screens/firestore/add_address.dart';
 import 'package:hunger_cravings/screens/firestore/database.dart';
 import 'package:hunger_cravings/screens/firestore/edit_address.dart';
@@ -24,15 +25,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         // other app settings
         debugShowCheckedModeBanner: false,
-        initialRoute: "/login",
+        initialRoute: "/profile",
         routes: {
+          "/profile": (BuildContext context) => MyApplication(),
           "/forgotpassword": (BuildContext context) => ForgotScreen(),
           "/login": (BuildContext context) => LoginScreens(),
           "/home": (BuildContext context) => Home(),
           "/address": (BuildContext context) => AddAddressScreen(),
-          "/login": (BuildContext context) => LoginScreens(),
-
-          "/forgot": (BuildContext context) => ForgotScreen(),
           "/edit-address": (BuildContext context) => EditAddressScreen(),
           "/database": (BuildContext context) => FirebaseDatabaseScreen(),
         });
