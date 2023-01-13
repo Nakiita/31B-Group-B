@@ -36,6 +36,17 @@ class _ForgotScreenState extends State<ForgotScreen> {
                     height: 300,
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: TextFormField(
+                    controller: email,
+                    decoration: InputDecoration(
+                        label: Text("Email"),
+                        hintText: "Please enter your email",
+                        prefixIcon: Icon(Icons.accessibility_outlined)),
+                  ),
+                ),
+
 
               ],
             ),
