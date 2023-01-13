@@ -46,6 +46,14 @@ class _ForgotScreenState extends State<ForgotScreen> {
                         prefixIcon: Icon(Icons.accessibility_outlined)),
                   ),
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      _auth
+                          .sendPasswordResetEmail(email: email.text)
+                          .then((value) => Navigator.of(context));
+                    },
+                    child: Text("Reset")),
+
 
 
               ],
