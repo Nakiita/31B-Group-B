@@ -19,4 +19,17 @@ class _ForgotScreenState extends State<ForgotScreen> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Form(
+            key: form,
+
+          ),
+        ),
+      ),
+    );
+  }
 }
