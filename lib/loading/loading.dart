@@ -13,8 +13,8 @@ class LoadingScreen extends StatelessWidget {
       splash: Column(
         children: [
           Image.asset('images/logo.jpg'),
-          const SizedBox(height: 30),
-          CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.black),),
+          
+
           // const Text('Hunger Craving', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),)
         ],
       ),
