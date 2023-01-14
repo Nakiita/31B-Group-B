@@ -1,5 +1,5 @@
   import 'package:cloud_firestore/cloud_firestore.dart';
-  import 'package:hunger_cravings/model/address_model.dart';
+  import 'package:hunger_cravings/delivery_address/model/address_model.dart';
   import '../services/firebase_services.dart';
 
 class AddressRepository {

@@ -5,9 +5,9 @@ import 'package:hunger_cravings/dashboard/screens/home.dart';
 import 'package:hunger_cravings/loading/loading.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
 import 'package:hunger_cravings/profileScreen/ContactDetails.dart';
-import 'package:hunger_cravings/screens/firestore/add_address.dart';
-import 'package:hunger_cravings/screens/firestore/database.dart';
-import 'package:hunger_cravings/screens/firestore/edit_address.dart';
+import 'package:hunger_cravings/delivery_address/screens/firestore/add_address.dart';
+import 'package:hunger_cravings/delivery_address/screens/firestore/database.dart';
+import 'package:hunger_cravings/delivery_address/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 
 Future<void> main() async {

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:hunger_cravings/model/address_model.dart';
-import 'package:hunger_cravings/repository/address_repository.dart';
+import 'package:hunger_cravings/delivery_address/model/address_model.dart';
+import 'package:hunger_cravings/delivery_address/repository/address_repository.dart';
 
 class AddressViewModel with ChangeNotifier {
   AddressRepository _addressRepository = AddressRepository();

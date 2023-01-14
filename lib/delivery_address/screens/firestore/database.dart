@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hunger_cravings/repository/address_repository.dart';
+import 'package:hunger_cravings/delivery_address/repository/address_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:hunger_cravings/screens/viewmodel/address_viewmodel.dart';
+import 'package:hunger_cravings/delivery_address/screens/viewmodel/address_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/address_model.dart';
