@@ -49,17 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  Future<void> createUser() async {
-    final docUser = FirebaseService.db.collection('user_details').doc();
-    final user = RegisterModel(
-        id: docUser.id,
-        fullname: username.text,
-        email: email.text,
-        password: password.text);
 
-    final json = user.toJson();
-    await docUser.set(json);
-  }
 
 
   @override
@@ -84,6 +74,53 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+
+                        const Text(
+                          'Register Account',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        // SizedBox(height: constraints.maxHeight * 0.04),
+                        // TextFormField(
+                        //   decoration: InputDecoration(
+                        //     prefixIcon: Icon(Icons.people),
+                        //     filled: true,
+                        //     fillColor: Colors.grey.shade50,
+                        //     hintText: ' Username ',
+                        //     border: OutlineInputBorder(
+                        //       borderRadius: BorderRadius.circular(40),
+                        //       borderSide: BorderSide(color: Colors.black12)
+                        //     )
+                        //   ),
+                        //
+                        //   controller: username,
+                        //   validator: (value){
+                        //     if(value==null || value.isEmpty){
+                        //       return "Please enter username";
+                        //     }
+                        //   },
+                        // ),
+                        SizedBox(height: constraints.maxHeight * 0.04),
+                        TextFormField(
+                          controller: email,
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email),
+                            filled: true,
+                            fillColor: Colors.grey.shade50,
+                            hintText: ' Email ',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40),
+                                borderSide: BorderSide(color: Colors.black12)
+                            ),
+                          ),
+                          validator: (value){
+                            if(value==null || value.isEmpty){
+                              return "Please enter email address";
+                            }
+                          },
+                        ),
 
 
                         SizedBox(height: constraints.maxHeight * 0.04),
