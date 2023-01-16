@@ -87,15 +87,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                 Row(
                                   children: [
                                     Text("\$ ${widget.price.toString()}",style: TextStyle(fontSize: 20),),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Text("\$ 30.0",
-                                      style: TextStyle(
-                                        color: Color(0xff9b96d6),
-                                        fontSize: 18,
-                                      ),
-                                    ),
                                   ],
                                 ),
                                 Text(
