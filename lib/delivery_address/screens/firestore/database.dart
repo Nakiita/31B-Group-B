@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hunger_cravings/delivery_address/repository/address_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:hunger_cravings/delivery_address/screens/viewmodel/address_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-import '../../model/address_model.dart';
+import '../../../models/address_model.dart';
+import '../../../repository/address_repository.dart';
+import '../../../viewmodel/address_viewmodel.dart';
+
 
 class FirebaseDatabaseScreen extends StatefulWidget {
   const FirebaseDatabaseScreen({Key? key}) : super(key: key);

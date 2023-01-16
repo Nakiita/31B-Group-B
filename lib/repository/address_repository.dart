@@ -1,6 +1,6 @@
   import 'package:cloud_firestore/cloud_firestore.dart';
-  import 'package:hunger_cravings/delivery_address/model/address_model.dart';
-  import '../services/firebase_services.dart';
+import '../models/address_model.dart';
+import '../services/firebase_services.dart';
 
 class AddressRepository {
   CollectionReference<Address> ref = FirebaseService.db.collection("products")

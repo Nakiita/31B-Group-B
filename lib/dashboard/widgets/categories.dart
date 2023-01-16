@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // import 'package:31B-Group-B/dashboard/widgets/title.dart';
 import 'package:hunger_cravings/dashboard/widgets/title.dart';
-import '../models/category.dart';
+import '../../models/category.dart';
 import 'commons.dart';
 
 List<Category>categoriesList=[

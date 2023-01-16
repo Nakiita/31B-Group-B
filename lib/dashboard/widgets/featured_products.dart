@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:31B-Group-B/Code/widgets/title.dart';
 import 'package:hunger_cravings/dashboard/widgets/title.dart';
 
-import '../models/products.dart';
+import '../../models/products.dart';
 import '../screens/detail_screens.dart';
 import 'commons.dart';
 
