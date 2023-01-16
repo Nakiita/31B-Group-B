@@ -35,8 +35,9 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications_none,
-              color: Colors.black,
+            icon: Icon(Icons.favorite,
+              color: Colors.red,
+              size: 35,
             ),
             onPressed: (){},
           ),
