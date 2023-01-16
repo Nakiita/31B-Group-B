@@ -19,6 +19,14 @@ class RegisterModel {
         required this.email,
         required this.password});
 
+  factory RegisterModel.fromFirebaseSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> json) =>
+      RegisterModel(
+        id: json.id,
+        fullname: json["fullName"],
+        email: json["email"],
+        password: json["password"],
+      );
 
 
   Map<String, dynamic> toJson() => {
