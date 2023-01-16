@@ -151,7 +151,9 @@ class _DetailScreenState extends State<DetailScreen> {
                       Container(
                         height: 45,
                         width: double.infinity,
-                        child: ElevatedButton(onPressed: (){},
+                        child: ElevatedButton(onPressed: (){
+
+                        },
                             style:ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),

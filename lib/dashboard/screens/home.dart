@@ -50,9 +50,12 @@ class _HomeState extends State<Home> {
           type: BottomNavigationBarType.fixed,
           onTap: _itemTapped,
           items: [
-            BottomNavigationBarItem(icon: Image.asset("images/home.jpg",width: 26,height: 26,), label: "Dashboard"),
+            BottomNavigationBarItem(icon: Image.asset("images/home.jpg",width: 26,height: 26,),
+                label: "Dashboard"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: "Favorite"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart),label: "Cart"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
           ],
         )
