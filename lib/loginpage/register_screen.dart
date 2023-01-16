@@ -131,53 +131,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           },
                         ),
 
+
+
                         SizedBox(height: constraints.maxHeight * 0.04),
                         TextFormField(
-                          controller: phoneNo,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.phone),
-                              filled: true,
-                              fillColor: Colors.grey.shade50,
-                              hintText: ' Phone no ',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                  borderSide: BorderSide(color: Colors.black12)
-                              )
-                          ),
-                          validator: (value) {
-                            if (value==null || value.isEmpty) {
-                              return 'Please enter mobile number';
-                            } else if (value.length<10 || value.length>10) {
-                              return 'Please enter valid mobile number';
+                          controller: confirmPassword,
+                          obscureText: _isVisibleConfirm ? false : true,
+                          validator: (value){
+                            if(value==null || value.isEmpty){
+                              return "Please enter confirm password";
+                            }else if(password.text!=confirmPassword.text){
+                              return "Password and confirm password must be same";
                             }
-                            return null;
                           },
-                        ),
-
-
-                        SizedBox(height: constraints.maxHeight * 0.04),
-                        TextFormField(
-                          controller: password,
-                          obscureText: _isVisible ? false : true,
-                          // validator: (value){
-                          //   if(value==null || value.isEmpty){
-                          //     return "Please enter password";
-                          //   }
-                          // },
 
                           decoration: InputDecoration(
                               prefixIcon: Icon(Icons.lock),
                               filled: true,
                               fillColor: Colors.grey.shade50,
-                              hintText: ' Password ',
+                              hintText: ' Confirm password ',
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible= !_isVisible;
+                                    _isVisibleConfirm = !_isVisibleConfirm;
                                   });
                                 },
                                 icon: Icon(
-                                  _isVisible
+                                  _isVisibleConfirm
                                       ? Icons.visibility
                                       : Icons.visibility_off,
                                   color: Colors.grey,
@@ -187,6 +167,70 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   borderRadius: BorderRadius.circular(40),
                                   borderSide: BorderSide(color: Colors.black12)
                               )
+                          ),
+                        ),
+                        SizedBox(
+                          height: constraints.maxHeight * 0.02,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: constraints.maxHeight * 0.12,
+                          margin: EdgeInsets.only(
+                            top: constraints.maxHeight * 0.01,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (formkey.currentState!.validate()) {
+                                register();
+                                createUser();
+                              } else {
+                                print("not success");
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Register Now',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(
+                          height: constraints.maxHeight * 0.08,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            text: "Already have an account?   ",
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "Login",
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    Navigator.of(context)
+                                        .pushReplacement(MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          LoginScreens(),
+                                    ));
+                                  },
+                              )
+                            ],
                           ),
                         ),
 
