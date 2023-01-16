@@ -2,9 +2,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/auth_model.dart';
 import '../services/firebase_services.dart';
+import '../viewmodel/auth_view_model.dart';
 import 'login.dart';
 
 
@@ -25,25 +27,81 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var _isVisible = false;
   var _isVisibleConfirm = false;
 
+  late AuthViewModel _authViewModel;
+
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    super.initState();
+  }
+
+
+  void register() async{
+    if(formkey.currentState == null || !formkey.currentState!.validate()){
+      return;
+    }
+    // _ui.loadState(true);
+    try{
+      await _authViewModel.register(
+          UserModel(
+              username: username.text,
+              email: email.text,
+              phone: phoneNo.text,
+              password: password.text,
+              id: '',
+          )).then((value) {
+
+        // NotificationService.display(
+        //   title: "Welcome to this app",
+        //   body: "Hello ${_authViewModel.loggedInUser?.name},\n Thank you for registering in this application.",
+        // );
+        Navigator.of(context).pushReplacementNamed("/home");
+      })
+          .catchError((e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    }catch(err){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    }
+    // _ui.loadState(false);
+  }
+
   // String patttern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
   // RegExp regExp =  RegExp("r'(^(?:[+0]9)?[0-9]{10,12})'");
   final formkey = GlobalKey<FormState>();
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-
-
-  Future<void> createUser() async {
-    final docUser = FirebaseService.db.collection('user_details').doc();
-    final user = RegisterModel(
-        id: docUser.id,
-        fullname: username.text,
-        email: email.text,
-        password: password.text);
-
-    final json = user.toJson();
-    await docUser.set(json);
-  }
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
+  //
+  // Future<void> register() async {
+  //   try {
+  //     final user = (await _auth.createUserWithEmailAndPassword(
+  //         email: email.text, password: password.text))
+  //         .user;
+  //     if (user != null) {
+  //       print("User created");
+  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //           backgroundColor: Colors.green, content: Text("Register success")));
+  //       Navigator.of(context).pushReplacementNamed("/home");
+  //     }
+  //   } catch (e) {
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text(e.toString())));
+  //   }
+  // }
+  //
+  //
+  //
+  // Future<void> createUser() async {
+  //   final docUser = FirebaseService.db.collection('user_details').doc();
+  //   final user = UserModel(
+  //       id: docUser.id,
+  //       fullname: username.text,
+  //       email: email.text,
+  //       password: password.text);
+  //
+  //   final json = user.toJson();
+  //   await docUser.set(json);
+  // }
 
 
   @override
@@ -76,26 +134,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        // SizedBox(height: constraints.maxHeight * 0.04),
-                        // TextFormField(
-                        //   decoration: InputDecoration(
-                        //     prefixIcon: Icon(Icons.people),
-                        //     filled: true,
-                        //     fillColor: Colors.grey.shade50,
-                        //     hintText: ' Username ',
-                        //     border: OutlineInputBorder(
-                        //       borderRadius: BorderRadius.circular(40),
-                        //       borderSide: BorderSide(color: Colors.black12)
-                        //     )
-                        //   ),
-                        //
-                        //   controller: username,
-                        //   validator: (value){
-                        //     if(value==null || value.isEmpty){
-                        //       return "Please enter username";
-                        //     }
-                        //   },
-                        // ),
+                        SizedBox(height: constraints.maxHeight * 0.04),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.people),
+                            filled: true,
+                            fillColor: Colors.grey.shade50,
+                            hintText: ' Username ',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(40),
+                              borderSide: BorderSide(color: Colors.black12)
+                            )
+                          ),
+
+                          controller: username,
+                          validator: (value){
+                            if(value==null || value.isEmpty){
+                              return "Please enter username";
+                            }
+                          },
+                        ),
                         SizedBox(height: constraints.maxHeight * 0.04),
                         TextFormField(
                           controller: email,
@@ -227,7 +285,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             onPressed: () {
                               if (formkey.currentState!.validate()) {
                                 register();
-                                createUser();
+                                // createUser();
                               } else {
                                 print("not success");
                               }

@@ -1,45 +1,61 @@
+// To parse this JSON data, do
+//
+//     final userModel = userModelFromJson(jsonString);
+
+
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-RegisterModel? productModelFromJson(String str) =>
-    RegisterModel.fromJson(json.decode(str));
+UserModel? userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-String productModelToJson(RegisterModel? data) => json.encode(data!.toJson());
+String userModelToJson(UserModel? data) => json.encode(data!.toJson());
 
-class RegisterModel {
+class UserModel {
+  UserModel({
+    required this.id,
+    required this.username,
+    required this.email,
+    required this.phone,
+    required this.password,
+  });
+
   String? id;
-  String? fullname;
+  String? username;
   String? email;
+  String? phone;
   String? password;
 
-  RegisterModel(
-      {this.id = '',
-        required this.fullname,
-        required this.email,
-        required this.password});
+  factory UserModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => UserModel(
+    id: json.id,
+    username: json["username"],
+    email: json["email"],
+    phone: json["phoneNo"],
+    password: json["password"],
+  );
 
-  factory RegisterModel.fromFirebaseSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> json) =>
-      RegisterModel(
-        id: json.id,
-        fullname: json["fullName"],
-        email: json["email"],
-        password: json["password"],
-      );
-
-
-  factory RegisterModel.fromJson(Map<String, dynamic> json) => RegisterModel(
-      id: json["id"],
-      fullname: json["fullname"],
-      email: json["email"],
-      password: json["password"]);
-
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+    id: json["id"],
+    username: json["username"],
+    email: json["email"],
+    phone: json["phoneNo"],
+    password: json["password"],
+  );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "fullname": fullname,
+    "username": username,
     "email": email,
+    "phoneNo": phone,
     "password": password,
   };
 }
+
+// factory UserModel.fromFirebaseSnapshot(
+  //     DocumentSnapshot<Map<String, dynamic>> json) =>
+  //     UserModel(
+  //       id: json.id,
+  //       fullname: json["fullName"],
+  //       email: json["email"],
+  //       password: json["password"],
+  //     );
