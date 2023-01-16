@@ -84,51 +84,65 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Register Account',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        // SizedBox(height: constraints.maxHeight * 0.04),
-                        // TextFormField(
-                        //   decoration: InputDecoration(
-                        //     prefixIcon: Icon(Icons.people),
-                        //     filled: true,
-                        //     fillColor: Colors.grey.shade50,
-                        //     hintText: ' Username ',
-                        //     border: OutlineInputBorder(
-                        //       borderRadius: BorderRadius.circular(40),
-                        //       borderSide: BorderSide(color: Colors.black12)
-                        //     )
-                        //   ),
-                        //
-                        //   controller: username,
-                        //   validator: (value){
-                        //     if(value==null || value.isEmpty){
-                        //       return "Please enter username";
-                        //     }
-                        //   },
-                        // ),
+
+
                         SizedBox(height: constraints.maxHeight * 0.04),
                         TextFormField(
-                          controller: email,
+                          controller: phoneNo,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email),
-                            filled: true,
-                            fillColor: Colors.grey.shade50,
-                            hintText: ' Email ',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40),
-                                borderSide: BorderSide(color: Colors.black12)
-                            ),
+                              prefixIcon: Icon(Icons.phone),
+                              filled: true,
+                              fillColor: Colors.grey.shade50,
+                              hintText: ' Phone no ',
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(color: Colors.black12)
+                              )
                           ),
-                          validator: (value){
-                            if(value==null || value.isEmpty){
-                              return "Please enter email address";
+                          validator: (value) {
+                            if (value==null || value.isEmpty) {
+                              return 'Please enter mobile number';
+                            } else if (value.length<10 || value.length>10) {
+                              return 'Please enter valid mobile number';
                             }
+                            return null;
                           },
+                        ),
+
+
+                        SizedBox(height: constraints.maxHeight * 0.04),
+                        TextFormField(
+                          controller: password,
+                          obscureText: _isVisible ? false : true,
+                          // validator: (value){
+                          //   if(value==null || value.isEmpty){
+                          //     return "Please enter password";
+                          //   }
+                          // },
+
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.lock),
+                              filled: true,
+                              fillColor: Colors.grey.shade50,
+                              hintText: ' Password ',
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    _isVisible= !_isVisible;
+                                  });
+                                },
+                                icon: Icon(
+                                  _isVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                  borderSide: BorderSide(color: Colors.black12)
+                              )
+                          ),
                         ),
 
 
