@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: white,
-        body: PageView(controller: pageController, children: [Homepage(), Container(), Container()],) ,
+        body: PageView(controller: pageController, children: [Homepage(), Container(), Container(), Container()],) ,
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           elevation: 0,
@@ -56,7 +56,8 @@ class _HomeState extends State<Home> {
                 icon: Icon(Icons.favorite), label: "Favorite"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart),label: "Cart"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person), label: "Account"),
           ],
         )
       // Container(

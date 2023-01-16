@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/dashboard/screens/cart.dart';
 
 import 'home.dart';
 
@@ -152,7 +153,13 @@ class _DetailScreenState extends State<DetailScreen> {
                         height: 45,
                         width: double.infinity,
                         child: ElevatedButton(onPressed: (){
-
+                          Navigator.of(context).push(
+                            //Replacement
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                              Cart(),
+                            ),
+                          );
                         },
                             style:ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
