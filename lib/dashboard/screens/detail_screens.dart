@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/dashboard/screens/cart.dart';
+import 'package:hunger_cravings/dashboard/screens/favorite/favorite.dart';
 
 import 'home.dart';
 
@@ -39,7 +40,15 @@ class _DetailScreenState extends State<DetailScreen> {
               color: Colors.red,
               size: 35,
             ),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.of(context).push(
+                //Replacement
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      Favorite(),
+                ),
+              );
+            },
           ),
         ],
       ),
