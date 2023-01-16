@@ -28,8 +28,9 @@ class _LoginScreensState extends State<LoginScreens> {
       if (user != null) {
         print("Login Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green, content: Text("Login Sucessful")));
-        Navigator.of(context).pushReplacementNamed("/home");
+            backgroundColor: Colors.green,
+            content: Text("Login Sucessful")));
+        Navigator.of(context).pushReplacementNamed("/OnBoardingScreen");
       }
     } catch (e) {
       ScaffoldMessenger.of(context)

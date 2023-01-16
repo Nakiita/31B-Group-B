@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/Onboarding/onboardingScreen.dart';
 import 'package:hunger_cravings/dashboard/screens/home.dart';
 import 'package:hunger_cravings/loading/loading.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         initialRoute: "/LoadingScreen",
         routes: {
           "/LoadingScreen": (BuildContext context) => LoadingScreen(),
+          "/OnBoardingScreen": (BuildContext context) => OnboardingScreen(),
           "/profile": (BuildContext context) => MyApplication(),
           "/forgotpassword": (BuildContext context) => ForgotScreen(),
           "/login": (BuildContext context) => LoginScreens(),

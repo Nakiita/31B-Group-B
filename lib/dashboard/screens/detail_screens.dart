@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hunger_cravings/dashboard/screens/cart.dart';
+import 'package:hunger_cravings/dashboard/screens/cart/cart.dart';
 import 'package:hunger_cravings/dashboard/screens/favorite/favorite.dart';
 
 import 'home.dart';
@@ -21,7 +21,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue,
         elevation: 0.0,
         leading: IconButton(icon: Icon(Icons.arrow_back,color: Colors.black,),
           onPressed: () {
