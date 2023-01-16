@@ -32,24 +32,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
 
-  Future<void> register() async {
-    try {
-      final user = (await _auth.createUserWithEmailAndPassword(
-          email: email.text, password: password.text))
-          .user;
-      if (user != null) {
-        print("User created");
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green, content: Text("Register success")));
-        Navigator.of(context).pushReplacementNamed("/home");
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
-    }
+
+  Future<void> createUser() async {
+    final docUser = FirebaseService.db.collection('user_details').doc();
+    final user = RegisterModel(
+        id: docUser.id,
+        fullname: username.text,
+        email: email.text,
+        password: password.text);
+
+    final json = user.toJson();
+    await docUser.set(json);
   }
-
-
 
 
   @override
