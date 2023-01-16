@@ -58,7 +58,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.fill,
-                                image: AssetImage(widget.image),
+                                image: AssetImage("images/${widget.image}"),
                               )
                           ),
                         ),
