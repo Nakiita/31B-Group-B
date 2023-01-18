@@ -22,23 +22,7 @@ class _LoginScreensState extends State<LoginScreens> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
-  // Future<void> login() async {
-  //   try {
-  //     final user = (await _auth.signInWithEmailAndPassword(
-  //         email: emailController.text, password: passwordController.text))
-  //         .user;
-  //     if (user != null) {
-  //       print("Login Sucessful");
-  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-  //           backgroundColor: Colors.green, content: Text("Login Sucessful")));
-  //       Navigator.of(context).pushReplacementNamed("/home");
-  //     }
-  //   } catch (e) {
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(SnackBar(content: Text(e.toString())));
-  //   }
-  // }
+
 
 
   void login() async {
