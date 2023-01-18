@@ -26,13 +26,7 @@ class UserModel {
   String? phone;
   String? password;
 
-  factory UserModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => UserModel(
-    id: json.id,
-    username: json["username"],
-    email: json["email"],
-    phone: json["phoneNo"],
-    password: json["password"],
-  );
+
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
     id: json["id"],
@@ -49,13 +43,12 @@ class UserModel {
     "phoneNo": phone,
     "password": password,
   };
-}
 
-// factory UserModel.fromFirebaseSnapshot(
-  //     DocumentSnapshot<Map<String, dynamic>> json) =>
-  //     UserModel(
-  //       id: json.id,
-  //       fullname: json["fullName"],
-  //       email: json["email"],
-  //       password: json["password"],
-  //     );
+  factory UserModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => UserModel(
+    id: json.id,
+    username: json["username"],
+    email: json["email"],
+    phone: json["phoneNo"],
+    password: json["password"],
+  );
+}

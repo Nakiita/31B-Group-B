@@ -12,11 +12,10 @@ class AuthRepository{
     },
     toFirestore: (model, _) => model.toJson(),
   );
-
   Future<UserCredential?> register(UserModel user) async {
     try {
       final response = await userRef
-          .where("username", isEqualTo: user.email!).get();
+          .where("username", isEqualTo: user.username!).get();
       if (response.size != 0) {
         throw Exception("Username already exists");
       }
@@ -24,7 +23,7 @@ class AuthRepository{
           .createUserWithEmailAndPassword(
           email: user.email!, password: user.password!);
 
-      // user.userId = uc.user!.uid;
+      user.id = uc.user!.uid;
       // user.fcm = "";
       // insert into firestore user table
       await userRef.add(user);
@@ -34,21 +33,21 @@ class AuthRepository{
     }
   }
 
-//
-//   Future<UserCredential> login(String email, String password) async {
-//     try {
-//       UserCredential uc = await FirebaseService.firebaseAuth
-//           .signInWithEmailAndPassword(email: email, password: password);
-//       return uc;
-//     } catch (err) {
-//       rethrow;
-//     }
-//   }
+
+  Future<UserCredential> login(String email, String password) async {
+    try {
+      UserCredential uc = await FirebaseService.firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      return uc;
+    } catch (err) {
+      rethrow;
+    }
+  }
 
   Future<UserModel> getUserDetail(String id) async {
     try {
       final response = await userRef
-          .where("user_id", isEqualTo: id).get();
+          .where("id", isEqualTo: id).get();
 
       var user = response.docs.single.data();
       // user.fcm="";
@@ -58,26 +57,25 @@ class AuthRepository{
       rethrow;
     }
   }
-//
-//
-//
-//   Future<bool> resetPassword(String email) async {
-//     try {
-//       var res = await FirebaseService.firebaseAuth
-//           .sendPasswordResetEmail( email: email);
-//       return true;
-//     } catch (err) {
-//       rethrow;
-//     }
-//   }
-//
-//
-//   Future<void> logout() async {
-//     try {
-//       await FirebaseService.firebaseAuth.signOut();
-//     } catch (err) {
-//       rethrow;
-//     }
-//   }
-}
 
+
+
+  Future<bool> resetPassword(String email) async {
+    try {
+      var res = await FirebaseService.firebaseAuth
+          .sendPasswordResetEmail( email: email);
+      return true;
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+
+  Future<void> logout() async {
+    try {
+      await FirebaseService.firebaseAuth.signOut();
+    } catch (err) {
+      rethrow;
+    }
+  }
+}

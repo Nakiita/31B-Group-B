@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
+import 'package:provider/provider.dart';
 
+import '../viewmodel/auth_view_model.dart';
+import '../viewmodel/global_ui_viewmodel.dart';
 import 'forgetpassword.dart';
 
 class LoginScreens extends StatefulWidget {
@@ -19,22 +22,54 @@ class _LoginScreensState extends State<LoginScreens> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> login() async {
-    try {
-      final user = (await _auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text))
-          .user;
-      if (user != null) {
-        print("Login Sucessful");
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green, content: Text("Login Sucessful")));
-        Navigator.of(context).pushReplacementNamed("/home");
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
+  // Future<void> login() async {
+  //   try {
+  //     final user = (await _auth.signInWithEmailAndPassword(
+  //         email: emailController.text, password: passwordController.text))
+  //         .user;
+  //     if (user != null) {
+  //       print("Login Sucessful");
+  //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+  //           backgroundColor: Colors.green, content: Text("Login Sucessful")));
+  //       Navigator.of(context).pushReplacementNamed("/home");
+  //     }
+  //   } catch (e) {
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text(e.toString())));
+  //   }
+  // }
+
+
+  void login() async {
+    if (form.currentState == null || !form.currentState!.validate()) {
+      return;
     }
+    _ui.loadState(true);
+    try {
+      await _authViewModel.login(emailController.text, passwordController.text).then((value) {
+
+        // NotificationService.display(
+        //   title: "Welcome back",
+        //   body: "Hello ${_authViewModel.loggedInUser?.name},\n Hope you are having a wonderful day.",
+        // );
+        Navigator.of(context).pushReplacementNamed('/home');
+      }).catchError((e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    } catch (err) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    }
+    _ui.loadState(false);
+  }
+
+  late AuthViewModel _authViewModel;
+  late GlobalUIViewModel _ui;
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+    super.initState();
   }
 
   @override

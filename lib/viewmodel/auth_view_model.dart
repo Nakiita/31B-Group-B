@@ -16,18 +16,26 @@ class AuthViewModel with ChangeNotifier {
   UserModel? get loggedInUser =>_loggedInUser;
 
 
-  // Future<void> login(String email, String password) async {
-  //   try {
-  //     var response = await AuthRepository().login(email, password);
-  //     _user = response.user;
-  //     _loggedInUser = await AuthRepository().getUserDetail(_user!.uid);
-  //     notifyListeners();
-  //   } catch (err) {
-  //     AuthRepository().logout();
-  //     rethrow;
-  //   }
-  // }
+  Future<void> login(String email, String password) async {
+    try {
+      var response = await AuthRepository().login(email, password);
+      _user = response.user;
+      _loggedInUser = await AuthRepository().getUserDetail(_user!.uid);
+      notifyListeners();
+    } catch (err) {
+      AuthRepository().logout();
+      rethrow;
+    }
+  }
 
+  Future<void> resetPassword(String email) async {
+    try {
+      await AuthRepository().resetPassword(email);
+      notifyListeners();
+    } catch (err) {
+      rethrow;
+    }
+  }
 
 
   Future<void> register(UserModel user) async {
@@ -37,11 +45,30 @@ class AuthViewModel with ChangeNotifier {
       _loggedInUser = await AuthRepository().getUserDetail(_user!.uid);
       notifyListeners();
     } catch (err) {
-      // AuthRepository().logout();
+      AuthRepository().logout();
       rethrow;
     }
   }
 
 
+  Future<void> checkLogin() async {
+    try {
+      _loggedInUser = await AuthRepository().getUserDetail(_user!.uid);
+      notifyListeners();
+    } catch (err) {
+      _user = null;
+      AuthRepository().logout();
+      rethrow;
+    }
+  }
 
+  Future<void> logout() async{
+    try{
+      await AuthRepository().logout();
+      _user = null;
+      notifyListeners();
+    }catch(e){
+      rethrow;
+    }
+  }
 }

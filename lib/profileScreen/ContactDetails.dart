@@ -1,10 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/models/auth_model.dart';
+
+import '../repository/auth_repository.dart';
+import '../viewmodel/auth_view_model.dart';
 
 void main() => runApp(MyApplication());
 
-class MyApplication extends StatelessWidget {
+class MyApplication extends StatefulWidget {
   const MyApplication({Key? key}) : super(key: key);
+
+  @override
+  State<MyApplication> createState() => _MyApplicationState();
+}
+
+class _MyApplicationState extends State<MyApplication> {
+
+  late UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +37,8 @@ class MyApplication extends StatelessWidget {
                     // backgroundColor: Colors.red,
                   ),
                   Text(
-                    'Rajesh Prasad Sah',
-                    style: TextStyle(
+                    userModel.username,
+                    style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.white,
                         fontWeight: FontWeight.bold),
