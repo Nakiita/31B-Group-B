@@ -97,7 +97,7 @@ class Delivertimee extends StatelessWidget {
             ),
 
             Text(
-              "Choose the Time",style: TextStyle(fontSize: 18,),
+              "Choose Time",style: TextStyle(fontSize: 18,),
             ),
 
 
