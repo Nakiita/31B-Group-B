@@ -67,10 +67,10 @@ class MyApp extends StatelessWidget {
                 initialRoute: "/LoadingScreen",
             routes: {
               "/LoadingScreen": (BuildContext context) => LoadingScreen(),
-              "/profile": (BuildContext context) => MyApplication(),
               "/forgotpassword": (BuildContext context) => ForgotScreen(),
               "/login": (BuildContext context) => LoginScreens(),
               "/register": (BuildContext context) => RegisterScreen(),
+              "/profile": (BuildContext context) => MyApplication(),
               "/home": (BuildContext context) => Home(),
               "/address": (BuildContext context) => AddAddressScreen(),
               "/edit-address": (BuildContext context) => EditAddressScreen(),

@@ -53,7 +53,11 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(icon: Image.asset("images/home.jpg",width: 26,height: 26,), label: "Dashboard"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: "Favorite"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+            BottomNavigationBarItem(icon: GestureDetector(
+                onTap:(){
+    Navigator.of(context).pushNamed("/profile");
+    },
+                child: Icon(Icons.person)), label: "Account"),
           ],
         )
       // Container(
