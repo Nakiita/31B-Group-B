@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/dashboard/screens/search.dart';
 // import 'package:31B-Group-B/dashboard/widgets/categories.dart';
 // import 'package:31B-Group-B/dashboard/widgets/featured_products.dart';
 
@@ -38,7 +39,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: white,
-        body: PageView(controller: pageController, children: [Homepage(), Container(), Container(), Container()],) ,
+        body: PageView(
+          controller: pageController,
+          children: [Homepage(), Container(), Container(), Container()],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           elevation: 0,
@@ -50,57 +54,61 @@ class _HomeState extends State<Home> {
           type: BottomNavigationBarType.fixed,
           onTap: _itemTapped,
           items: [
-            BottomNavigationBarItem(icon: Image.asset("images/home.jpg",width: 26,height: 26,),
+            BottomNavigationBarItem(
+                icon: Image.asset(
+                  "images/home.jpg",
+                  width: 26,
+                  height: 26,
+                ),
                 label: "Dashboard"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: "Favorite"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart),label: "Cart"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person), label: "Account"),
+                icon: Icon(Icons.shopping_cart), label: "Cart"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
           ],
         )
-      // Container(
-      //   color: white,
-      //
-      //   child:Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: <Widget>[
-      //       // FlatButton(
-      //       //   onPressed: () {
-      //       //     // Perform some action
-      //       //   },
-      //       //   child: Image.asset("images/home.jpg",width: 26,height: 26,)
-      //       // ),
-      //       InkWell(
-      //         onTap: (){
-      //
-      //         },
-      //         child: Padding(
-      //           padding: const EdgeInsets.all(8.0),
-      //           child: Image.asset("images/home.jpg",width: 26,height: 26,),
-      //         ),
-      //       ),
-      //       Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Image.asset("images/review.jpg",width: 26,height: 26,),
-      //       ),
-      //       Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Image.asset("images/shop.jpg",width: 26,height: 26,),
-      //       ),
-      //       Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Image.asset("images/you.jpg",width: 26,height: 26,),
-      //       ),
-      //       Padding(
-      //         padding: const EdgeInsets.all(8.0),
-      //         child: Image.asset("images/cart.jpg",width: 26,height: 26,),
-      //       ),
-      //     ],
-      //   ) ,
-      // ),
-    );
+        // Container(
+        //   color: white,
+        //
+        //   child:Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: <Widget>[
+        //       // FlatButton(
+        //       //   onPressed: () {
+        //       //     // Perform some action
+        //       //   },
+        //       //   child: Image.asset("images/home.jpg",width: 26,height: 26,)
+        //       // ),
+        //       InkWell(
+        //         onTap: (){
+        //
+        //         },
+        //         child: Padding(
+        //           padding: const EdgeInsets.all(8.0),
+        //           child: Image.asset("images/home.jpg",width: 26,height: 26,),
+        //         ),
+        //       ),
+        //       Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Image.asset("images/review.jpg",width: 26,height: 26,),
+        //       ),
+        //       Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Image.asset("images/shop.jpg",width: 26,height: 26,),
+        //       ),
+        //       Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Image.asset("images/you.jpg",width: 26,height: 26,),
+        //       ),
+        //       Padding(
+        //         padding: const EdgeInsets.all(8.0),
+        //         child: Image.asset("images/cart.jpg",width: 26,height: 26,),
+        //       ),
+        //     ],
+        //   ) ,
+        // ),
+        );
   }
 }
 
@@ -143,8 +151,7 @@ class Homepage extends StatelessWidget {
                       height: 10,
                       width: 10,
                       decoration: BoxDecoration(
-                          color: red,
-                          borderRadius: BorderRadius.circular(20)),
+                          color: red, borderRadius: BorderRadius.circular(20)),
                     ),
                   ),
                 ],
@@ -160,8 +167,7 @@ class Homepage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: white,
                   boxShadow: [
-                    BoxShadow(
-                        color: grey, offset: Offset(1, 1), blurRadius: 4),
+                    BoxShadow(color: grey, offset: Offset(1, 1), blurRadius: 4),
                   ],
                 ),
                 child: ListTile(
@@ -172,6 +178,12 @@ class Homepage extends StatelessWidget {
                       ),
                       onPressed: () {}),
                   title: TextField(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchPage()),
+                      );
+                    },
                     decoration: InputDecoration(
                         hintText: "Find food and resturants",
                         border: InputBorder.none),
@@ -193,11 +205,18 @@ class Homepage extends StatelessWidget {
                             );
                           }),
                       IconButton(
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.red,
-                          ),
-                          onPressed: () {}),
+                        icon: Icon(
+                          Icons.search,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SearchPage()),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -220,8 +239,8 @@ class Homepage extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40)),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(40)),
                   child: Padding(
                     padding: const EdgeInsets.all(0),
                     child: ClipRRect(
