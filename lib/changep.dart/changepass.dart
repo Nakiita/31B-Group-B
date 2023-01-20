@@ -128,6 +128,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: constraints.maxHeight * 0.02,
+                        ),
+
 
 
 
