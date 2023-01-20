@@ -27,8 +27,8 @@ class _ChangePasswordState extends State<ChangePassword> {
         print("change Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.green, content: Text("change Sucessful")));
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => MyApplication()));
+        // Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) => MyApplication()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -77,83 +77,8 @@ class _ChangePasswordState extends State<ChangePassword> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(height: constraints.maxHeight * 0.04),
-                        Container(
-                          height: constraints.maxHeight * 0.12,
-                          decoration: BoxDecoration(
-                              color: const Color(0xffB4B4B4).withOpacity(0.6),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Center(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Enter Old Password',
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: constraints.maxHeight * 0.04),
-                        Container(
-                          height: constraints.maxHeight * 0.12,
-                          decoration: BoxDecoration(
-                              color: const Color(0xffB4B4B4).withOpacity(0.6),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Center(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Enter New Password"),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: constraints.maxHeight * 0.04),
-                        Container(
-                          height: constraints.maxHeight * 0.12,
-                          decoration: BoxDecoration(
-                              color: const Color(0xffB4B4B4).withOpacity(0.6),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Center(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    hintText: "Confirm Password"),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: constraints.maxHeight * 0.02,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: constraints.maxHeight * 0.12,
-                          margin: EdgeInsets.only(
-                            top: constraints.maxHeight * 0.01,
-                          ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.lightBlue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                            ),
-                            child: const Text(
-                              'Change',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                              ),
-                            ),
-                          ),
-                        )
+
+
                       ],
                     );
                   }),
