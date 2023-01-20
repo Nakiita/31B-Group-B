@@ -131,12 +131,29 @@ class _ChangePasswordState extends State<ChangePassword> {
                         SizedBox(
                           height: constraints.maxHeight * 0.02,
                         ),
-
-
-
-
-
-
+                        Container(
+                          width: double.infinity,
+                          height: constraints.maxHeight * 0.12,
+                          margin: EdgeInsets.only(
+                            top: constraints.maxHeight * 0.01,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.lightBlue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Change',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                          ),
+                        )
 
                       ],
                     );
