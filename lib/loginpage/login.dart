@@ -33,10 +33,6 @@ class _LoginScreensState extends State<LoginScreens> {
     try {
       await _authViewModel.login(emailController.text, passwordController.text).then((value) {
 
-        // NotificationService.display(
-        //   title: "Welcome back",
-        //   body: "Hello ${_authViewModel.loggedInUser?.name},\n Hope you are having a wonderful day.",
-        // );
         Navigator.of(context).pushReplacementNamed('/home');
       }).catchError((e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
