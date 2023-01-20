@@ -1,6 +1,6 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dark_mode_animation/theme_service.dart';
+import 'package:hunger_cravings/theme_service.dart';
 
 
 
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: theme,
-          home: HomePage(),
+          // home: HomePage(),
         );
       },
     );
