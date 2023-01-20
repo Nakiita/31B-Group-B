@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/dashboard/screens/cart/cart.dart';
+import 'package:hunger_cravings/dashboard/screens/favorite/favorite.dart';
 
 import 'home.dart';
 
@@ -19,7 +21,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue,
         elevation: 0.0,
         leading: IconButton(icon: Icon(Icons.arrow_back,color: Colors.black,),
           onPressed: () {
@@ -34,10 +36,19 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications_none,
-              color: Colors.black,
+            icon: Icon(Icons.favorite,
+              color: Colors.red,
+              size: 35,
             ),
-            onPressed: (){},
+            onPressed: (){
+              Navigator.of(context).push(
+                //Replacement
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      Favorite(),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -58,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.fill,
-                                image: AssetImage(widget.image),
+                                image: AssetImage("images/${widget.image}"),
                               )
                           ),
                         ),
@@ -87,15 +98,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                 Row(
                                   children: [
                                     Text("\$ ${widget.price.toString()}",style: TextStyle(fontSize: 20),),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Text("\$ 30.0",
-                                      style: TextStyle(
-                                        color: Color(0xff9b96d6),
-                                        fontSize: 18,
-                                      ),
-                                    ),
                                   ],
                                 ),
                                 Text(
@@ -160,7 +162,15 @@ class _DetailScreenState extends State<DetailScreen> {
                       Container(
                         height: 45,
                         width: double.infinity,
-                        child: ElevatedButton(onPressed: (){},
+                        child: ElevatedButton(onPressed: (){
+                          Navigator.of(context).push(
+                            //Replacement
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                              Cart(),
+                            ),
+                          );
+                        },
                             style:ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),

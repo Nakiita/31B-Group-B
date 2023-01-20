@@ -30,7 +30,9 @@ class Featured extends StatelessWidget {
                   //Replacement
                   MaterialPageRoute(
                     builder: (BuildContext context) =>
-                        DetailScreen( image: productList[index].image.toString(), name: productList[index].name.toString(), price: productList[index].price,),
+                        DetailScreen( image: productList[index].image.toString(),
+                          name: productList[index].name.toString(),
+                          price: productList[index].price,),
                   ),
                 );
               },
