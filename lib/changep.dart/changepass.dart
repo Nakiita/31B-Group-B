@@ -112,6 +112,23 @@ class _ChangePasswordState extends State<ChangePassword> {
                           ),
                         ),
                         SizedBox(height: constraints.maxHeight * 0.04),
+                        Container(
+                          height: constraints.maxHeight * 0.12,
+                          decoration: BoxDecoration(
+                              color: const Color(0xffB4B4B4).withOpacity(0.6),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Center(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: "Confirm Password"),
+                              ),
+                            ),
+                          ),
+                        ),
+
 
 
 
