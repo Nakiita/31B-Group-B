@@ -1,17 +1,17 @@
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:31B-Group-B/dashboard/models/products.dart';
-// import 'package:31B-Group-B/Code/widgets/title.dart';
 import 'package:hunger_cravings/dashboard/widgets/title.dart';
 
+import '../../DetailsScreen/productdetail_screens.dart';
 import '../../models/products.dart';
-import '../screens/detail_screens.dart';
 import 'commons.dart';
 
 List<Product> productList=[
-  Product(name:"Cereals",image:"cereals.jpg",price:5.99, rating:4.2, vendor:"GoodFood", whishList:true),
-  Product(name:"Burger",image:"burger.jpg",price:6.99, rating:4.7, vendor:"GoodFood", whishList:true),
-  Product(name:"Pizza",image:"pizza.jpg",price:6.00, rating:4.8, vendor:"GoodFood", whishList:true),
-  Product(name:"Steak",image:"steak.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true),
+  Product(name:"Cereals",image:"cereals.jpg",price:5.99, rating:4.2, vendor:"GoodFood", whishList:true, quantity: 1),
+  Product(name:"Pizza",image:"pizza.jpg",price:6.00, rating:4.8, vendor:"GoodFood", whishList:true, quantity: 1),
+  Product(name:"Steak",image:"steak.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true, quantity: 1),
 ];
 
 class Featured extends StatelessWidget {
@@ -30,9 +30,7 @@ class Featured extends StatelessWidget {
                   //Replacement
                   MaterialPageRoute(
                     builder: (BuildContext context) =>
-                        DetailScreen( image: productList[index].image.toString(),
-                          name: productList[index].name.toString(),
-                          price: productList[index].price,),
+                        ProductDetails(productList[index]),
                   ),
                 );
               },

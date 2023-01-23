@@ -5,8 +5,9 @@ class Product{
   final double price;
   final String vendor;
   final bool whishList;
+  int quantity;
 
-  Product({required this.name,required this.image,required this.price, required this.rating, required this.vendor, required this.whishList});
+  Product({required this.quantity,required this.name,required this.image,required this.price, required this.rating, required this.vendor, required this.whishList});
 
 
 }

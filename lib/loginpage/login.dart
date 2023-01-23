@@ -3,10 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
 import 'package:provider/provider.dart';
-
 import '../viewmodel/auth_view_model.dart';
 import '../viewmodel/global_ui_viewmodel.dart';
-import 'forgetpassword.dart';
 
 class LoginScreens extends StatefulWidget {
   const LoginScreens({Key? key}) : super(key: key);

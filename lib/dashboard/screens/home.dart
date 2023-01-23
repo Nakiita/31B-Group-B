@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/DetailsScreen/cart/cart.dart';
 import 'package:hunger_cravings/dashboard/screens/search.dart';
-// import 'package:31B-Group-B/dashboard/widgets/categories.dart';
-// import 'package:31B-Group-B/dashboard/widgets/featured_products.dart';
 
+import '../../DetailsScreen/favorite/favorite.dart';
 import '../widgets/categories.dart';
 import '../widgets/commons.dart';
 import '../widgets/featured_products.dart';
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
         backgroundColor: white,
         body: PageView(
           controller: pageController,
-          children: [Homepage(), Container(), Container(), Container()],
+          children: [Homepage(), Favourite(), Container(), Cart()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,

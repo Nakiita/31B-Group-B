@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/dashboard/widgets/featured_products.dart';
-
+import '../../DetailsScreen/productdetail_screens.dart';
 import '../../models/products.dart';
-import 'detail_screens.dart';
 class SearchPage extends StatefulWidget {
 SearchPage({Key? key}) : super(key: key);
 @override
@@ -69,15 +68,18 @@ class _SearchPageState extends State<SearchPage> {
                   elevation: 1,
                   margin: const EdgeInsets.symmetric(vertical: 2),
                   child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              DetailScreen( image: _filteredProducts[index].image, name: _filteredProducts[index].name, price: _filteredProducts[index].price,),
-                        ),
-                      );
-                    },
+                    // onTap: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) =>
+                    //   //         ProductDetails( image: _filteredProducts[index].image,
+                    //   //             productName: _filteredProducts[index].name,
+                    //   //             price: _filteredProducts[index].price,quantity:_filteredProducts[index].quantity,
+                    //   //           _filteredProducts[index]
+                    //   // );
+                    //   ProductDetails();
+                    // },
                     leading: CircleAvatar(
                       radius: 30.0,
                       backgroundImage: AssetImage("images/${_filteredProducts[index].image}"),
