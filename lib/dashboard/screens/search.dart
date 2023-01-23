@@ -80,8 +80,7 @@ class _SearchPageState extends State<SearchPage> {
                     },
                     leading: CircleAvatar(
                       radius: 30.0,
-                      backgroundImage: NetworkImage(
-                          _filteredProducts[index].image),
+                      backgroundImage: AssetImage("images/${_filteredProducts[index].image}"),
                       backgroundColor: Colors.transparent,
                     ),
                     title: Text(_filteredProducts[index].name),

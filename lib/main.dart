@@ -16,7 +16,6 @@ import 'package:hunger_cravings/delivery_address/screens/firestore/database.dart
 import 'package:hunger_cravings/delivery_address/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 import 'loading/loading.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
@@ -76,8 +75,7 @@ class MyApp extends StatelessWidget {
               "/home": (BuildContext context) => Home(),
               "/address": (BuildContext context) => AddAddressScreen(),
               "/edit-address": (BuildContext context) => EditAddressScreen(),
-              "/database": (BuildContext context) => FirebaseDatabaseScreen(),
-            }
+              "/database": (BuildContext context) => FirebaseDatabaseScreen(),}
               );
             }
         ),
