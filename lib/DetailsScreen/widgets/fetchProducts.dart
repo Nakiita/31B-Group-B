@@ -60,16 +60,15 @@ class _MyWidgetState extends State<MyWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.add_circle),
+                        icon: Icon(Icons.add),
                         onPressed: () {
                           // _incrementQuantity(index,snapshot);
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.remove_circle),
+                        icon: Icon(Icons.remove),
                         onPressed: _documentSnapshot['quantity'] > 1
-                            ? () {
-                              }
+                            ? () {}
                             : null,
                       ),
                     ],
@@ -77,7 +76,7 @@ class _MyWidgetState extends State<MyWidget> {
                   SizedBox(height: 5),
                   GestureDetector(
                     child: CircleAvatar(
-                      child: Icon(Icons.remove_circle),
+                      child: Icon(Icons.delete),
                     ),
                     onTap: () {
                       FirebaseFirestore.instance
@@ -95,37 +94,6 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  void _incrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot){
-    // get the documentSnapshot for this index
-    DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
-    // increment the quantity
-    int newQuantity = _documentSnapshot['quantity'] + 1;
-    // update the quantity in the Firestore document
-    FirebaseFirestore.instance
-        .collection(widget.collectionName)
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .collection("items")
-        .doc(_documentSnapshot.id)
-        .update({'quantity': newQuantity});
-    setState(() {});
-  }
-
-
-  void _decrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
-    // get the documentSnapshot for this index
-    DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
-    // decrement the quantity
-    int newQuantity = _documentSnapshot['quantity'] - 1;
-    // update the quantity in the Firestore document
-    FirebaseFirestore.instance
-        .collection(widget.collectionName)
-        .doc(FirebaseAuth.instance.currentUser!.email)
-        .collection("items")
-        .doc(_documentSnapshot.id)
-        .update({'quantity': newQuantity});
-    setState(() {});
-  }
-}
 
 // class MyWidget extends StatefulWidget {
 //   final String collectionName;
@@ -255,3 +223,5 @@ class _MyWidgetState extends State<MyWidget> {
 //     );
 //   }
 // }
+
+}
