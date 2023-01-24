@@ -16,7 +16,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
     CollectionReference _collectionRef =
-        FirebaseFirestore.instance.collection("users-cart-items");
+    FirebaseFirestore.instance.collection("users-cart-items");
     return _collectionRef
         .doc(currentUser!.email)
         .collection("items")
@@ -25,7 +25,8 @@ class _ProductDetailsState extends State<ProductDetails> {
       "name": widget._product.name,
       "price": widget._product.price,
       "images": widget._product.image,
-      "quantity": widget._product.quantity
+      "quantity": widget._product.quantity,
+      "pricePerItem": widget._product.pricePerItem
     }).then((value) => print("Added to cart"));
   }
 
@@ -33,7 +34,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
     CollectionReference _collectionRef =
-        FirebaseFirestore.instance.collection("users-favourite-items");
+    FirebaseFirestore.instance.collection("users-favourite-items");
     return _collectionRef
         .doc(currentUser!.email)
         .collection("items")
@@ -86,13 +87,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                         : print("Already Added"),
                     icon: snapshot.data.docs.length == 0
                         ? Icon(
-                            Icons.favorite_outline,
-                            color: Colors.white,
-                          )
+                      Icons.favorite_outline,
+                      color: Colors.white,
+                    )
                         : Icon(
-                            Icons.favorite,
-                            color: Colors.white,
-                          ),
+                      Icons.favorite,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               );
@@ -113,9 +114,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 500,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("images/${widget._product.image}"),
-                    )),
+                          fit: BoxFit.fill,
+                          image: AssetImage("images/${widget._product.image}"),
+                        )),
                   ),
                   SizedBox(
                     height: 10,
@@ -187,12 +188,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 60,
                     width: 500,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => AddAddressScreen()),
-                        );
-                      },
+                      onPressed: () {},
                       child: Text(
                         "Buy Now",
                         style: TextStyle(color: Colors.white, fontSize: 30),
