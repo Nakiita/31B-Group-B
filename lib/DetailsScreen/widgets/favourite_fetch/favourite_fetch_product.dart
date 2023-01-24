@@ -28,11 +28,11 @@ Widget fetchproduct (String collectionName){
               elevation: 5,
               child: ListTile(
                 // leading: Image.asset("images/${_documentSnapshot['images']}"),
-                // title: Text(
-                //   "\$ ${_documentSnapshot['name']}",
-                //   style: TextStyle(
-                //       fontWeight: FontWeight.bold, color: Colors.red),
-                // ),
+                title: Text(
+                  "\$ ${_documentSnapshot['name']}",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.red),
+                ),
                 subtitle:Text(
                   "\$ ${_documentSnapshot['price']}",
                   style: TextStyle(
