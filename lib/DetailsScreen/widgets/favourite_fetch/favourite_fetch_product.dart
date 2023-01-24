@@ -27,7 +27,7 @@ Widget fetchproduct (String collectionName){
             return Card(
               elevation: 5,
               child: ListTile(
-                // leading: Image.asset("images/${_documentSnapshot['images']}"),
+                leading: Image.asset("images/${_documentSnapshot['images']}"),
                 title: Text(
                   "\$ ${_documentSnapshot['name']}",
                   style: TextStyle(
