@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/DetailsScreen/cart/cart.dart';
 import 'package:hunger_cravings/dashboard/screens/search.dart';
+import 'package:hunger_cravings/services/notification_service.dart';
 
 import '../../DetailsScreen/favorite/favorite.dart';
 import '../../profileScreen/ContactDetails.dart';
@@ -35,6 +37,31 @@ class _HomeState extends State<Home> {
     setState(() {
       this.selectedIndex = selectedIndex;
     });
+  }
+
+  @override
+  void initState() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      String? token = value;
+      print("fcm: " + token.toString());
+    });
+
+    FirebaseMessaging.onMessage.listen((message) {
+      print(message);
+      if (message.notification != null) {
+        print(message.notification!.body);
+        print(message.notification!.title);
+      }
+
+      NotificationService.displayFcm(
+          notification: message.notification!, buildContext: context);
+    });
+    //when the app is in background but opened and user taps
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      print(message);
+    });
+// TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -72,14 +99,14 @@ class _HomeState extends State<Home> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => MyApplication()),
+                        MaterialPageRoute(
+                            builder: (context) => MyApplication()),
                       );
                     },
                     child: Icon(Icons.person)),
                 label: "Profile"),
           ],
-        )
-        );
+        ));
   }
 }
 
@@ -114,17 +141,21 @@ class Homepage extends StatelessWidget {
                       icon: Icon(
                         Icons.notifications_none,
                       ),
-                      onPressed: () {}),
-                  Positioned(
-                    top: 12,
-                    right: 12,
-                    child: Container(
-                      height: 10,
-                      width: 10,
-                      decoration: BoxDecoration(
-                          color: red, borderRadius: BorderRadius.circular(20)),
-                    ),
-                  ),
+                      onPressed: () {
+                        NotificationService.display("Delivery",
+                            "Your order is in the way", "Stay Tuned", context);
+                        Positioned(
+                          top: 12,
+                          right: 12,
+                          child: Container(
+                            height: 10,
+                            width: 10,
+                            decoration: BoxDecoration(
+                                color: red,
+                                borderRadius: BorderRadius.circular(20)),
+                          ),
+                        );
+                      }),
                 ],
               )
             ],
