@@ -21,23 +21,16 @@ class _LoginScreensState extends State<LoginScreens> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
-
-
-
-
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> login() async {
     try {
       final user = (await _auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text))
+              email: emailController.text, password: passwordController.text))
           .user;
       if (user != null) {
         print("Login Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green,
-            content: Text("Login Sucessful")));
+            backgroundColor: Colors.green, content: Text("Login Sucessful")));
         Navigator.of(context).pushReplacementNamed("/OnBoardingScreen");
       }
     } catch (e) {
@@ -46,14 +39,17 @@ class _LoginScreensState extends State<LoginScreens> {
     }
     _ui.loadState(true);
     try {
-      await _authViewModel.login(emailController.text, passwordController.text).then((value) {
-
+      await _authViewModel
+          .login(emailController.text, passwordController.text)
+          .then((value) {
         Navigator.of(context).pushReplacementNamed('/home');
       }).catchError((e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.message.toString())));
       });
     } catch (err) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(err.toString())));
     }
     _ui.loadState(false);
   }
@@ -152,7 +148,8 @@ class _LoginScreensState extends State<LoginScreens> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
                                 builder: (BuildContext context) => Home(),
                               ));
                             },
@@ -181,11 +178,12 @@ class _LoginScreensState extends State<LoginScreens> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                    builder: (BuildContext context) => ForgotScreen(),
+                                  Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        ForgotScreen(),
                                   ));
                                 },
-
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(color: Colors.black),

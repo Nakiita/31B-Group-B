@@ -12,6 +12,8 @@ List<Product> productList=[
   Product(name:"Cereals",image:"cereals.jpg",price:5.99, rating:4.2, vendor:"GoodFood", whishList:true, quantity: 1),
   Product(name:"Pizza",image:"pizza.jpg",price:6.00, rating:4.8, vendor:"GoodFood", whishList:true, quantity: 1),
   Product(name:"Steak",image:"steak.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true, quantity: 1),
+  Product(name:"burger",image:"burger.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true, quantity: 1),
+  Product(name:"ramen",image:"ramen.jpg",price:4.99, rating:4.4, vendor:"GoodFood", whishList:true, quantity: 1),
 ];
 
 class Featured extends StatelessWidget {

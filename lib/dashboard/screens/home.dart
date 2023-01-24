@@ -63,11 +63,13 @@ class _HomeState extends State<Home> {
                 label: "Dashboard"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: "Favorite"),
-            BottomNavigationBarItem(icon: GestureDetector(
-                onTap:(){
-    Navigator.of(context).pushNamed("/profile");
-    },
-                child: Icon(Icons.person)), label: "Account"),
+            BottomNavigationBarItem(
+                icon: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/profile");
+                    },
+                    child: Icon(Icons.person)),
+                label: "Account"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart), label: "Cart"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
