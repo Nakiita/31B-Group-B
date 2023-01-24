@@ -11,12 +11,13 @@ class ProductDetails extends StatefulWidget {
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
+
 class _ProductDetailsState extends State<ProductDetails> {
   Future addToCart() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
     CollectionReference _collectionRef =
-    FirebaseFirestore.instance.collection("users-cart-items");
+        FirebaseFirestore.instance.collection("users-cart-items");
     return _collectionRef
         .doc(currentUser!.email)
         .collection("items")
@@ -34,7 +35,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
     CollectionReference _collectionRef =
-    FirebaseFirestore.instance.collection("users-favourite-items");
+        FirebaseFirestore.instance.collection("users-favourite-items");
     return _collectionRef
         .doc(currentUser!.email)
         .collection("items")
@@ -87,13 +88,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                         : print("Already Added"),
                     icon: snapshot.data.docs.length == 0
                         ? Icon(
-                      Icons.favorite_outline,
-                      color: Colors.white,
-                    )
+                            Icons.favorite_outline,
+                            color: Colors.white,
+                          )
                         : Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                    ),
+                            Icons.favorite,
+                            color: Colors.white,
+                          ),
                   ),
                 ),
               );
@@ -114,15 +115,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 500,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage("images/${widget._product.image}"),
-                        )),
+                      fit: BoxFit.fill,
+                      image: AssetImage("images/${widget._product.image}"),
+                    )),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Container(
-                    height:100,
+                    height: 100,
                     width: 500,
                     // color: Colors.blue,
                     child: ListTile(
@@ -150,21 +151,30 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   // Text(widget._product['product-description']),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Container(
                     height: 160,
                     child: Wrap(
                       children: [
-                        Text("Description",style: TextStyle
-                          (fontSize: 20,fontWeight: FontWeight.bold),),
-                        SizedBox(height: 20,),
+                        Text(
+                          "Description",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Text(
                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                             style: TextStyle(fontSize: 18)),
                       ],
                     ),
                   ),
-                  SizedBox(height: 80,),
+                  SizedBox(
+                    height: 80,
+                  ),
                   Container(
                     height: 60,
                     width: 500,
@@ -183,12 +193,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5,),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Container(
                     height: 60,
                     width: 500,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddAddressScreen()),
+                        );
+                      },
                       child: Text(
                         "Buy Now",
                         style: TextStyle(color: Colors.white, fontSize: 30),
@@ -202,7 +220,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ],
