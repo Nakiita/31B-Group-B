@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.red,
               ),
-              initialRoute: "/home",
+              initialRoute: "/LoadingScreen",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),
@@ -81,6 +81,7 @@ class MyApp extends StatelessWidget {
                 "/address": (BuildContext context) => AddAddressScreen(),
                 "/edit-address": (BuildContext context) => EditAddressScreen(),
                 "/database": (BuildContext context) => FirebaseDatabaseScreen(),
+                "/OnboardingScreen": (BuildContext context) => OnboardingScreen(),
               });
         }),
       ),

@@ -78,18 +78,18 @@ class Featured extends StatelessWidget {
                                         offset: Offset(1, 1),
                                         blurRadius: 4)
                                   ]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4),
-                                child: productList[index].whishList? Icon(
-                                  Icons.favorite,
-                                  color: red,
-                                  size: 18,
-                                ):Icon(
-                                  Icons.favorite_border,
-                                  color: red,
-                                  size: 18,
-                                ),
-                              ),
+                              // child: Padding(
+                              //   padding: const EdgeInsets.all(4),
+                              //   child: productList[index].whishList? Icon(
+                              //     Icons.favorite,
+                              //     color: red,
+                              //     size: 18,
+                              //   ):Icon(
+                              //     Icons.favorite_border,
+                              //     color: red,
+                              //     size: 18,
+                              //   ),
+                              // ),
                             ),
                           )
                         ],

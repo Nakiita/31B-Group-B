@@ -2,10 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
+import 'package:hunger_cravings/loginpage/register_screen.dart';
 import 'package:provider/provider.dart';
+import '../Onboarding/onboardingScreen.dart';
 import '../dashboard/screens/home.dart';
 import '../viewmodel/auth_view_model.dart';
 import '../viewmodel/global_ui_viewmodel.dart';
+
 
 class LoginScreens extends StatefulWidget {
   const LoginScreens({Key? key}) : super(key: key);
@@ -21,12 +24,6 @@ class _LoginScreensState extends State<LoginScreens> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
-
-
-
-
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> login() async {
     try {
@@ -36,35 +33,14 @@ class _LoginScreensState extends State<LoginScreens> {
       if (user != null) {
         print("Login Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green,
-            content: Text("Login Sucessful")));
-        Navigator.of(context).pushReplacementNamed("/OnBoardingScreen");
+            backgroundColor: Colors.green, content: Text("Login Sucessful")));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => Home()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
-    _ui.loadState(true);
-    try {
-      await _authViewModel.login(emailController.text, passwordController.text).then((value) {
-
-        Navigator.of(context).pushReplacementNamed('/home');
-      }).catchError((e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
-      });
-    } catch (err) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
-    }
-    _ui.loadState(false);
-  }
-
-  late AuthViewModel _authViewModel;
-  late GlobalUIViewModel _ui;
-  @override
-  void initState() {
-    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
-    _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
-    super.initState();
   }
 
   @override
@@ -152,9 +128,11 @@ class _LoginScreensState extends State<LoginScreens> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                builder: (BuildContext context) => Home(),
-                              ));
+                              if (form.currentState!.validate()) {
+                                login();
+
+                              }
+
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Colors.black,
@@ -180,12 +158,7 @@ class _LoginScreensState extends State<LoginScreens> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                    builder: (BuildContext context) => ForgotScreen(),
-                                  ));
-                                },
-
+                                onPressed: () {},
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(color: Colors.black),
@@ -214,8 +187,7 @@ class _LoginScreensState extends State<LoginScreens> {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Navigator.of(context)
-                                        .pushNamed("/register");
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
                                   },
                               )
                             ],
