@@ -48,11 +48,11 @@ class _MyWidgetState extends State<MyWidget> {
                           fontWeight: FontWeight.bold, color: Colors.red),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 11),
                   Text(
-                    "quantity: ${_documentSnapshot['quantity']}",
+                    "Quantity: ${_documentSnapshot['quantity']}",
                     style: TextStyle(
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   SizedBox(height: 5),
