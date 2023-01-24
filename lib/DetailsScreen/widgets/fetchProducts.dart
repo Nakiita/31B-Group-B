@@ -62,7 +62,7 @@ class _MyWidgetState extends State<MyWidget> {
                       IconButton(
                         icon: Icon(Icons.add),
                         onPressed: () {
-                          _incrementQuantity(index,snapshot);
+                          _incrementQuantity(index, snapshot);
                         },
                       ),
                       IconButton(
@@ -70,7 +70,7 @@ class _MyWidgetState extends State<MyWidget> {
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
                           _decrementQuantity(index, snapshot);
-                              }
+                        }
                             : null,
                       ),
                     ],
@@ -78,7 +78,7 @@ class _MyWidgetState extends State<MyWidget> {
                   SizedBox(height: 5),
                   GestureDetector(
                     child: CircleAvatar(
-                      child: Icon(Icons.delete),
+                      child: Icon(Icons.remove_circle),
                     ),
                     onTap: () {
                       FirebaseFirestore.instance
@@ -96,35 +96,42 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  void _incrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot){
+  void _incrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
     // get the documentSnapshot for this index
     DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
     // increment the quantity
     int newQuantity = _documentSnapshot['quantity'] + 1;
-    // update the quantity in the Firestore document
+    // calculate the new price
+    double newPrice = _documentSnapshot['pricePerItem'] * newQuantity;
+    // update the quantity and price in the Firestore document
     FirebaseFirestore.instance
         .collection(widget.collectionName)
         .doc(FirebaseAuth.instance.currentUser!.email)
         .collection("items")
         .doc(_documentSnapshot.id)
-        .update({'quantity': newQuantity});
+        .update({'quantity': newQuantity, 'price': newPrice});
     setState(() {});
   }
+
+
   void _decrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
     // get the documentSnapshot for this index
     DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
     // decrement the quantity
     int newQuantity = _documentSnapshot['quantity'] - 1;
-    // update the quantity in the Firestore document
+    // calculate the new price
+    double newPrice = _documentSnapshot['pricePerItem'] * newQuantity;
+    // update the quantity and price in the Firestore document
     FirebaseFirestore.instance
         .collection(widget.collectionName)
         .doc(FirebaseAuth.instance.currentUser!.email)
         .collection("items")
         .doc(_documentSnapshot.id)
-        .update({'quantity': newQuantity});
+        .update({'quantity': newQuantity, 'price': newPrice});
     setState(() {});
   }
 }
+
 
 
 
