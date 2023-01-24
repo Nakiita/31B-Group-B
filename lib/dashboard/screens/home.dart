@@ -79,46 +79,6 @@ class _HomeState extends State<Home> {
                 label: "Profile"),
           ],
         )
-        // Container(
-        //   color: white,
-        //
-        //   child:Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: <Widget>[
-        //       // FlatButton(
-        //       //   onPressed: () {
-        //       //     // Perform some action
-        //       //   },
-        //       //   child: Image.asset("images/home.jpg",width: 26,height: 26,)
-        //       // ),
-        //       InkWell(
-        //         onTap: (){
-        //
-        //         },
-        //         child: Padding(
-        //           padding: const EdgeInsets.all(8.0),
-        //           child: Image.asset("images/home.jpg",width: 26,height: 26,),
-        //         ),
-        //       ),
-        //       Padding(
-        //         padding: const EdgeInsets.all(8.0),
-        //         child: Image.asset("images/review.jpg",width: 26,height: 26,),
-        //       ),
-        //       Padding(
-        //         padding: const EdgeInsets.all(8.0),
-        //         child: Image.asset("images/shop.jpg",width: 26,height: 26,),
-        //       ),
-        //       Padding(
-        //         padding: const EdgeInsets.all(8.0),
-        //         child: Image.asset("images/you.jpg",width: 26,height: 26,),
-        //       ),
-        //       Padding(
-        //         padding: const EdgeInsets.all(8.0),
-        //         child: Image.asset("images/cart.jpg",width: 26,height: 26,),
-        //       ),
-        //     ],
-        //   ) ,
-        // ),
         );
   }
 }
@@ -182,12 +142,6 @@ class Homepage extends StatelessWidget {
                   ],
                 ),
                 child: ListTile(
-                  // leading: IconButton(
-                  //     icon: Icon(
-                  //       Icons.filter_list,
-                  //       color: Colors.red,
-                  //     ),
-                  //     onPressed: () {}),
                   title: TextField(
                     onTap: () {
                       Navigator.push(
