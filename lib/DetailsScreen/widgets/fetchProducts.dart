@@ -50,9 +50,9 @@ class _MyWidgetState extends State<MyWidget> {
                   ),
                   SizedBox(height: 10),
                   Text(
-                    "Quantity: ${_documentSnapshot['quantity']}",
+                    "quantity: ${_documentSnapshot['quantity']}",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                   SizedBox(height: 5),
