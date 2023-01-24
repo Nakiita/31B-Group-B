@@ -191,6 +191,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                         "Buy Now",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        backgroundColor: AppColors.deep_orange,
+                        // elevation: 3,
+                      ),
                     ),
                   ),
 
