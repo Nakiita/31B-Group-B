@@ -41,7 +41,7 @@ Widget fetchproduct (String collectionName){
 
                 trailing: GestureDetector(
                   child: CircleAvatar(
-                    child: Icon(Icons.remove_circle),
+                    child: Icon(Icons.delete),
                   ),
                   onTap: () {
                     FirebaseFirestore.instance
