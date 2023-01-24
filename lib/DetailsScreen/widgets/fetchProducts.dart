@@ -108,8 +108,22 @@ class _MyWidgetState extends State<MyWidget> {
         .doc(_documentSnapshot.id)
         .update({'quantity': newQuantity});
     setState(() {});
-  }}
-
+  }
+  void _decrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
+    // get the documentSnapshot for this index
+    DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
+    // decrement the quantity
+    int newQuantity = _documentSnapshot['quantity'] - 1;
+    // update the quantity in the Firestore document
+    FirebaseFirestore.instance
+        .collection(widget.collectionName)
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .collection("items")
+        .doc(_documentSnapshot.id)
+        .update({'quantity': newQuantity});
+    setState(() {});
+  }
+}
 
 
 
