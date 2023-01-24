@@ -10,10 +10,7 @@ class ProductDetails extends StatefulWidget {
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
-
 class _ProductDetailsState extends State<ProductDetails> {
-
-
   Future addToCart() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
@@ -184,6 +181,19 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 5,),
+                  Container(
+                    height: 60,
+                    width: 500,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Buy Now",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                    ),
+                  ),
+
                 ],
               ),
             ],
