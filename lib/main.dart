@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
                 title: 'Hunger Craving',
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
-                  primarySwatch: Colors.purple,
+                  primarySwatch: Colors.red,
                 ),
                 initialRoute: "/LoadingScreen",
             routes: {
