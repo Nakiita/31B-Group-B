@@ -66,7 +66,7 @@ class _MyWidgetState extends State<MyWidget> {
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.remove),
+                        icon: Icon(Icons.remove_circle),
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
                               }
