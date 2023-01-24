@@ -9,7 +9,6 @@ import '../dashboard/screens/home.dart';
 import '../viewmodel/auth_view_model.dart';
 import '../viewmodel/global_ui_viewmodel.dart';
 
-
 class LoginScreens extends StatefulWidget {
   const LoginScreens({Key? key}) : super(key: key);
 
@@ -28,14 +27,14 @@ class _LoginScreensState extends State<LoginScreens> {
   Future<void> login() async {
     try {
       final user = (await _auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text))
+              email: emailController.text, password: passwordController.text))
           .user;
       if (user != null) {
         print("Login Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.green, content: Text("Login Sucessful")));
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => Home()));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Home()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -77,6 +76,11 @@ class _LoginScreensState extends State<LoginScreens> {
                             child: Center(
                               child: TextFormField(
                                 controller: emailController,
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Email is required";
+                                  }
+                                },
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: 'Email',
@@ -94,8 +98,14 @@ class _LoginScreensState extends State<LoginScreens> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Center(
-                              child: TextField(
+                              child: TextFormField(
                                 controller: passwordController,
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Password is required";
+                                  }
+                                  return null;
+                                },
                                 obscureText: _isVisible ? false : true,
                                 decoration: InputDecoration(
                                     suffixIcon: IconButton(
@@ -130,9 +140,7 @@ class _LoginScreensState extends State<LoginScreens> {
                             onPressed: () {
                               if (form.currentState!.validate()) {
                                 login();
-
                               }
-
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Colors.black,
@@ -158,7 +166,10 @@ class _LoginScreensState extends State<LoginScreens> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed("/forgotpassword");
+                                },
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(color: Colors.black),
@@ -187,7 +198,10 @@ class _LoginScreensState extends State<LoginScreens> {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegisterScreen()));
                                   },
                               )
                             ],
