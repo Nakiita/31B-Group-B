@@ -62,7 +62,7 @@ class _MyWidgetState extends State<MyWidget> {
                       IconButton(
                         icon: Icon(Icons.add),
                         onPressed: () {
-                          // _incrementQuantity(index,snapshot);
+                          _incrementQuantity(index,snapshot);
                         },
                       ),
                       IconButton(
@@ -108,7 +108,7 @@ class _MyWidgetState extends State<MyWidget> {
         .doc(_documentSnapshot.id)
         .update({'quantity': newQuantity});
     setState(() {});
-  }
+  }}
 
 
 
