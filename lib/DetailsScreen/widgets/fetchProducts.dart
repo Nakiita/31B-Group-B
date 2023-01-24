@@ -69,6 +69,7 @@ class _MyWidgetState extends State<MyWidget> {
                         icon: Icon(Icons.remove),
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
+                          _decrementQuantity(index, snapshot);
                               }
                             : null,
                       ),
