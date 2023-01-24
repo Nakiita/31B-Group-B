@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../models/products.dart';
+import '../delivery_address/screens/firestore/add_address.dart';
 import 'const/AppColors.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -186,7 +187,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 60,
                     width: 500,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => AddAddressScreen()),
+                        );
+                      },
                       child: Text(
                         "Buy Now",
                         style: TextStyle(color: Colors.white, fontSize: 30),
