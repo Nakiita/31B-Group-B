@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/services/notification_service.dart';
-
 import 'package:hunger_cravings/viewmodel/auth_view_model.dart';
 import 'package:hunger_cravings/viewmodel/global_ui_viewmodel.dart';
 import 'package:provider/provider.dart';
