@@ -61,9 +61,10 @@ class MyApp extends StatelessWidget {
                 context.loaderOverlay.hide();
               }
               return MaterialApp(
-                title: 'Flutter Demo',
+                title: 'Hunger Craving',
+                debugShowCheckedModeBanner: false,
                 theme: ThemeData(
-                  primarySwatch: Colors.blue,
+                  primarySwatch: Colors.purple,
                 ),
                 initialRoute: "/home",
             routes: {
