@@ -10,6 +10,7 @@ import '../widgets/commons.dart';
 import '../widgets/featured_products.dart';
 import '../widgets/small_floating_button.dart';
 import '../widgets/title.dart';
+import 'profile.dart';
 import 'location_screens.dart';
 
 class Home extends StatefulWidget {
@@ -41,7 +42,7 @@ class _HomeState extends State<Home> {
         backgroundColor: white,
         body: PageView(
           controller: pageController,
-          children: [Homepage(), Favourite(), Container(), Cart()],
+          children: [Homepage(), Favourite(), Cart(), Profile()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
@@ -60,19 +61,18 @@ class _HomeState extends State<Home> {
                   width: 26,
                   height: 26,
                 ),
-                label: "Dashboard"),
+                label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), label: "Favorite"),
+                icon: Icon(Icons.favorite), label: "Favorites"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: "Cart"),
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushNamed("/profile");
                     },
                     child: Icon(Icons.person)),
-                label: "Account"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: "Cart"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+                label: "Profile"),
           ],
         )
         // Container(
@@ -195,8 +195,7 @@ class Homepage extends StatelessWidget {
                         hintText: "Find food and resturants",
                         border: InputBorder.none),
                   ),
-                  trailing: Wrap(
-                    children: [
+                  leading:
                       IconButton(
                           icon: Icon(
                             Icons.location_on,
@@ -211,7 +210,7 @@ class Homepage extends StatelessWidget {
                               ),
                             );
                           }),
-                      IconButton(
+                    trailing:  IconButton(
                         icon: Icon(
                           Icons.search,
                           color: Colors.red,
@@ -224,8 +223,7 @@ class Homepage extends StatelessWidget {
                           );
                         },
                       ),
-                    ],
-                  ),
+
                 ),
               )),
           SizedBox(
