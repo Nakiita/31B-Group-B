@@ -5,6 +5,7 @@ import 'package:hunger_cravings/DetailsScreen/cart/cart.dart';
 import 'package:hunger_cravings/dashboard/screens/search.dart';
 
 import '../../DetailsScreen/favorite/favorite.dart';
+import '../../profileScreen/ContactDetails.dart';
 import '../widgets/categories.dart';
 import '../widgets/commons.dart';
 import '../widgets/featured_products.dart';
@@ -69,7 +70,10 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushNamed("/profile");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApplication()),
+                      );
                     },
                     child: Icon(Icons.person)),
                 label: "Profile"),
@@ -195,35 +199,31 @@ class Homepage extends StatelessWidget {
                         hintText: "Find food and resturants",
                         border: InputBorder.none),
                   ),
-                  leading:
-                      IconButton(
-                          icon: Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              //Replacement
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    LocationScreen(),
-                              ),
-                            );
-                          }),
-                    trailing:  IconButton(
-                        icon: Icon(
-                          Icons.search,
-                          color: Colors.red,
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SearchPage()),
-                          );
-                        },
+                  leading: IconButton(
+                      icon: Icon(
+                        Icons.location_on,
+                        color: Colors.red,
                       ),
-
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          //Replacement
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => LocationScreen(),
+                          ),
+                        );
+                      }),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchPage()),
+                      );
+                    },
+                  ),
                 ),
               )),
           SizedBox(
