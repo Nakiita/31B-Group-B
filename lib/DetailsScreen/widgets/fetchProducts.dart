@@ -68,7 +68,8 @@ class _MyWidgetState extends State<MyWidget> {
                       IconButton(
                         icon: Icon(Icons.remove),
                         onPressed: _documentSnapshot['quantity'] > 1
-                            ? () {}
+                            ? () {
+                              }
                             : null,
                       ),
                     ],
@@ -93,6 +94,23 @@ class _MyWidgetState extends State<MyWidget> {
       },
     );
   }
+
+  void _incrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot){
+    // get the documentSnapshot for this index
+    DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
+    // increment the quantity
+    int newQuantity = _documentSnapshot['quantity'] + 1;
+    // update the quantity in the Firestore document
+    FirebaseFirestore.instance
+        .collection(widget.collectionName)
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .collection("items")
+        .doc(_documentSnapshot.id)
+        .update({'quantity': newQuantity});
+    setState(() {});
+  }
+
+
 
 
 // class MyWidget extends StatefulWidget {
@@ -223,5 +241,3 @@ class _MyWidgetState extends State<MyWidget> {
 //     );
 //   }
 // }
-
-}
