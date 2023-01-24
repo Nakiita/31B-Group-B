@@ -48,7 +48,7 @@ class _MyWidgetState extends State<MyWidget> {
                           fontWeight: FontWeight.bold, color: Colors.red),
                     ),
                   ),
-                  SizedBox(height: 11),
+                  SizedBox(height: 10),
                   Text(
                     "Quantity: ${_documentSnapshot['quantity']}",
                     style: TextStyle(
@@ -60,16 +60,15 @@ class _MyWidgetState extends State<MyWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.add),
+                        icon: Icon(Icons.add_circle),
                         onPressed: () {
-                          _incrementQuantity(index,snapshot);
+                          // _incrementQuantity(index,snapshot);
                         },
                       ),
                       IconButton(
                         icon: Icon(Icons.remove),
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
-                                _decrementQuantity(index,snapshot);
                               }
                             : null,
                       ),
