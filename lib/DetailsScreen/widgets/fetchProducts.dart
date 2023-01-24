@@ -35,13 +35,7 @@ class _MyWidgetState extends State<MyWidget> {
                 elevation: 5,
                 child: Column(children: [
                   ListTile(
-                    leading:
-                        Image.asset("images/${_documentSnapshot['images']}"),
-                    title: Text(
-                      "\$ ${_documentSnapshot['name']}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.red),
-                    ),
+                   
                     subtitle: Text(
                       "\$ ${_documentSnapshot['price']}",
                       style: TextStyle(
