@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
         backgroundColor: white,
         body: PageView(
           controller: pageController,
-          children: [Homepage(), Favourite(), Cart(), Profile()],
+          children: [Homepage(), Favourite(), Cart(), MyApplication()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
@@ -93,7 +93,12 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.favorite), label: "Favorites"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: "Cart"),
+                icon: Image.asset(
+                  "images/cart.jpg",
+                  width: 26,
+                  height: 26,
+                ),
+                label: "Cart"),
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
