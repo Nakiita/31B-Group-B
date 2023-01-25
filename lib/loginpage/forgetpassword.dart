@@ -11,13 +11,41 @@ class ForgotScreen extends StatefulWidget {
 }
 
 class _ForgotScreenState extends State<ForgotScreen> {
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final email = TextEditingController();
 
-  bool hidePassword = true;
+  @override
+  void dispose() {
+    email.dispose(); // TODO: implement dispose
+    super.dispose();
+  }
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: email.text.trim());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            //has to be valid email address for receiving the email
+            content: Text(' Check your email.'),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+          );
+        },
+      );
+    }
+  }
+
   final form = GlobalKey<FormState>();
-
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -36,38 +64,62 @@ class _ForgotScreenState extends State<ForgotScreen> {
                     height: 300,
                   ),
                 ),
-                Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: const Color(0xffB4B4B4).withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Center(
-                      child: TextFormField(
-                        controller: email,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email',
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    child: Text(
+                      'Enter your email and we will send you a password reset link.',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffB4B4B4).withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Center(
+                        child: TextFormField(
+                          controller: email,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Email',
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
                 ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                  onPressed: () {
-                    if (email.text.isEmpty) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Email required.")));
-                    }
-                    _auth
-                        .sendPasswordResetEmail(email: email.text)
-                        .then((value) => Navigator.of(context));
-                  },
-                  child: Text("Reset"),
-                ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    onPressed: () {
+                      passwordReset();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25, vertical: 15),
+                      child: Text(
+                        "Reset Password",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    )),
                 SizedBox(
                   height: 10,
                 ),
