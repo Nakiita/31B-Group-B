@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
                 label: "Home"),
             BottomNavigationBarItem(
                 icon: Image.asset(
-                  "images/love.png",
+                  "images/heart.png",
                   width: 24,
                   height: 24,
                 ),
