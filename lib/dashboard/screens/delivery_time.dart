@@ -82,6 +82,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 dateLabelText: 'Date',
                 locale: Locale('pt', 'BR'),
               ),
+              DateTimePicker(
+                type: DateTimePickerType.time,
+                //timePickerEntryModeInput: true,
+                controller: _timeController,
+                // initialValue: '', //_initialValue,
+                icon: Icon(Icons.access_time),
+                timeLabelText: "Time",
+                use24HourFormat: false,
+                locale: Locale('pt', 'BR'),
+              ),
+
 
             ],
           ),
