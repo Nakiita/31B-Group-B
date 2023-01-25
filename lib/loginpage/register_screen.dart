@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               id: '',
           )).then((value) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Register success")));
-        Navigator.of(context).pushReplacementNamed("/OnboardingScreen");
+        Navigator.of(context).pushReplacementNamed("/login");
       })
           .catchError((e){
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));

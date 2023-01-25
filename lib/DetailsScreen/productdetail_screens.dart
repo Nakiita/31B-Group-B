@@ -102,127 +102,129 @@ class _ProductDetailsState extends State<ProductDetails> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 12, right: 12, top: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  Container(
-                    height: 200,
-                    width: 500,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage("images/${widget._product.image}"),
-                    )),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 500,
-                    // color: Colors.blue,
-                    child: ListTile(
-                      title: Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 12, right: 12, top: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 500,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage("images/${widget._product.image}"),
+                      )),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 100,
+                      width: 500,
+                      // color: Colors.blue,
+                      child: ListTile(
+                        title: Column(
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget._product.name,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "\$ ${widget._product.price.toString()}",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  color: Colors.red),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // Text(widget._product['product-description']),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: 160,
+                      child: Wrap(
                         children: [
                           Text(
-                            widget._product.name,
+                            "Description",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Text(
-                            "\$ ${widget._product.price.toString()}",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                                color: Colors.red),
-                          ),
+                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                              style: TextStyle(fontSize: 18)),
                         ],
                       ),
                     ),
-                  ),
-                  // Text(widget._product['product-description']),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    height: 160,
-                    child: Wrap(
-                      children: [
-                        Text(
-                          "Description",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-                            style: TextStyle(fontSize: 18)),
-                      ],
+                    SizedBox(
+                      height: 80,
                     ),
-                  ),
-                  SizedBox(
-                    height: 80,
-                  ),
-                  Container(
-                    height: 60,
-                    width: 500,
-                    child: ElevatedButton(
-                      onPressed: () => addToCart(),
-                      child: Text(
-                        "Add to cart",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                    Container(
+                      height: 60,
+                      width: 500,
+                      child: ElevatedButton(
+                        onPressed: () => addToCart(),
+                        child: Text(
+                          "Add to cart",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
                         ),
-                        backgroundColor: AppColors.deep_orange,
-                        // elevation: 3,
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          backgroundColor: AppColors.deep_orange,
+                          // elevation: 3,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    height: 60,
-                    width: 500,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddAddressScreen()),
-                        );
-                      },
-                      child: Text(
-                        "Buy Now",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      height: 60,
+                      width: 500,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddAddressScreen()),
+                          );
+                        },
+                        child: Text(
+                          "Buy Now",
+                          style: TextStyle(color: Colors.white, fontSize: 30),
                         ),
-                        backgroundColor: AppColors.deep_orange,
-                        // elevation: 3,
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          backgroundColor: AppColors.deep_orange,
+                          // elevation: 3,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

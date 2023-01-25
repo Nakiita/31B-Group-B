@@ -131,11 +131,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Delivertimee()),
-                          );
+                          Navigator.of(context).pushNamed("/deliveryTime");
                         },
                         child: Text("ADD"))
                   ],
