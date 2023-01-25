@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../models/products.dart';
+import '../delivery_address/screens/firestore/add_address.dart';
 import 'const/AppColors.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -12,8 +13,6 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-
-
   Future addToCart() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     var currentUser = _auth.currentUser;
@@ -27,7 +26,8 @@ class _ProductDetailsState extends State<ProductDetails> {
       "name": widget._product.name,
       "price": widget._product.price,
       "images": widget._product.image,
-      "quantity": widget._product.quantity
+      "quantity": widget._product.quantity,
+      "pricePerItem": widget._product.pricePerItem
     }).then((value) => print("Added to cart"));
   }
 
@@ -123,7 +123,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 10,
                   ),
                   Container(
-                    height:100,
+                    height: 100,
                     width: 500,
                     // color: Colors.blue,
                     child: ListTile(
@@ -151,21 +151,30 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
                   ),
                   // Text(widget._product['product-description']),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Container(
                     height: 160,
                     child: Wrap(
                       children: [
-                        Text("Description",style: TextStyle
-                          (fontSize: 20,fontWeight: FontWeight.bold),),
-                        SizedBox(height: 20,),
+                        Text(
+                          "Description",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Text(
                             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
                             style: TextStyle(fontSize: 18)),
                       ],
                     ),
                   ),
-                  SizedBox(height: 80,),
+                  SizedBox(
+                    height: 80,
+                  ),
                   Container(
                     height: 60,
                     width: 500,
@@ -173,6 +182,33 @@ class _ProductDetailsState extends State<ProductDetails> {
                       onPressed: () => addToCart(),
                       child: Text(
                         "Add to cart",
+                        style: TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        backgroundColor: AppColors.deep_orange,
+                        // elevation: 3,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    height: 60,
+                    width: 500,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddAddressScreen()),
+                        );
+                      },
+                      child: Text(
+                        "Buy Now",
                         style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
                       style: ElevatedButton.styleFrom(

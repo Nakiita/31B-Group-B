@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/DetailsScreen/cart/cart.dart';
 import 'package:hunger_cravings/dashboard/screens/search.dart';
+import 'package:hunger_cravings/services/notification_service.dart';
 
 import '../../DetailsScreen/favorite/favorite.dart';
 import '../../profileScreen/ContactDetails.dart';
@@ -38,12 +40,37 @@ class _HomeState extends State<Home> {
   }
 
   @override
+  void initState() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      String? token = value;
+      print("fcm: " + token.toString());
+    });
+
+    FirebaseMessaging.onMessage.listen((message) {
+      print(message);
+      if (message.notification != null) {
+        print(message.notification!.body);
+        print(message.notification!.title);
+      }
+
+      NotificationService.displayFcm(
+          notification: message.notification!, buildContext: context);
+    });
+    //when the app is in background but opened and user taps
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      print(message);
+    });
+// TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: white,
         body: PageView(
           controller: pageController,
-          children: [Homepage(), Favourite(), Cart(), Profile()],
+          children: [Homepage(), Favourite(), Cart(), MyProfile()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
@@ -59,14 +86,24 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/home.jpg",
-                  width: 26,
-                  height: 26,
+                  width: 32,
+                  height: 32,
                 ),
                 label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), label: "Favorites"),
+                icon: Image.asset(
+                  "images/heart.png",
+                  width: 24,
+                  height: 24,
+                ),
+                label: "Favourite"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: "Cart"),
+                icon: Image.asset(
+                  "images/cart.jpg",
+                  width: 33,
+                  height: 33,
+                ),
+                label: "Cart"),
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
@@ -75,8 +112,7 @@ class _HomeState extends State<Home> {
                     child: Icon(Icons.person)),
                 label: "Profile"),
           ],
-        )
-        );
+        ));
   }
 }
 
@@ -111,17 +147,21 @@ class Homepage extends StatelessWidget {
                       icon: Icon(
                         Icons.notifications_none,
                       ),
-                      onPressed: () {}),
-                  Positioned(
-                    top: 12,
-                    right: 12,
-                    child: Container(
-                      height: 10,
-                      width: 10,
-                      decoration: BoxDecoration(
-                          color: red, borderRadius: BorderRadius.circular(20)),
-                    ),
-                  ),
+                      onPressed: () {
+                        NotificationService.display("Delivery",
+                            "Your order is in the way", "Stay Tuned", context);
+                        Positioned(
+                          top: 12,
+                          right: 12,
+                          child: Container(
+                            height: 10,
+                            width: 10,
+                            decoration: BoxDecoration(
+                                color: red,
+                                borderRadius: BorderRadius.circular(20)),
+                          ),
+                        );
+                      }),
                 ],
               )
             ],

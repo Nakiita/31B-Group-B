@@ -1,7 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
 import 'package:hunger_cravings/profileScreen/update.dart';
+
+import 'package:hunger_cravings/services/notification_service.dart';
 
 import 'package:hunger_cravings/viewmodel/auth_view_model.dart';
 import 'package:hunger_cravings/viewmodel/global_ui_viewmodel.dart';
@@ -17,24 +20,20 @@ import 'package:hunger_cravings/delivery_address/screens/firestore/add_address.d
 import 'package:hunger_cravings/delivery_address/screens/firestore/database.dart';
 import 'package:hunger_cravings/delivery_address/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
-import 'loading/loading.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // options: FirebaseOptions(
-    //   apiKey: "AIzaSyDZopgwT3FXAHhsTs2c78yk-dw92lnnEK8",
-    //   appId: "1:350617005648:web:64921c07aa521069b4ab55",
-    //   messagingSenderId: "350617005648",
-    //   projectId: "my-app-name-3d643",
-    // ),
-  );
-  // NotificationService.initialize();
+      // options: FirebaseOptions(
+      //   apiKey: "AIzaSyDZopgwT3FXAHhsTs2c78yk-dw92lnnEK8",
+      //   appId: "1:350617005648:web:64921c07aa521069b4ab55",
+      //   messagingSenderId: "350617005648",
+      //   projectId: "my-app-name-3d643",
+      // ),
+      );
+  NotificationService.initialize();
   runApp(MyApp());
 }
 
@@ -46,8 +45,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider (create: (_) => GlobalUIViewModel()),
-        ChangeNotifierProvider (create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
+        ChangeNotifierProvider(create: (_) => AuthViewModel()),
         // ChangeNotifierProvider (create: (_) => CategoryViewModel()),
       ],
       child: GlobalLoaderOverlay(
@@ -84,8 +83,8 @@ class MyApp extends StatelessWidget {
               );
             }
         ),
+
       ),
     );
-
   }
 }

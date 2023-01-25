@@ -6,7 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/address_model.dart';
-
+import '../../delivery_time.dart';
 
 class AddAddressScreen extends StatefulWidget {
   const AddAddressScreen({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
           'ADD ADDRESS',
@@ -131,7 +131,11 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          saveAddress();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Delivertimee()),
+                          );
                         },
                         child: Text("ADD"))
                   ],

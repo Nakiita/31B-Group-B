@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
+import 'package:hunger_cravings/loginpage/register_screen.dart';
 import 'package:provider/provider.dart';
+import '../Onboarding/onboardingScreen.dart';
 import '../dashboard/screens/home.dart';
 import '../viewmodel/auth_view_model.dart';
 import '../viewmodel/global_ui_viewmodel.dart';
@@ -21,50 +23,23 @@ class _LoginScreensState extends State<LoginScreens> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
-
-
-
-
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> login() async {
     try {
       final user = (await _auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text))
+              email: emailController.text, password: passwordController.text))
           .user;
       if (user != null) {
         print("Login Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green,
-            content: Text("Login Sucessful")));
-        Navigator.of(context).pushReplacementNamed("/OnBoardingScreen");
+            backgroundColor: Colors.green, content: Text("Login Sucessful")));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Home()));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
-    _ui.loadState(true);
-    try {
-      await _authViewModel.login(emailController.text, passwordController.text).then((value) {
-
-        Navigator.of(context).pushReplacementNamed('/home');
-      }).catchError((e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
-      });
-    } catch (err) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
-    }
-    _ui.loadState(false);
-  }
-
-  late AuthViewModel _authViewModel;
-  late GlobalUIViewModel _ui;
-  @override
-  void initState() {
-    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
-    _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
-    super.initState();
   }
 
   @override
@@ -101,6 +76,11 @@ class _LoginScreensState extends State<LoginScreens> {
                             child: Center(
                               child: TextFormField(
                                 controller: emailController,
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Email is required";
+                                  }
+                                },
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: 'Email',
@@ -118,8 +98,14 @@ class _LoginScreensState extends State<LoginScreens> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Center(
-                              child: TextField(
+                              child: TextFormField(
                                 controller: passwordController,
+                                validator: (String? value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Password is required";
+                                  }
+                                  return null;
+                                },
                                 obscureText: _isVisible ? false : true,
                                 decoration: InputDecoration(
                                     suffixIcon: IconButton(
@@ -152,9 +138,9 @@ class _LoginScreensState extends State<LoginScreens> {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                builder: (BuildContext context) => Home(),
-                              ));
+                              if (form.currentState!.validate()) {
+                                login();
+                              }
                             },
                             style: ElevatedButton.styleFrom(
                               primary: Colors.black,
@@ -181,11 +167,9 @@ class _LoginScreensState extends State<LoginScreens> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                    builder: (BuildContext context) => ForgotScreen(),
-                                  ));
+                                  Navigator.of(context)
+                                      .pushNamed("/forgotpassword");
                                 },
-
                                 child: const Text(
                                   'Forgot Password?',
                                   style: TextStyle(color: Colors.black),
@@ -214,8 +198,10 @@ class _LoginScreensState extends State<LoginScreens> {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    Navigator.of(context)
-                                        .pushNamed("/register");
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RegisterScreen()));
                                   },
                               )
                             ],

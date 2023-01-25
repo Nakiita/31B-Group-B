@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/Onboarding/component/rounded_button.dart';
 
+import '../../loginpage/login.dart';
+
 class OnboardingPage extends StatelessWidget {
   OnboardingPage(
       {Key? key,
@@ -67,7 +69,10 @@ class OnboardingPage extends StatelessWidget {
                       child: RoundedButton(
                           title: "Get Started",
                           onPressed: () {
-                            openHomeScreen(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LoginScreens()),
+                            );
                           }))
                 ],
               ),
@@ -77,8 +82,10 @@ class OnboardingPage extends StatelessWidget {
                   RoundedButton(
                     title: "Skip",
                     onPressed: () {
-                      openHomeScreen(context);
-                    },
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreens()),
+                      );                    },
                   ),
                   Row(
                     children: [

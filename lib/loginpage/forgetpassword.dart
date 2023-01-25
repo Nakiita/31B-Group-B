@@ -37,25 +37,37 @@ class _ForgotScreenState extends State<ForgotScreen> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  child: TextFormField(
-                    controller: email,
-                    decoration: InputDecoration(
-                        label: Text("Email"),
-                        hintText: "Please enter your email",
-                        prefixIcon: Icon(Icons.accessibility_outlined)),
+                  height: 60,
+                  decoration: BoxDecoration(
+                      color: const Color(0xffB4B4B4).withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Center(
+                      child: TextFormField(
+                        controller: email,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Email',
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      if(email.text.isEmpty ){
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email required.")));
-                      }
-                      _auth
-                          .sendPasswordResetEmail(email: email.text)
-                          .then((value) => Navigator.of(context));
-                    },
-                    child: Text("Reset")),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  onPressed: () {
+                    if (email.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Email required.")));
+                    }
+                    _auth
+                        .sendPasswordResetEmail(email: email.text)
+                        .then((value) => Navigator.of(context));
+                  },
+                  child: Text("Reset"),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -65,14 +77,15 @@ class _ForgotScreenState extends State<ForgotScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
                             builder: (BuildContext context) => LoginScreens(),
                           ));
                         },
                         child: Text(
                           "Back to login",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.blue),
+                              fontWeight: FontWeight.bold, color: Colors.black),
                         ),
                       )
                     ],

@@ -55,6 +55,14 @@ dependencies:
   flutter_localization: ^0.1.10
 
 
+  flutter_local_notifications: ^13.0.0
+  path_provider: ^2.0.11
+
+  http: ^0.13.5
+
+  fake_cloud_firestore: ^2.0.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

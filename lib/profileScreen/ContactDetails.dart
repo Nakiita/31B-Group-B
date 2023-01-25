@@ -36,7 +36,7 @@ class _MyProfileState extends State<MyProfile> {
                     children: <Widget>[
                       CircleAvatar(
                         radius: 50.0,
-                        backgroundImage: AssetImage('assets/images/logoo.jpg'),
+                        backgroundImage: AssetImage('assets/images/Logo.jpg'),
                         // backgroundColor: Colors.red,
                       ),
                       Text(
