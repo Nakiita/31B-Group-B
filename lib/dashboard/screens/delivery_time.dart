@@ -92,6 +92,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 use24HourFormat: false,
                 locale: Locale('pt', 'BR'),
               ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  saveDateTime(_dateController.text, _timeController.text);
+                },
+                child: Text('Submit'),
+              ),
 
 
             ],
