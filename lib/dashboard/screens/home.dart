@@ -91,7 +91,12 @@ class _HomeState extends State<Home> {
                 ),
                 label: "Home"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), label: "Favorites"),
+                icon: Image.asset(
+                  "images/love.png",
+                  width: 26,
+                  height: 26,
+                ),
+                label: "Favourite"),
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/cart.jpg",
@@ -100,15 +105,11 @@ class _HomeState extends State<Home> {
                 ),
                 label: "Cart"),
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MyApplication()),
-                      );
-                    },
-                    child: Icon(Icons.person)),
+                icon: Image.asset(
+                  "images/people.png",
+                  width: 20,
+                  height: 20,
+                ),
                 label: "Profile"),
           ],
         ));
