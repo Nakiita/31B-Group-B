@@ -71,6 +71,17 @@ class _MyHomePageState extends State<MyHomePage> {
           key: _oFormKey,
           child: Column(
             children: <Widget>[
+              DateTimePicker(
+                type: DateTimePickerType.date,
+                dateMask: 'yyyy/MM/dd',
+                controller: _dateController,
+                //initialValue: _initialValue,
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+                icon: Icon(Icons.event),
+                dateLabelText: 'Date',
+                locale: Locale('pt', 'BR'),
+              ),
 
             ],
           ),
