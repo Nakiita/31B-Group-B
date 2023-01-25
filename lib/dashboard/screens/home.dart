@@ -86,29 +86,29 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/home.jpg",
-                  width: 26,
-                  height: 26,
+                  width: 32,
+                  height: 32,
                 ),
                 label: "Home"),
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/love.png",
-                  width: 26,
-                  height: 26,
+                  width: 24,
+                  height: 24,
                 ),
                 label: "Favourite"),
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/cart.jpg",
-                  width: 26,
-                  height: 26,
+                  width: 33,
+                  height: 33,
                 ),
                 label: "Cart"),
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/people.png",
-                  width: 20,
-                  height: 20,
+                  width: 22,
+                  height: 22,
                 ),
                 label: "Profile"),
           ],
