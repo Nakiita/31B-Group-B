@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
+import 'package:hunger_cravings/profileScreen/update.dart';
 
 import 'package:hunger_cravings/viewmodel/auth_view_model.dart';
 import 'package:hunger_cravings/viewmodel/global_ui_viewmodel.dart';
@@ -72,7 +74,9 @@ class MyApp extends StatelessWidget {
               "/forgotpassword": (BuildContext context) => ForgotScreen(),
               "/login": (BuildContext context) => LoginScreens(),
               "/register": (BuildContext context) => RegisterScreen(),
-              "/profile": (BuildContext context) => MyApplication(),
+              "/profile": (BuildContext context) => MyProfile(),
+              "/editProfile": (BuildContext context) => ProfileScreen(),
+              "/deliveryTime": (BuildContext context) => DeliveryTime(),
               "/home": (BuildContext context) => Home(),
               "/address": (BuildContext context) => AddAddressScreen(),
               "/edit-address": (BuildContext context) => EditAddressScreen(),

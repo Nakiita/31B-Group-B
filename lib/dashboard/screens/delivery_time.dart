@@ -1,0 +1,81 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+
+
+
+class DeliveryTime extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter DateTimePicker Demo',
+      home: MyHomePage(),
+      localizationsDelegates: [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [Locale('en', 'US')], //, Locale('pt', 'BR')],
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
+  late TextEditingController _dateController;
+  late TextEditingController _timeController;
+
+  @override
+  void initState() {
+    super.initState();
+    Intl.defaultLocale = 'pt_BR';
+    //_initialValue = DateTime.now().toString();
+
+    _dateController = TextEditingController(text: DateTime.now().toString());
+
+    String lsHour = TimeOfDay.now().hour.toString().padLeft(2, '0');
+    String lsMinute = TimeOfDay.now().minute.toString().padLeft(2, '0');
+    _timeController = TextEditingController(text: '$lsHour:$lsMinute');
+  }
+
+  Future<void> saveDateTime(String date, String time) async {
+    await FirebaseFirestore.instance.collection("datesTime").add({
+      'Date': date,
+      'Time': time,
+    }).catchError((e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message.toString())));
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: Text('Delivery time'),
+      ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: Form(
+          key: _oFormKey,
+          child: Column(
+            children: <Widget>[
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

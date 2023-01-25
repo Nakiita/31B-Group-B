@@ -9,14 +9,14 @@ import '../repository/auth_repository.dart';
 import '../viewmodel/auth_view_model.dart';
 
 
-class MyApplication extends StatefulWidget {
-  const MyApplication({Key? key}) : super(key: key);
+class MyProfile extends StatefulWidget {
+  const MyProfile({Key? key}) : super(key: key);
 
   @override
-  State<MyApplication> createState() => _MyApplicationState();
+  State<MyProfile> createState() => _MyProfileState();
 }
 
-class _MyApplicationState extends State<MyApplication> {
+class _MyProfileState extends State<MyProfile> {
 
 
   @override
@@ -65,7 +65,9 @@ class _MyApplicationState extends State<MyApplication> {
                           'Edit Profile',
                           style: TextStyle(color: Colors.black),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed("/editProfile");
+                        },
                       ),
                       SizedBox(
                         height: 2.0,
@@ -108,7 +110,7 @@ class _MyApplicationState extends State<MyApplication> {
                               color: Colors.white,
                             ),
                             title: Text(
-                              "Order History",
+                              "Payment",
                               style: TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             trailing: Padding(
@@ -160,7 +162,7 @@ class _MyApplicationState extends State<MyApplication> {
                               color: Colors.white,
                             ),
                             title: Text(
-                              "Invite a friend",
+                              "Change Password",
                               style: TextStyle(fontSize: 20, color: Colors.black),
                             ),
                             trailing: Padding(

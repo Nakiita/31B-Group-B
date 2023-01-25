@@ -70,10 +70,7 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyApplication()),
-                      );
+                    Navigator.of(context).pushNamed("/profile");
                     },
                     child: Icon(Icons.person)),
                 label: "Profile"),
