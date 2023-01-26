@@ -1,13 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hunger_cravings/loginpage/forgetpassword.dart';
+import 'package:hunger_cravings/dashboard/screens/home.dart';
 import 'package:hunger_cravings/loginpage/register_screen.dart';
-import 'package:provider/provider.dart';
-import '../Onboarding/onboardingScreen.dart';
-import '../dashboard/screens/home.dart';
-import '../viewmodel/auth_view_model.dart';
-import '../viewmodel/global_ui_viewmodel.dart';
+
 
 class LoginScreens extends StatefulWidget {
   const LoginScreens({Key? key}) : super(key: key);

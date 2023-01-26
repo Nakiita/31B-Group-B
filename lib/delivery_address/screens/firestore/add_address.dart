@@ -5,9 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/DetailsScreen/productdetail_screens.dart';
-
-import '../../../models/address_model.dart';
-import '../../delivery_time.dart';
+import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
+import 'package:hunger_cravings/models/address_model.dart';
 
 class AddAddressScreen extends StatefulWidget {
   const AddAddressScreen({Key? key}) : super(key: key);
@@ -22,6 +21,9 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
   TextEditingController AlternatePhoneNumber = new TextEditingController();
   TextEditingController DefaultAddress = new TextEditingController();
   bool value = false;
+
+  final form = GlobalKey<FormState>();
+
   Future<void> saveAddress() async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     final data = Address(
@@ -62,67 +64,87 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
       ),
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                width: double.infinity,
-                child: Image.asset('assets/images/Logo.jpg'),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: AddressTitle,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.black),
-                            borderRadius: BorderRadius.circular(90)),
-                        hintText: "Enter Address Title",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    TextFormField(
-                      controller: DetailAddressDirection,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.black),
-                            borderRadius: BorderRadius.circular(90)),
-                        hintText: "Enter Detail Address Direction",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    TextFormField(
-                      controller: AlternatePhoneNumber,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.black),
-                            borderRadius: BorderRadius.circular(90)),
-                        hintText: "Enter Alternate Phone Number",
-                      ),
-                    ),
-                    SizedBox(
-                      height: 35,
-                    ),
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black),
-                        onPressed: () {
-                          Navigator.of(context).pushNamed("/deliveryTime");
-                        },
-                        child: Text("ADD"))
-                  ],
+          child: Form(
+            key: form,
+            child: Column(
+              children: [
+                Container(
+                  height: 200,
+                  width: double.infinity,
+                  child: Image.asset('assets/images/Logo.jpg'),
                 ),
-              ),
-            ],
+                Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: AddressTitle,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "Address Title is required";
+                          }
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 3, color: Colors.black),
+                              borderRadius: BorderRadius.circular(90)),
+                          hintText: "Enter Address Title",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      TextFormField(
+                        controller: DetailAddressDirection,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "Detail Address Direction is required";
+                          }
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 3, color: Colors.black),
+                              borderRadius: BorderRadius.circular(90)),
+                          hintText: "Enter Detail Address Direction",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      TextFormField(
+                        controller: AlternatePhoneNumber,
+                        validator: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "Alternate Phone Number is required";
+                          }
+                        },
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 3, color: Colors.black),
+                              borderRadius: BorderRadius.circular(90)),
+                          hintText: "Enter Alternate Phone Number",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 35,
+                      ),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black),
+                          onPressed: () {
+                            if (form.currentState!.validate()) {
+                              saveAddress();
+                            }
+                          },
+                          child: Text("ADD"))
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

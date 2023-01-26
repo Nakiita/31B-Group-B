@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/changePassword/changepassword.dart';
 import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
 import 'package:hunger_cravings/profileScreen/update.dart';
 import 'package:hunger_cravings/services/notification_service.dart';
@@ -16,7 +17,6 @@ import 'package:hunger_cravings/delivery_address/screens/firestore/database.dart
 import 'package:hunger_cravings/delivery_address/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,37 +46,40 @@ class MyApp extends StatelessWidget {
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
         overlayWidget: Center(
-          child: Image.asset("assets/images/loader.gif", height: 100, width: 100,),
+          child: Image.asset(
+            "assets/images/loader.gif",
+            height: 100,
+            width: 100,
+          ),
         ),
-        child: Consumer<GlobalUIViewModel>(
-            builder: (context, loader, child) {
-              if(loader.isLoading){
-                context.loaderOverlay.show();
-              }else{
-                context.loaderOverlay.hide();
-              }
-              return MaterialApp(
-                title: 'Hunger Craving',
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(
-                  primarySwatch: Colors.purple,
-                ),
-                initialRoute: "/LoadingScreen",
-            routes: {
-              "/LoadingScreen": (BuildContext context) => LoadingScreen(),
-              "/forgotpassword": (BuildContext context) => ForgotScreen(),
-              "/login": (BuildContext context) => LoginScreens(),
-              "/register": (BuildContext context) => RegisterScreen(),
-              "/profile": (BuildContext context) => MyProfile(),
-              "/editProfile": (BuildContext context) => ProfileScreen(),
-              "/deliveryTime": (BuildContext context) => DeliveryTime(),
-              "/home": (BuildContext context) => Home(),
-              "/address": (BuildContext context) => AddAddressScreen(),
-              "/edit-address": (BuildContext context) => EditAddressScreen(),
-              "/database": (BuildContext context) => FirebaseDatabaseScreen(),}
-              );
-            }
-        ),
+        child: Consumer<GlobalUIViewModel>(builder: (context, loader, child) {
+          if (loader.isLoading) {
+            context.loaderOverlay.show();
+          } else {
+            context.loaderOverlay.hide();
+          }
+          return MaterialApp(
+              title: 'Hunger Craving',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                primarySwatch: Colors.purple,
+              ),
+              initialRoute: "/address",
+              routes: {
+                "/LoadingScreen": (BuildContext context) => LoadingScreen(),
+                "/forgotpassword": (BuildContext context) => ForgotScreen(),
+                "/login": (BuildContext context) => LoginScreens(),
+                "/register": (BuildContext context) => RegisterScreen(),
+                "/profile": (BuildContext context) => MyProfile(),
+                "/editProfile": (BuildContext context) => ProfileScreen(),
+                "/deliveryTime": (BuildContext context) => DeliveryTime(),
+                "/home": (BuildContext context) => Home(),
+                "/address": (BuildContext context) => AddAddressScreen(),
+                "/edit-address": (BuildContext context) => EditAddressScreen(),
+                "/database": (BuildContext context) => FirebaseDatabaseScreen(),
+                "/changePassword": (BuildContext context) => ChangePassword(),
+              });
+        }),
       ),
     );
   }
