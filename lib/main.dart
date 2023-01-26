@@ -1,16 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
 import 'package:hunger_cravings/profileScreen/update.dart';
-
 import 'package:hunger_cravings/services/notification_service.dart';
-
 import 'package:hunger_cravings/viewmodel/auth_view_model.dart';
 import 'package:hunger_cravings/viewmodel/global_ui_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
-import 'package:hunger_cravings/Onboarding/onboardingScreen.dart';
 import 'package:hunger_cravings/dashboard/screens/home.dart';
 import 'package:hunger_cravings/loading/loading.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
@@ -83,7 +78,6 @@ class MyApp extends StatelessWidget {
               );
             }
         ),
-
       ),
     );
   }

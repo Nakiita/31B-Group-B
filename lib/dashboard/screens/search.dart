@@ -68,18 +68,13 @@ class _SearchPageState extends State<SearchPage> {
                   elevation: 1,
                   margin: const EdgeInsets.symmetric(vertical: 2),
                   child: ListTile(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) =>
-                    //   //         ProductDetails( image: _filteredProducts[index].image,
-                    //   //             productName: _filteredProducts[index].name,
-                    //   //             price: _filteredProducts[index].price,quantity:_filteredProducts[index].quantity,
-                    //   //           _filteredProducts[index]
-                    //   // );
-                    //   ProductDetails();
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                      ProductDetails(_filteredProducts[index])));
+                    },
                     leading: CircleAvatar(
                       radius: 30.0,
                       backgroundImage: AssetImage("images/${_filteredProducts[index].image}"),
