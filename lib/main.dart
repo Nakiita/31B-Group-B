@@ -18,6 +18,8 @@ import 'package:hunger_cravings/dashboard/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
+import 'dashboard/screens/orderDetail.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -64,7 +66,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              initialRoute: "/LoadingScreen",
+              initialRoute: "/order",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),

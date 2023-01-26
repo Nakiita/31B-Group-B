@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/Onboarding/onboardingScreen.dart';
 import 'package:hunger_cravings/viewmodel/global_ui_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -252,7 +253,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  register();
+                                  Navigator.of(context)
+                                      .pushReplacement(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        OnboardingScreen(),
+                                  ));
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.black,
