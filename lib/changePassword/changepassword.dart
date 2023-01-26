@@ -1,10 +1,6 @@
-
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
-import 'package:day_night_switcher/day_night_switcher.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// mport 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth%202.dart';
 import 'package:flutter/material.dart';
-
-import '../theme_service.dart';
 
 class ChangePassword extends StatefulWidget {
   const ChangePassword({Key? key}) : super(key: key);
@@ -36,35 +32,16 @@ class _ChangePasswordState extends State<ChangePassword> {
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    final deviceHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    final deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Change password"),
-        actions: [
-          ThemeSwitcher(
-            builder: (context) {
-              bool isDarkMode =
-                  ThemeModelInheritedNotifier.of(context).theme.brightness ==
-                      Brightness.light;
-              String themeName = isDarkMode ? 'dark' : 'light';
-              return DayNightSwitcherIcon(
-                isDarkModeEnabled: isDarkMode,
-                onStateChanged: (bool darkMode) async {
-                  var service = await ThemeService.instance
-                    ..save(darkMode ? 'light' : 'dark');
-                  var theme = service.getByName(themeName);
-                  ThemeSwitcher.of(context)
-                      .changeTheme(theme: theme, isReversed: darkMode);
-                },
-              );
-            },
-          ),
-        ],
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        title: Text("Change password",
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -161,7 +138,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           child: ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.lightBlue,
+                              primary: Colors.black,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
@@ -187,4 +164,3 @@ class _ChangePasswordState extends State<ChangePassword> {
     );
   }
 }
-
