@@ -36,6 +36,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
       print(value.id);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Address Added Successfully")));
+      Navigator.of(context).pushNamed("/deliveryTime");
     });
   }
 
