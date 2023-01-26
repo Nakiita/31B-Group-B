@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hunger_cravings/changePassword/changepassword.dart';
+import 'package:hunger_cravings/dashboard/screens/changepassword.dart';
 import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
 import 'package:hunger_cravings/profileScreen/update.dart';
 import 'package:hunger_cravings/services/notification_service.dart';
@@ -12,9 +12,9 @@ import 'package:hunger_cravings/loading/loading.dart';
 import 'package:hunger_cravings/loginpage/forgetpassword.dart';
 import 'package:hunger_cravings/loginpage/register_screen.dart';
 import 'package:hunger_cravings/profileScreen/ContactDetails.dart';
-import 'package:hunger_cravings/delivery_address/screens/firestore/add_address.dart';
-import 'package:hunger_cravings/delivery_address/screens/firestore/database.dart';
-import 'package:hunger_cravings/delivery_address/screens/firestore/edit_address.dart';
+import 'package:hunger_cravings/dashboard/screens/firestore/add_address.dart';
+import 'package:hunger_cravings/dashboard/screens/firestore/database.dart';
+import 'package:hunger_cravings/dashboard/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              initialRoute: "/address",
+              initialRoute: "/LoadingScreen",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),

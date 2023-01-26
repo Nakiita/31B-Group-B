@@ -1,5 +1,3 @@
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -16,10 +14,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final deviceHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    final deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit profile"),
@@ -145,4 +140,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-

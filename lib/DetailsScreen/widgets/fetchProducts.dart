@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../delivery_address/screens/firestore/add_address.dart';
+import '../../dashboard/screens/firestore/add_address.dart';
 
 class MyWidget extends StatefulWidget {
   final String collectionName;

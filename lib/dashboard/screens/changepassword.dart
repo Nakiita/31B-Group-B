@@ -23,9 +23,9 @@ class _ChangePasswordState extends State<ChangePassword> {
               email: emailController.text, password: passwordController.text))
           .user;
       if (user != null) {
-        print("change Sucessful");
+        print("Change Sucessfull");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: Colors.green, content: Text("change Sucessful")));
+            backgroundColor: Colors.green, content: Text("Change Sucessfull")));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
