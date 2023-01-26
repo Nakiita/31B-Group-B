@@ -60,6 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (){
+            Navigator.of(context).pushNamed("/home");
+          }, icon: Icon(Icons.arrow_back),
+        ),
         backgroundColor: Colors.black,
         title: Text('Delivery time'),
       ),
