@@ -34,30 +34,51 @@ class _MyWidgetState extends State<MyWidget> {
               return Card(
                 elevation: 5,
                 child: Column(children: [
-                  ListTile(
-                    leading:
-                    Image.asset("images/${_documentSnapshot['images']}"),
-                    title: Text(
-                      "\$ ${_documentSnapshot['name']}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.red),
-                    ),
-                    subtitle: Text(
-                      "\$ ${_documentSnapshot['price']}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.red),
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          leading: Image.asset("images/${_documentSnapshot['images']}",
+                              width: 150,
+                              height: 150,fit: BoxFit.cover),
+                          trailing: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                "\$ ${_documentSnapshot['name']}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red),
+                              ),
+                              Text(
+                                "\$ ${_documentSnapshot['price']}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    "Quantity: ${_documentSnapshot['quantity']}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Quantity: ${_documentSnapshot['quantity']}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 5),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
                         icon: Icon(Icons.add),
@@ -69,25 +90,33 @@ class _MyWidgetState extends State<MyWidget> {
                         icon: Icon(Icons.remove),
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
-                          _decrementQuantity(index, snapshot);
-                        }
+                                _decrementQuantity(index, snapshot);
+                              }
                             : null,
                       ),
+                      Spacer(),
+                      ElevatedButton(onPressed: () {}, child: Text("Buy Now")),
                     ],
                   ),
-                  SizedBox(height: 5),
-                  GestureDetector(
-                    child: CircleAvatar(
-                      child: Icon(Icons.delete),
-                    ),
-                    onTap: () {
-                      FirebaseFirestore.instance
-                          .collection(widget.collectionName)
-                          .doc(FirebaseAuth.instance.currentUser!.email)
-                          .collection("items")
-                          .doc(_documentSnapshot.id)
-                          .delete();
-                    },
+                  SizedBox(height: 1),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        child: Text(
+                          "Delete",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {
+                          FirebaseFirestore.instance
+                              .collection(widget.collectionName)
+                              .doc(FirebaseAuth.instance.currentUser!.email)
+                              .collection("items")
+                              .doc(_documentSnapshot.id)
+                              .delete();
+                        },
+                      ),
+                    ],
                   )
                 ]),
               );
@@ -113,7 +142,6 @@ class _MyWidgetState extends State<MyWidget> {
     setState(() {});
   }
 
-
   void _decrementQuantity(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
     // get the documentSnapshot for this index
     DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
@@ -131,9 +159,6 @@ class _MyWidgetState extends State<MyWidget> {
     setState(() {});
   }
 }
-
-
-
 
 // class MyWidget extends StatefulWidget {
 //   final String collectionName;
