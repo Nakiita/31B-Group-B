@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/dashboard/screens/changepassword.dart';
-import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
+import 'package:hunger_cravings/delivery_address/delivery_time.dart';
 import 'package:hunger_cravings/profileScreen/update.dart';
 import 'package:hunger_cravings/services/notification_service.dart';
 import 'package:hunger_cravings/viewmodel/auth_view_model.dart';

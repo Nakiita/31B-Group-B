@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/DetailsScreen/productdetail_screens.dart';
-import 'package:hunger_cravings/dashboard/screens/delivery_time.dart';
+import 'package:hunger_cravings/delivery_address/delivery_time.dart';
 import 'package:hunger_cravings/models/address_model.dart';
 
 class AddAddressScreen extends StatefulWidget {

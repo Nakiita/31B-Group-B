@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: GestureDetector(
                     onTap: () {
-                    Navigator.of(context).pushNamed("/profile");
+                    Navigator.of(context).pushReplacementNamed("/profile");
                     },
                     child: Icon(Icons.person)),
                 label: "Profile"),

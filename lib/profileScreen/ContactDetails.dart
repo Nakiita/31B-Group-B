@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/dashboard/screens/changepassword.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
-import 'package:hunger_cravings/viewmodel/auth_view_model.dart';
+
 import 'package:provider/provider.dart';
+
+import '../viewmodel/auth_view_model.dart';
+import '../viewmodel/global_ui_viewmodel.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
@@ -12,13 +15,24 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
+  late AuthViewModel _authViewModel;
+
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Consumer<AuthViewModel>(builder: (context, authVM, child) {
-          return Scaffold(
+        home: Scaffold(
               appBar: AppBar(
+                leading: IconButton(
+                  onPressed: (){
+                    Navigator.of(context).pushNamed("/home");
+                  }, icon: Icon(Icons.arrow_back),
+                ),
                 title: const Text('My Profile'),
               ),
               backgroundColor: Colors.white,
@@ -32,14 +46,14 @@ class _MyProfileState extends State<MyProfile> {
                       // backgroundColor: Colors.red,
                     ),
                     Text(
-                      authVM.loggedInUser!.username!.toString(),
+                      _authViewModel.loggedInUser!.username.toString(),
                       style: const TextStyle(
                           fontSize: 20.0,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      authVM.loggedInUser!.email!.toString(),
+                      _authViewModel.loggedInUser!.email.toString(),
                       style: TextStyle(
                           fontSize: 16.0,
                           fontFamily: 'Source Sans Pro',
@@ -224,7 +238,7 @@ class _MyProfileState extends State<MyProfile> {
                         ),
                       ),
                     ),
-                  ])));
-        }));
+                  ])))
+        );
   }
 }

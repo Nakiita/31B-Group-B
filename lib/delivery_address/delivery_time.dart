@@ -1,488 +1,107 @@
-
-
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 
-void main() => runApp(Delivertimee());
+class DeliveryTime extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter DateTimePicker Demo',
+      home: MyHomePage(),
+      localizationsDelegates: [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [Locale('en', 'US')], //, Locale('pt', 'BR')],
+    );
+  }
+}
 
-class Delivertimee extends StatelessWidget {
-  const Delivertimee({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  GlobalKey<FormState> _oFormKey = GlobalKey<FormState>();
+  late TextEditingController _dateController;
+  late TextEditingController _timeController;
+
+  @override
+  void initState() {
+    super.initState();
+    Intl.defaultLocale = 'pt_BR';
+    //_initialValue = DateTime.now().toString();
+
+    _dateController = TextEditingController(text: DateTime.now().toString());
+
+    String lsHour = TimeOfDay.now().hour.toString().padLeft(2, '0');
+    String lsMinute = TimeOfDay.now().minute.toString().padLeft(2, '0');
+    _timeController = TextEditingController(text: '$lsHour:$lsMinute');
+  }
+
+  Future<void> saveDateTime(String date, String time) async {
+    await FirebaseFirestore.instance.collection("datesTime").add({
+      'Date': date,
+      'Time': time,
+    }).catchError((e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message.toString())));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
-        title: Text("Deliver Time"),
+        backgroundColor: Colors.black,
+        title: Text('Delivery time'),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: Form(
+          key: _oFormKey,
+          child: Column(
+            children: <Widget>[
+              DateTimePicker(
+                type: DateTimePickerType.date,
+                dateMask: 'yyyy/MM/dd',
+                controller: _dateController,
+                //initialValue: _initialValue,
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+                icon: Icon(Icons.event),
+                dateLabelText: 'Date',
+                locale: Locale('pt', 'BR'),
+              ),
+              DateTimePicker(
+                type: DateTimePickerType.time,
+                //timePickerEntryModeInput: true,
+                controller: _timeController,
+                // initialValue: '', //_initialValue,
+                icon: Icon(Icons.access_time),
+                timeLabelText: "Time",
+                use24HourFormat: false,
+                locale: Locale('pt', 'BR'),
+              ),
+              SizedBox(height: 20),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
-                  shape: RoundedRectangleBorder(),
-                  primary: Theme.of(context).colorScheme.secondary,
-                ),
-                child: Text("Select"),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 onPressed: () {
-                  Navigator.pop(context);
+                  saveDateTime(_dateController.text, _timeController.text);
                 },
-              )
+                child: Text('Submit'),
+              ),
             ],
           ),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Choose A Date",style: TextStyle(fontSize: 18,),
-            ),
-            Container (
-              margin: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of (context) .showSnackBar(
-                        SnackBar (
-                          content: Text('Delivery is Today!'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'Today',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery is Tomorrow!'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'Tommorrow',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ), // ElevatedButton
-                ],
-              ),
-            ),
-
-            Text(
-              "Choose Time",style: TextStyle(fontSize: 18,),
-            ),
-
-
-            Container (
-              margin: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of (context) .showSnackBar(
-                        SnackBar (
-                          content: Text('Set Time For Faster'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'As Soon As Possible',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery Time Set to 8:30pm'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '8:30pm',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery Time Set to 9:00pm'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '9:30pm',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-
-                  ), // ElevatedButton
-                  //
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of (context) .showSnackBar(
-                  //       SnackBar (
-                  //         content: Text('Set Time For 10:00am'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('10:00am'),
-                  // ), // ElevatedButton
-                  // SizedBox (width: 10),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         content: Text('Delivery Time Set to 11:30am'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('11:30am'),
-                  // ), // ElevatedButton
-                  // SizedBox (width: 10),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         content: Text('Delivery Time Set to 12:00pm'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('12:00pm'),
-                  // ), // ElevatedButton
-
-
-                ],
-              ),
-            ),
-            Container (
-              margin: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of (context) .showSnackBar(
-                        SnackBar (
-                          content: Text('Set Time For Faster'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'As Soon As Possible',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery Time Set to 8:30pm'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '8:30pm',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery Time Set to 9:00pm'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '9:30pm',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-
-                  ), // ElevatedButton
-                  //
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of (context) .showSnackBar(
-                  //       SnackBar (
-                  //         content: Text('Set Time For 10:00am'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('10:00am'),
-                  // ), // ElevatedButton
-                  // SizedBox (width: 10),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         content: Text('Delivery Time Set to 11:30am'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('11:30am'),
-                  // ), // ElevatedButton
-                  // SizedBox (width: 10),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         content: Text('Delivery Time Set to 12:00pm'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('12:00pm'),
-                  // ), // ElevatedButton
-
-
-                ],
-              ),
-            ),
-            Container (
-              margin: const EdgeInsets.only(top: 10, bottom: 10),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of (context) .showSnackBar(
-                        SnackBar (
-                          content: Text('Set Time For Faster'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'As Soon As Possible',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery Time Set to 8:30pm'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '8:30pm',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-
-                  ), // ElevatedButton
-                  SizedBox (width: 10),
-                  ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Delivery Time Set to 9:00pm'),
-                          duration: Duration(seconds: 2),
-                        ), // SnackBar
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      '9:30pm',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
-                    ),
-
-                  ), // ElevatedButton
-                  //
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of (context) .showSnackBar(
-                  //       SnackBar (
-                  //         content: Text('Set Time For 10:00am'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('10:00am'),
-                  // ), // ElevatedButton
-                  // SizedBox (width: 10),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         content: Text('Delivery Time Set to 11:30am'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('11:30am'),
-                  // ), // ElevatedButton
-                  // SizedBox (width: 10),
-                  // ElevatedButton(
-                  //   onPressed: () {
-                  //     ScaffoldMessenger.of(context).showSnackBar(
-                  //       SnackBar(
-                  //         content: Text('Delivery Time Set to 12:00pm'),
-                  //         duration: Duration(seconds: 2),
-                  //       ), // SnackBar
-                  //     );
-                  //   },
-                  //   child: Text('12:00pm'),
-                  // ), // ElevatedButton
-
-
-                ],
-              ),
-            ),
-
-
-
-
-
-            // extra code
-
-
-            // Expanded (
-            //   child: Container (
-            //       margin: const EdgeInsets.only(top: 10, bottom: 10),
-            //       child: GridView.builder(
-            //           gridDelegate:
-            //                 const SliverGridDelegateWithFixedCrossAxisCount(
-            //                     crossAxisCount: 3, childAspectRatio: 2.5), // Slive
-            // itemCount: DeliveryTime.deliveryTimes. length,
-            // itemBuilder: (context, index) {
-            //   return Card(
-            //     child: TextButton(
-            //       onPressed: () {},
-            //       child: Text(
-            //           ‘${DeliveryTime.deliveryTimes[index] .value}',
-            //           style: Theme.of(context).textTheme.headline6),
-            //   ), // TextButton
-            //   ); // Card
-            // },
-            // ), // GridView.builder
-
-            // ) // Expanded
-
-
-          ],
         ),
       ),
     );
   }
 }
-
-
-
