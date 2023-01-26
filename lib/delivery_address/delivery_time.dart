@@ -91,6 +91,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 locale: Locale('pt', 'BR'),
               ),
               SizedBox(height: 20),
+              Text("Payment Method", style: TextStyle(fontSize: 18),),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.black),onPressed: (){}, child: Text("Esewa")),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),onPressed: (){}, child: Text("Cash On Delivery")),],),
+              SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 onPressed: () {
