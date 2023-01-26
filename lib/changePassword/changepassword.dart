@@ -1,5 +1,5 @@
 // mport 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth%202.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -20,7 +20,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   Future<void> login() async {
     try {
       final user = (await _auth.signInWithEmailAndPassword(
-          email: emailController.text, password: passwordController.text))
+              email: emailController.text, password: passwordController.text))
           .user;
       if (user != null) {
         print("change Sucessful");
@@ -40,7 +40,8 @@ class _ChangePasswordState extends State<ChangePassword> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text("Change password",
+        title: Text(
+          "Change password",
         ),
       ),
       body: SafeArea(
