@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/DetailsScreen/productdetail_screens.dart';
 
 import '../../../models/address_model.dart';
 import '../../delivery_time.dart';
@@ -40,7 +41,16 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        leading: InkWell(
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onTap: (() {
+            Navigator.pop(context);
+          }),
+        ),
+        backgroundColor: Colors.black,
         centerTitle: true,
         title: const Text(
           'ADD ADDRESS',
@@ -50,17 +60,17 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              width: double.infinity,
-              child: Image.asset('assets/images/Logo.jpg'),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
-              child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                width: double.infinity,
+                child: Image.asset('assets/images/Logo.jpg'),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10, right: 10),
                 child: Column(
                   children: [
                     TextFormField(
@@ -74,7 +84,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     TextFormField(
                       controller: DetailAddressDirection,
@@ -87,7 +97,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                     TextFormField(
                       controller: AlternatePhoneNumber,
@@ -100,36 +110,11 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      controller: DefaultAddress,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 3, color: Colors.black),
-                            borderRadius: BorderRadius.circular(90)),
-                        hintText: "Enter Default Address",
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 300.0),
-                      child: Switch(
-                        value: DefaultAddress.text == "true",
-                        onChanged: (onChanged) {
-                          setState(() {
-                            value = onChanged;
-                            DefaultAddress.text = value.toString();
-                          });
-                        },
-                        activeColor: Colors.purple,
-                        inactiveTrackColor: Colors.red,
-                        thumbColor: MaterialStateProperty.all(value
-                            ? const Color.fromARGB(245, 241, 238, 238)
-                            : const Color.fromARGB(245, 51, 4, 143)),
-                      ),
+                      height: 35,
                     ),
                     ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black),
                         onPressed: () {
                           Navigator.of(context).pushNamed("/deliveryTime");
                         },
@@ -137,8 +122,8 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

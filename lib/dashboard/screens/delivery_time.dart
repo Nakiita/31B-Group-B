@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 
-
-
 class DeliveryTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -62,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         title: Text('Delivery time'),
       ),
       body: SingleChildScrollView(
@@ -94,13 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 onPressed: () {
                   saveDateTime(_dateController.text, _timeController.text);
                 },
                 child: Text('Submit'),
               ),
-
-
             ],
           ),
         ),
