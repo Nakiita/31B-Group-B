@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../delivery_address/screens/firestore/add_address.dart';
+
 class MyWidget extends StatefulWidget {
   final String collectionName;
 
@@ -48,12 +50,15 @@ class _MyWidgetState extends State<MyWidget> {
                                 "\$ ${_documentSnapshot['name']}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.red),
+                                    color: Colors.red,
+                                  fontSize: 20
+                                ),
                               ),
                               Text(
                                 "\$ ${_documentSnapshot['price']}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 20,
                                     color: Colors.red),
                               ),
                             ],
@@ -71,7 +76,7 @@ class _MyWidgetState extends State<MyWidget> {
                         child: Text(
                           "Quantity: ${_documentSnapshot['quantity']}",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.bold,fontSize: 20
                           ),
                         ),
                       ),
@@ -81,13 +86,13 @@ class _MyWidgetState extends State<MyWidget> {
                   Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.add),
+                        icon: Icon(Icons.add,size: 30,),
                         onPressed: () {
                           _incrementQuantity(index, snapshot);
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.remove),
+                        icon: Icon(Icons.remove,size: 30,),
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
                                 _decrementQuantity(index, snapshot);
@@ -95,7 +100,13 @@ class _MyWidgetState extends State<MyWidget> {
                             : null,
                       ),
                       Spacer(),
-                      ElevatedButton.icon(onPressed: () {},
+                      ElevatedButton.icon(onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddAddressScreen()),
+                        );
+                      },
                           style: ElevatedButton.styleFrom(elevation: 10,
                               shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(30.0),
@@ -107,7 +118,6 @@ class _MyWidgetState extends State<MyWidget> {
                           label: Text("Buy Now",style: TextStyle(fontSize: 15),)),
                     ],
                   ),
-                  SizedBox(height: 1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
