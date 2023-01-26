@@ -95,7 +95,7 @@ class _MyWidgetState extends State<MyWidget> {
                             : null,
                       ),
                       Spacer(),
-                      ElevatedButton(onPressed: () {},
+                      ElevatedButton.icon(onPressed: () {},
                           style: ElevatedButton.styleFrom(elevation: 10,
                               shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(30.0),
@@ -103,17 +103,18 @@ class _MyWidgetState extends State<MyWidget> {
                               ),
                               primary: Color.fromRGBO(214, 0, 27, 1)
                           ),
-                          child: Text("Buy Now")),
+                          icon: Icon(Icons.shopping_cart),
+                          label: Text("Buy Now",style: TextStyle(fontSize: 15),)),
                     ],
                   ),
                   SizedBox(height: 1),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      ElevatedButton(
-                        child: Text(
+                      ElevatedButton.icon(
+                        label: Text(
                           "Delete",
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 15),
                         ),
                         onPressed: () {
                           FirebaseFirestore.instance
@@ -122,7 +123,7 @@ class _MyWidgetState extends State<MyWidget> {
                               .collection("items")
                               .doc(_documentSnapshot.id)
                               .delete();
-                        },
+                        }, icon: Icon(Icons.delete),
                         style: ElevatedButton.styleFrom(elevation: 10,
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30.0),
@@ -174,132 +175,3 @@ class _MyWidgetState extends State<MyWidget> {
     setState(() {});
   }
 }
-
-// class MyWidget extends StatefulWidget {
-//   final String collectionName;
-//
-//   MyWidget({required this.collectionName});
-//
-//   @override
-//   _MyWidgetState createState() => _MyWidgetState();
-// }
-//
-// class _MyWidgetState extends State<MyWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.all(8.0),
-//       child: StreamBuilder(
-//           stream: FirebaseFirestore.instance
-//               .collection(widget.collectionName)
-//               .doc(FirebaseAuth.instance.currentUser!.email)
-//               .collection("items")
-//               .snapshots(),
-//           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-//             if (snapshot.hasError) {
-//               return Center(
-//                 child: Text("Something is wrong"),
-//               );
-//             }
-//             return ListView.builder(
-//                 itemCount: snapshot.data == null ? 0 : snapshot.data!.docs.length,
-//                 itemBuilder: (_, index) {
-//                   DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
-//                   print(_documentSnapshot);
-//                   return Card(
-//                     elevation: 5,
-//                     child: Column(
-//                       children: [
-//                         ListTile(
-//                           leading: Container(
-//                             width: 105,
-//                             height: 1000,
-//                             child: Image.asset(
-//                                 "images/${_documentSnapshot['images']}"),
-//                           ),
-//                           title: Text(
-//                             "\$ ${_documentSnapshot['name']}",
-//                             style: TextStyle(
-//                                 fontWeight: FontWeight.bold, color: Colors.red),
-//                           ),
-//                           subtitle: Text(
-//                             "\$ ${_documentSnapshot['price']}",
-//                             style: TextStyle(
-//                                 fontWeight: FontWeight.bold, color: Colors.red),
-//                           ),
-//                           trailing: Row(
-//                             mainAxisSize: MainAxisSize.min,
-//                             children: [
-//                               GestureDetector(
-//                                 child: CircleAvatar(
-//                                   child: Icon(Icons.delete),
-//                                 ),
-//                                 onTap: () {
-//                                   FirebaseFirestore.instance
-//                                       .collection(widget.collectionName)
-//                                       .doc(FirebaseAuth.instance.currentUser!.email)
-//                                       .collection("items")
-//                                       .doc(_documentSnapshot.id)
-//                                       .delete();
-//                                 },
-//                               ),
-//                               SizedBox(height: 10),
-//                               Row(
-//                                 children: [
-//                                   GestureDetector(
-//                                     child: CircleAvatar(
-//                                       child: Icon(Icons.add),
-//                                     ),
-//                                     onTap: () {
-//                                       FirebaseFirestore.instance
-//                                           .collection(widget.collectionName)
-//                                           .doc(FirebaseAuth.instance.currentUser!.email)
-//                                           .collection("items")
-//                                           .doc(_documentSnapshot.id)
-//                                           .update({
-//                                         "quantity": _documentSnapshot['quantity'] + 1
-//                                       });
-//                                     },
-//                                   ),
-//                                 ],
-//                               ),
-//
-//                               SizedBox(height: 10),
-//                               GestureDetector(
-//                                 child: CircleAvatar(
-//                                   child: Icon(Icons.remove),
-//                                 ),
-//                                 onTap: () {
-//                                   if (_documentSnapshot['quantity'] > 0) {
-//                                     FirebaseFirestore.instance
-//                                         .collection(widget.collectionName)
-//                                         .doc(FirebaseAuth
-//                                             .instance.currentUser!.email)
-//                                         .collection("items")
-//                                         .doc(_documentSnapshot.id)
-//                                         .update({
-//                                       "quantity":
-//                                           _documentSnapshot['quantity'] - 1
-//                                     });
-//                                   }
-//                                 },
-//                               ),
-//                               Text(
-//                                 "${_documentSnapshot['quantity']}",
-//                                 style: TextStyle(
-//                                   fontWeight: FontWeight.bold,
-//                                   color: Colors.black,
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   );
-//                 },);
-//             },
-//       ),
-//     );
-//   }
-// }
