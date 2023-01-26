@@ -78,7 +78,7 @@ class _MyWidgetState extends State<MyWidget> {
                   SizedBox(height: 5),
                   GestureDetector(
                     child: CircleAvatar(
-                      child: Icon(Icons.remove_circle),
+                      child: Icon(Icons.delete),
                     ),
                     onTap: () {
                       FirebaseFirestore.instance
