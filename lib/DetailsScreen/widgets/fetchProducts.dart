@@ -95,7 +95,15 @@ class _MyWidgetState extends State<MyWidget> {
                             : null,
                       ),
                       Spacer(),
-                      ElevatedButton(onPressed: () {}, child: Text("Buy Now")),
+                      ElevatedButton(onPressed: () {},
+                          style: ElevatedButton.styleFrom(elevation: 10,
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0),
+                                side: BorderSide(color: Colors.red),
+                              ),
+                              primary: Color.fromRGBO(214, 0, 27, 1)
+                          ),
+                          child: Text("Buy Now")),
                     ],
                   ),
                   SizedBox(height: 1),
@@ -115,6 +123,13 @@ class _MyWidgetState extends State<MyWidget> {
                               .doc(_documentSnapshot.id)
                               .delete();
                         },
+                        style: ElevatedButton.styleFrom(elevation: 10,
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                              side: BorderSide(color: Colors.red),
+                            ),
+                            primary: Color.fromRGBO(214, 0, 27, 1)
+                        ),
                       ),
                     ],
                   )
