@@ -36,7 +36,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
       print(value.id);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Address Added Successfully")));
-      Navigator.of(context).pushNamed("/deliveryTime");
+
     });
   }
 
@@ -138,6 +138,7 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                           onPressed: () {
                             if (form.currentState!.validate()) {
                               saveAddress();
+                              Navigator.of(context).pushNamed("/deliveryTime");
                             }
                           },
                           child: Text("ADD"))
