@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hunger_cravings/Reviews/reviews.dart';
 import 'package:hunger_cravings/dashboard/screens/changepassword.dart';
 import 'package:hunger_cravings/delivery_address/delivery_time.dart';
 import 'package:hunger_cravings/profileScreen/update.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              initialRoute: "/LoadingScreen",
+              initialRoute: "/feedbacks",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),
@@ -80,6 +81,7 @@ class MyApp extends StatelessWidget {
                 "/edit-address": (BuildContext context) => EditAddressScreen(),
                 "/database": (BuildContext context) => FirebaseDatabaseScreen(),
                 "/changePassword": (BuildContext context) => ChangePassword(),
+                "/feedbacks": (BuildContext context) => Feedbacks()
               });
         }),
       ),
