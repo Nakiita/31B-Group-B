@@ -13,6 +13,19 @@ class Feedbacks extends StatefulWidget {
 class _Feedbacks extends State<Feedbacks> {
   // use this controller to get what the user typed
   final _textController = TextEditingController();
+  Future submit() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    var currentUser = _auth.currentUser;
+    CollectionReference _collectionRef =
+    FirebaseFirestore.instance.collection("Users-FeedBack");
+    return _collectionRef
+        .doc(currentUser!.email)
+        .collection("feedback")
+        .doc()
+        .set({
+      'feedback': _textController.text
+    }).then((value) => print("Your FeedBack is recorded"));
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,6 +61,7 @@ class _Feedbacks extends State<Feedbacks> {
                 height: 15,
               ),
               ElevatedButton.icon(onPressed: (){
+                submit();
               }, label: Text("Submit",style: TextStyle(color: Colors.white),), icon: Icon(Icons.move_to_inbox),
               )
             ],
