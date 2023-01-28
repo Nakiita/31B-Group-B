@@ -16,7 +16,7 @@ class _ePaymentState extends State<ePayment> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Payment"),
+        title: Text("payment"),
         backgroundColor: Colors.deepOrange,
       ),
       body: SafeArea(
