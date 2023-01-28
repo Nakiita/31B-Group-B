@@ -39,7 +39,7 @@ class _ePaymentState extends State<ePayment> {
                 height: 20,
               ),
               Divider(
-                color: Color.fromARGB(2, 92, 15, 163),
+                color: Color.fromARGB(255, 92, 15, 163),
                 height: 20,
                 thickness: 1,
               ),
