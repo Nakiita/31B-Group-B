@@ -139,7 +139,7 @@ class _ePaymentState extends State<ePayment> {
         builder: (context) {
           return AlertDialog(
             title: Text("Failure"),
-            content: Text("p"),
+            content: Text("Payment failed"),
             actions: [
               TextButton(
                   onPressed: () {
