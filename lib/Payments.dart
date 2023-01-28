@@ -117,7 +117,7 @@ class _ePaymentState extends State<ePayment> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Su"),
+            title: Text("Success"),
             content: Text("P"),
             actions: [
               TextButton(
