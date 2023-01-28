@@ -132,5 +132,24 @@ class _ePaymentState extends State<ePayment> {
         });
   }
 
+  // method to handle failure
+  void onFailure(PaymentFailureModel failure) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("f"),
+            content: Text("p"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("OK"))
+            ],
+          );
+        });
+  }
+
 
 }
