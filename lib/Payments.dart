@@ -78,12 +78,12 @@ class _ePaymentState extends State<ePayment> {
                 }, // Image tapped
                 child: Image.asset(
                   'assets/images/khaltilogo.jpg',
-                  width: 180,
+                  width: 200,
                 ),
               ),
 
               SizedBox(
-                height: 40,
+                height: 50,
               ),
 
               //Cash on Delivery
@@ -104,11 +104,11 @@ class _ePaymentState extends State<ePayment> {
                 },
                 child: Image.asset(
                   'assets/images/th.jpg',
-                  width: 100,
+                  width: 200,
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 50,
               ),
               Divider(
                 color: Color.fromARGB(255, 92, 15, 163),
@@ -125,7 +125,7 @@ class _ePaymentState extends State<ePayment> {
   khaltiWallet() {
     KhaltiScope.of(context).pay(
       config: PaymentConfig(
-          amount: 100,
+          amount: 1000,
           productIdentity: "1",
           productName: "Hunger Cravings",
           mobile: "9827723996"),
