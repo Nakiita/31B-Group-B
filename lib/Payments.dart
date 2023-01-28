@@ -104,7 +104,7 @@ class _ePaymentState extends State<ePayment> {
       config: PaymentConfig(
           amount: 100,
           productIdentity: "1",
-          productName: "hdi",
+          productName: "Hunger Cravings",
           mobile: "98"),
       preferences: [PaymentPreference.khalti,PaymentPreference.connectIPS,PaymentPreference.eBanking] ,
     );
