@@ -68,7 +68,7 @@ class _ePaymentState extends State<ePayment> {
                 splashColor: Colors.grey,
                 onTap: () {
                   AlertDialog(
-                    title: const Text("C"),
+                    title: const Text("Cash on Delivery"),
                     content: const Text("Payment successful"),
                     actions: [
                       TextButton(
