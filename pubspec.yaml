@@ -1,4 +1,4 @@
-name: demo_app
+name: hunger_cravings
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=2.18.5 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -65,15 +65,6 @@ dependencies:
   day_night_switcher: ^0.2.0+1
   animated_theme_switcher: ^2.0.6
   shared_preferences: ^2.0.15
-  
-  image_picker: ^0.8.6
-  email_otp: ^1.0.4
-  email_auth: ^1.0.0
-  khalti_flutter: ^2.1.0
-
-dependency_overrides:
-  device_info_plus: 3.2.1
-  ffi: 1.0.0
 
 dev_dependencies:
   flutter_test:
