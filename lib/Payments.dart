@@ -51,7 +51,7 @@ class _ePaymentState extends State<ePayment> {
               InkWell(
                 splashColor: Colors.grey,
                 onTap: () {
-                  print("I");
+                  print("Image Tapped");
                 }, // Image tapped
                 child: Image.asset(
                   'assets/images/khaltilogo.png',
