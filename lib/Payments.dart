@@ -69,7 +69,7 @@ class _ePaymentState extends State<ePayment> {
                 onTap: () {
                   AlertDialog(
                     title: const Text("C"),
-                    content: const Text("P"),
+                    content: const Text("Payment successful"),
                     actions: [
                       TextButton(
                           onPressed: () {
