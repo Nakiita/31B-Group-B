@@ -31,7 +31,7 @@ class _ePaymentState extends State<ePayment> {
                 "Payment Methods",
                 style: TextStyle(
                   fontSize: 28,
-                  color: Color.fromARGB(2, 92, 15, 163),
+                  color: Color.fromARGB(255, 92, 15, 163),
                   fontWeight: FontWeight.bold,
                 ),
               ),
