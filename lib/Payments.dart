@@ -1,6 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return KhaltiScope(
+        publicKey: 'test_public_key_fdeeb6ede1c3489b9f35f22a0292c440',
+        enabledDebugging: false,
+        builder: (context, navKey) {
+          return MaterialApp(
+              home: ePayment(),
+              navigatorKey: navKey,
+              localizationsDelegates: const [
+                KhaltiLocalizations.delegate,
+              ]);
+        });
+  }
+}
 
 class ePayment extends StatefulWidget {
   const ePayment({Key? key}) : super(key: key);
@@ -16,7 +39,7 @@ class _ePaymentState extends State<ePayment> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("payment"),
+        title: Text("Payment"),
         backgroundColor: Colors.deepOrange,
       ),
       body: SafeArea(
@@ -27,7 +50,6 @@ class _ePaymentState extends State<ePayment> {
                 height: 20,
               ),
               const Text(
-
                 "Payment Methods",
                 style: TextStyle(
                   fontSize: 28,
@@ -55,7 +77,7 @@ class _ePaymentState extends State<ePayment> {
                   khaltiWallet();
                 }, // Image tapped
                 child: Image.asset(
-                  'assets/images/khaltilogo.png',
+                  'assets/images/khaltilogo.jpg',
                   width: 180,
                 ),
               ),
@@ -81,7 +103,7 @@ class _ePaymentState extends State<ePayment> {
                   );
                 },
                 child: Image.asset(
-                  'assets/images/cod.png',
+                  'assets/images/th.jpg',
                   width: 100,
                 ),
               ),
@@ -99,6 +121,7 @@ class _ePaymentState extends State<ePayment> {
       ),
     );
   }
+
   khaltiWallet() {
     KhaltiScope.of(context).pay(
       config: PaymentConfig(
@@ -106,7 +129,11 @@ class _ePaymentState extends State<ePayment> {
           productIdentity: "1",
           productName: "Hunger Cravings",
           mobile: "9827723996"),
-      preferences: [PaymentPreference.khalti,PaymentPreference.connectIPS,PaymentPreference.eBanking] ,
+      preferences: [
+        PaymentPreference.khalti,
+        PaymentPreference.connectIPS,
+        PaymentPreference.eBanking
+      ],
       onSuccess: onSuccess,
       onFailure: onFailure,
       onCancel: onCanceled,
