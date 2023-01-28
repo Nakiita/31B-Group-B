@@ -99,7 +99,16 @@ class _ePaymentState extends State<ePayment> {
       ),
     );
   }
-
+  khaltiWallet() {
+    KhaltiScope.of(context).pay(
+      config: PaymentConfig(
+          amount: 100,
+          productIdentity: "1",
+          productName: "hdi",
+          mobile: "98"),
+      preferences: [PaymentPreference.khalti,PaymentPreference.connectIPS,PaymentPreference.eBanking] ,
+    );
+  }
 
 
 }
