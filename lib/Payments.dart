@@ -152,5 +152,23 @@ class _ePaymentState extends State<ePayment> {
         });
   }
 
+  // method to handle onCanceled
 
+  void onCanceled() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("C"),
+            content: Text("P"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("OK"))
+            ],
+          );
+        });
+  }
 }
