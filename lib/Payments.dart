@@ -111,5 +111,25 @@ class _ePaymentState extends State<ePayment> {
     );
   }
 
+  // mentod to handle success
+  void onSuccess(PaymentSuccessModel success) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Su"),
+            content: Text("P"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        });
+  }
+
 
 }
