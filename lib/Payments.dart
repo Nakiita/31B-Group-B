@@ -108,6 +108,7 @@ class _ePaymentState extends State<ePayment> {
           mobile: "9827723996"),
       preferences: [PaymentPreference.khalti,PaymentPreference.connectIPS,PaymentPreference.eBanking] ,
       onSuccess: onSuccess,
+      onFailure: onFailure,
     );
   }
 
