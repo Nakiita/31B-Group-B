@@ -52,6 +52,7 @@ class _ePaymentState extends State<ePayment> {
                 splashColor: Colors.grey,
                 onTap: () {
                   print("Image Tapped");
+                  khaltiWallet();
                 }, // Image tapped
                 child: Image.asset(
                   'assets/images/khaltilogo.png',
