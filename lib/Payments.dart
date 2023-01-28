@@ -109,6 +109,7 @@ class _ePaymentState extends State<ePayment> {
       preferences: [PaymentPreference.khalti,PaymentPreference.connectIPS,PaymentPreference.eBanking] ,
       onSuccess: onSuccess,
       onFailure: onFailure,
+      onCancel: onCanceled,
     );
   }
 
