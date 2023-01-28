@@ -105,7 +105,7 @@ class _ePaymentState extends State<ePayment> {
           amount: 100,
           productIdentity: "1",
           productName: "Hunger Cravings",
-          mobile: "98"),
+          mobile: "9827723996"),
       preferences: [PaymentPreference.khalti,PaymentPreference.connectIPS,PaymentPreference.eBanking] ,
     );
   }
