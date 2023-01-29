@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,6 @@ import '../models/auth_model.dart';
 import '../services/firebase_services.dart';
 import '../viewmodel/auth_view_model.dart';
 import 'login.dart';
-
-
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -39,49 +36,51 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.initState();
   }
 
-
-  void register() async{
-    if(formkey.currentState == null || !formkey.currentState!.validate()){
+  void register() async {
+    if (formkey.currentState == null || !formkey.currentState!.validate()) {
       return;
     }
     _ui.loadState(true);
-    try{
-      await _authViewModel.register(
-          UserModel(
-              username: username.text,
-              email: email.text,
-              phone: phoneNo.text,
-              password: password.text,
-              id: '',
-          )).then((value) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Register success")));
-        Navigator.of(context).pushReplacementNamed("/login");
-      })
-          .catchError((e){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+    try {
+      await _authViewModel
+          .register(UserModel(
+        username: username.text,
+        email: email.text,
+        phone: phoneNo.text,
+        password: password.text,
+        id: '',
+      ))
+          .then((value) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Register success")));
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (BuildContext context) => OnboardingScreen(),
+        ));
+        // Navigator.of(context).pushReplacementNamed("/login");
+      }).catchError((e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.message.toString())));
       });
-    }catch(err){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    } catch (err) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(err.toString())));
     }
     _ui.loadState(false);
   }
 
   final formkey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        body:
-        SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Container(
             width: double.infinity,
             child: Form(
               key: formkey,
-              child:
-              SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Container(
@@ -96,7 +95,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-
                             const Text(
                               'Register Account',
                               style: TextStyle(
@@ -113,13 +111,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   hintText: ' Username ',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(color: Colors.black12)
-                                  )
-                              ),
-
+                                      borderSide:
+                                          BorderSide(color: Colors.black12))),
                               controller: username,
-                              validator: (value){
-                                if(value==null || value.isEmpty){
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
                                   return "Please enter username";
                                 }
                               },
@@ -134,17 +130,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 hintText: ' Email ',
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(40),
-                                    borderSide: BorderSide(color: Colors.black12)
-                                ),
+                                    borderSide:
+                                        BorderSide(color: Colors.black12)),
                               ),
-                              validator: (value){
-                                if(value==null || value.isEmpty){
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
                                   return "Please enter email address";
                                 }
                               },
                             ),
-
-
                             SizedBox(height: constraints.maxHeight * 0.04),
                             TextFormField(
                               controller: phoneNo,
@@ -155,20 +149,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   hintText: ' Phone no ',
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(color: Colors.black12)
-                                  )
-                              ),
+                                      borderSide:
+                                          BorderSide(color: Colors.black12))),
                               validator: (value) {
-                                if (value==null || value.isEmpty) {
+                                if (value == null || value.isEmpty) {
                                   return 'Please enter mobile number';
-                                } else if (value.length<10 || value.length>10) {
+                                } else if (value.length < 10 ||
+                                    value.length > 10) {
                                   return 'Please enter valid mobile number';
                                 }
                                 return null;
                               },
                             ),
-
-
                             SizedBox(height: constraints.maxHeight * 0.04),
                             TextFormField(
                               controller: password,
@@ -187,7 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   suffixIcon: IconButton(
                                     onPressed: () {
                                       setState(() {
-                                        _isVisible= !_isVisible;
+                                        _isVisible = !_isVisible;
                                       });
                                     },
                                     icon: Icon(
@@ -199,25 +191,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(color: Colors.black12)
-                                  )
-                              ),
+                                      borderSide:
+                                          BorderSide(color: Colors.black12))),
                             ),
-
-
-
                             SizedBox(height: constraints.maxHeight * 0.04),
                             TextFormField(
                               controller: confirmPassword,
                               obscureText: _isVisibleConfirm ? false : true,
-                              validator: (value){
-                                if(value==null || value.isEmpty){
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
                                   return "Please enter confirm password";
-                                }else if(password.text!=confirmPassword.text){
+                                } else if (password.text !=
+                                    confirmPassword.text) {
                                   return "Password and confirm password must be same";
                                 }
                               },
-
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.lock),
                                   filled: true,
@@ -238,9 +226,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   ),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(40),
-                                      borderSide: BorderSide(color: Colors.black12)
-                                  )
-                              ),
+                                      borderSide:
+                                          BorderSide(color: Colors.black12))),
                             ),
                             SizedBox(
                               height: constraints.maxHeight * 0.02,
@@ -253,11 +240,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.of(context)
-                                      .pushReplacement(MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        OnboardingScreen(),
-                                  ));
+                                  register();
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.black,
@@ -301,20 +284,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ],
                               ),
                             ),
-
-
                           ],
                         );
                       }),
                     ),
-
                   ],
                 ),
               ),
             ),
           ),
         ),
-
       ),
     );
   }
