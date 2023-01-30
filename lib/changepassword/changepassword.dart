@@ -188,7 +188,34 @@ class _ChangePasswordState extends State<ChangePassword> {
                             ),
                           ),
                         ),
-
+                        SizedBox(
+                          height: constraints.maxHeight * 0.02,
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: constraints.maxHeight * 0.12,
+                          margin: EdgeInsets.only(
+                            top: constraints.maxHeight * 0.01,
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              _submit();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: const Text(
+                              'Change Password',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22,
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     );
                   }),
