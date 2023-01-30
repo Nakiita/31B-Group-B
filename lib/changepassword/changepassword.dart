@@ -30,6 +30,10 @@ class _ChangePasswordState extends State<ChangePassword> {
       await user.updatePassword(newPassword);
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Success")));
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Error")));
     }
   }
 
