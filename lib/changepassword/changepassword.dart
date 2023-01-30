@@ -20,6 +20,17 @@ class _ChangePasswordState extends State<ChangePassword> {
     final currentPassword = _currentPasswordController.text;
     final newPassword = _newPasswordController.text;
     final email = emailController.text;
+
+    try {
+      final user = await _auth.currentUser!;
+      // final credential =
+      //     EmailAuthProvider.credential(email: email, password: currentPassword);
+      // await user.reauthenticateWithCredential(credential);
+
+      await user.updatePassword(newPassword);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Success")));
+    }
   }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
