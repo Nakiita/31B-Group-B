@@ -45,6 +45,13 @@ class _ChangePasswordState extends State<ChangePassword> {
                   height: deviceHeight * 0.30,
                   child: Image.asset('assets/images/home.jpg'),
                 ),
+                Container(
+                  height: deviceHeight * 0.75,
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: LayoutBuilder(builder: (ctx, constraints) {
+                  }),
+                ),
               ],
             ),
           ),
