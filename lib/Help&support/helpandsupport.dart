@@ -13,10 +13,29 @@ class _helpandsupportState extends State<helpandsupport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Help and support'),
-      ),
+        appBar: AppBar(
+          title: Text('Help and support'),
+        ),
+        body: RichText(
 
+            text: TextSpan(
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 21
+                ),
+                children: [
+                  TextSpan(text: 'hello'),
+                  TextSpan(text: 'World',style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold
+                  ))
+
+                ]
+
+            )
+
+        )
 
     );
 
