@@ -38,7 +38,7 @@ class _HelpandSupportState extends State<HelpandSupport> {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 43,
-                    color: Colors.deepOrangeAccent,
+                    color: Colors.white,
                     fontStyle: FontStyle.italic,
                   ))
             ])));
