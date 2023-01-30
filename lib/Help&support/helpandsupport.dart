@@ -31,6 +31,16 @@ class _helpandsupportState extends State<helpandsupport> {
                       fontWeight: FontWeight.bold
                   ))
 
+                  TextSpan(
+                    text: 'welcome! How can we help you?',
+
+                  ),
+                  TextSpan(
+                    text: 'we are available at your service',
+
+                  ),
+
+
                 ]
 
             )
