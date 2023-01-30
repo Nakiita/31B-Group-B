@@ -40,7 +40,16 @@ class _helpandsupportState extends State<helpandsupport> {
 
                   ),
 
+                  TextSpan(
+                      text: 'flutter',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 43,
+                        color: Colors.deepOrangeAccent,
+                        fontStyle: FontStyle.italic,
 
+                      )
+                  )
                 ]
 
             )
