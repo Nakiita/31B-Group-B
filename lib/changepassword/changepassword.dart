@@ -22,6 +22,14 @@ class _ChangePasswordState extends State<ChangePassword> {
           "Change password",
         ),
       ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Form(
+            key: form,
+
+          ),
+        ),
+      ),
     );
   }
 }
