@@ -16,6 +16,9 @@ class _ChangePasswordState extends State<ChangePassword> {
   TextEditingController _newPasswordController = TextEditingController();
   TextEditingController _currentPasswordController = TextEditingController();
 
+  void _submit() async {
+
+  }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> change() async {
