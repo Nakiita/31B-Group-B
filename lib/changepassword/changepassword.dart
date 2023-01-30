@@ -12,6 +12,9 @@ class _ChangePasswordState extends State<ChangePassword> {
   final form = GlobalKey<FormState>();
   var _isVisible = false;
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController _newPasswordController = TextEditingController();
+  TextEditingController _currentPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
