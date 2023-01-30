@@ -98,32 +98,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 locale: Locale('en', 'US'),
               ),
               SizedBox(height: 50),
-              Text(
-                "Payment Method",
-                style: TextStyle(fontSize: 18),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MyApp(),
-                            ));
-                      },
-                      child: Text("Khalti")),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black),
-                      onPressed: () {},
-                      child: Text("Cash On Delivery")),
-                ],
-              ),
+              // Text(
+              //   "Payment Method",
+              //   style: TextStyle(fontSize: 18),
+              // ),
+              // SizedBox(height: 20),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: [
+              //     ElevatedButton(
+              //         style: ElevatedButton.styleFrom(
+              //             backgroundColor: Colors.black),
+              //         onPressed: () {
+              //           Navigator.push(
+              //               context,
+              //               MaterialPageRoute(
+              //                 builder: (context) => MyApp(),
+              //               ));
+              //         },
+              //         child: Text("Khalti")),
+              //     ElevatedButton(
+              //         style: ElevatedButton.styleFrom(
+              //             backgroundColor: Colors.black),
+              //         onPressed: () {},
+              //         child: Text("Cash On Delivery")),
+              //   ],
+              // ),
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),

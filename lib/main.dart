@@ -18,6 +18,7 @@ import 'package:hunger_cravings/dashboard/screens/firestore/database.dart';
 import 'package:hunger_cravings/dashboard/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import 'dashboard/screens/orderConfirm.dart';
 import 'dashboard/screens/orderDetail.dart';
 
 void main() async {
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              initialRoute: "/home",
+              initialRoute: "/check",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),
@@ -80,7 +81,8 @@ class MyApp extends StatelessWidget {
                 "/edit-address": (BuildContext context) => EditAddressScreen(),
                 "/database": (BuildContext context) => FirebaseDatabaseScreen(),
                 "/changePassword": (BuildContext context) => ChangePassword(),
-                "/feedbacks": (BuildContext context) => Feedbacks()
+                "/feedbacks": (BuildContext context) => Feedbacks(),
+                "/check": (BuildContext context) => CheckoutScreen(),
               });
         }),
       ),

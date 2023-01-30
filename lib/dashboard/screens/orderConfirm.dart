@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../Payments.dart';
 import '../../delivery_address/delivery_time.dart';
 import '../../ext/colo.dart';
 import '../../ext/helper.dart';
@@ -9,6 +11,7 @@ import 'home.dart';
 
 class CheckoutScreen extends StatelessWidget {
   static const routeName = "/checkoutScreen";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +33,7 @@ class CheckoutScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        "Checkout",
+                        "Confirm Order",
                         style: Helper.getTheme(context).headline5,
                       ),
                     ),
@@ -44,7 +47,7 @@ class CheckoutScreen extends StatelessWidget {
                   child: Text("Delivery Address"),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 8,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -82,19 +85,19 @@ class CheckoutScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Container(
-                  height: 10,
+                  height: 8,
                   width: double.infinity,
                   color: AppColor.placeholderBg,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text("Delivery Time"),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -131,8 +134,82 @@ class CheckoutScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
+                Container(
+                  height: 10,
+                  width: double.infinity,
+                  color: AppColor.placeholderBg,
+                ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child:
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.purple),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyApp(),
+                                ));
+                          },
+                          child: Text("Khalti")),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.purple),
+                          onPressed: () {},
+                          child: Text("Cash On Delivery")),
+                    ],
+                  ),
+
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                    onPressed: () {
+                    },
+                    child: Text('Submit'),
+                  ),                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: Helper.getScreenWidth(context) * 0.7,
+                        child: Text(
+                          "",
+                          // style: Helper.getTheme(context).headline3,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            //Replacement
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  DeliveryTime(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Change",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Container(
                   height: 10,
@@ -152,12 +229,11 @@ class CheckoutScreen extends StatelessWidget {
                           Text("Sub Total"),
                           Text(
                             "\$68",
-                            style: Helper.getTheme(context).headline3,
                           )
                         ],
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,12 +241,11 @@ class CheckoutScreen extends StatelessWidget {
                           Text("Delivery Cost"),
                           Text(
                             "\$2",
-                            style: Helper.getTheme(context).headline3,
                           )
                         ],
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 20,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,12 +253,11 @@ class CheckoutScreen extends StatelessWidget {
                           Text("Discount"),
                           Text(
                             "-\$4",
-                            style: Helper.getTheme(context).headline3,
                           )
                         ],
                       ),
                       Divider(
-                        height: 30,
+                        height: 20,
                         color: AppColor.placeholder.withOpacity(0.25),
                         thickness: 2,
                       ),
@@ -193,7 +267,6 @@ class CheckoutScreen extends StatelessWidget {
                           Text("Total"),
                           Text(
                             "\$66",
-                            style: Helper.getTheme(context).headline3,
                           )
                         ],
                       ),
@@ -242,10 +315,7 @@ class CheckoutScreen extends StatelessWidget {
                                       ],
                                     ),
                                     Image.asset(
-                                      Helper.getAssetName(
-                                        "HC.png",
-                                        "virtual",
-                                      ),
+                                        "images/HC.png"
                                     ),
                                     SizedBox(
                                       height: 20,
@@ -283,14 +353,14 @@ class CheckoutScreen extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 20,
                                       ),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: double.infinity,
-                                        child: ElevatedButton(
-                                          onPressed: () {},
-                                          child: Text("Track My Order"),
-                                        ),
-                                      ),
+                                      // child: SizedBox(
+                                      //   height: 50,
+                                      //   width: double.infinity,
+                                      //   child: ElevatedButton(
+                                      //     onPressed: () {},
+                                      //     child: Text("Track My Order"),
+                                      //   ),
+                                      // ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
