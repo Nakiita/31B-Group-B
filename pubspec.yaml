@@ -66,6 +66,14 @@ dependencies:
   animated_theme_switcher: ^2.0.6
   shared_preferences: ^2.0.15
 
+  email_otp: ^1.0.4
+  email_auth: ^1.0.0
+  khalti_flutter: ^2.1.0
+
+dependency_overrides:
+  device_info_plus: 3.2.1
+  ffi: 1.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
