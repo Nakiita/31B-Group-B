@@ -26,7 +26,11 @@ class _ChangePasswordState extends State<ChangePassword> {
         child: SingleChildScrollView(
           child: Form(
             key: form,
+            child: Column(
+              children: [
 
+              ],
+            ),
           ),
         ),
       ),
