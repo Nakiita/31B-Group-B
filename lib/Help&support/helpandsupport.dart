@@ -12,7 +12,13 @@ class helpandsupport extends StatefulWidget {
 class _helpandsupportState extends State<helpandsupport> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Help and support'),
+      ),
+
+
+    );
 
   }
 }
