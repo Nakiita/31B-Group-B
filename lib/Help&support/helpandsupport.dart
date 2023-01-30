@@ -14,7 +14,14 @@ class _HelpandSupportState extends State<HelpandSupport> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Help and support'),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/home");
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
+          backgroundColor: Colors.black,
+
         ),
         body: RichText(
             text: TextSpan(
