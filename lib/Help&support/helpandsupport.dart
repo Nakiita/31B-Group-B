@@ -21,7 +21,7 @@ class _HelpandSupportState extends State<HelpandSupport> {
             icon: Icon(Icons.arrow_back),
           ),
           backgroundColor: Colors.black,
-
+          title: Text('Help and Support'),
         ),
         body: RichText(
             text: TextSpan(
