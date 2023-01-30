@@ -38,9 +38,14 @@ class _ePaymentState extends State<ePayment> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: Text("Payment"),
-        backgroundColor: Colors.deepOrange,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed("/deliveryTime");
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
+        backgroundColor: Colors.black,
+        title: Text('Payments'),
       ),
       body: SafeArea(
         child: Center(

@@ -3,6 +3,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hunger_cravings/Payments.dart';
 import 'package:intl/intl.dart';
 
 class DeliveryTime extends StatelessWidget {
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Intl.defaultLocale = 'pt_BR';
+    Intl.defaultLocale = 'en_US';
     //_initialValue = DateTime.now().toString();
 
     _dateController = TextEditingController(text: DateTime.now().toString());
@@ -61,9 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pushNamed("/home");
-          }, icon: Icon(Icons.arrow_back),
+          },
+          icon: Icon(Icons.arrow_back),
         ),
         backgroundColor: Colors.black,
         title: Text('Delivery time'),
@@ -83,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 lastDate: DateTime(2100),
                 icon: Icon(Icons.event),
                 dateLabelText: 'Date',
-                locale: Locale('pt', 'BR'),
+                locale: Locale('en', 'US'),
               ),
               DateTimePicker(
                 type: DateTimePickerType.time,
@@ -93,17 +95,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.access_time),
                 timeLabelText: "Time",
                 use24HourFormat: false,
-                locale: Locale('pt', 'BR'),
+                locale: Locale('en', 'US'),
               ),
-              SizedBox(height: 20),
-              Text("Payment Method", style: TextStyle(fontSize: 18),),
+              SizedBox(height: 50),
+              Text(
+                "Payment Method",
+                style: TextStyle(fontSize: 18),
+              ),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.black),onPressed: (){}, child: Text("Esewa")),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),onPressed: (){}, child: Text("Cash On Delivery")),],),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyApp(),
+                            ));
+                      },
+                      child: Text("Khalti")),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black),
+                      onPressed: () {},
+                      child: Text("Cash On Delivery")),
+                ],
+              ),
               SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
