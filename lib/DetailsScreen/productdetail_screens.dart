@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../models/products.dart';
 import '../dashboard/screens/firestore/add_address.dart';
+import '../dashboard/screens/orderConfirm.dart';
 import 'const/AppColors.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -205,7 +206,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AddAddressScreen()),
+                                builder: (context) => CheckoutScreen()),
                           );
                         },
                         child: Text(
