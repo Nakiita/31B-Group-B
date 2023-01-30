@@ -50,6 +50,12 @@ class _ChangePasswordState extends State<ChangePassword> {
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(horizontal: 20),
                   child: LayoutBuilder(builder: (ctx, constraints) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+
+                      ],
+                    );
                   }),
                 ),
               ],
