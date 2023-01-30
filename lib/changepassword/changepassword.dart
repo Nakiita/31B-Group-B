@@ -40,7 +40,11 @@ class _ChangePasswordState extends State<ChangePassword> {
                     ),
                   ),
                 ),
-
+                Container(
+                  padding: EdgeInsets.only(left: 40),
+                  height: deviceHeight * 0.30,
+                  child: Image.asset('assets/images/home.jpg'),
+                ),
               ],
             ),
           ),
