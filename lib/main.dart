@@ -18,7 +18,6 @@ import 'package:hunger_cravings/dashboard/screens/firestore/database.dart';
 import 'package:hunger_cravings/dashboard/screens/firestore/edit_address.dart';
 import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-
 import 'dashboard/screens/orderDetail.dart';
 
 void main() async {
