@@ -16,6 +16,25 @@ class _ChangePasswordState extends State<ChangePassword> {
   TextEditingController _newPasswordController = TextEditingController();
   TextEditingController _currentPasswordController = TextEditingController();
 
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> change() async {
+    try {
+      final user = (await _auth.signInWithEmailAndPassword(
+          email: emailController.text,
+          password: _newPasswordController.text))
+          .user;
+      if (user != null) {
+        print("change Sucessful");
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            backgroundColor: Colors.green, content: Text("change Sucessful")));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final deviceHeight = MediaQuery.of(context).size.height;
