@@ -146,7 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
-                                  color: Colors.red),
+                                  color: Colors.black),
                             ),
                           ],
                         ),
