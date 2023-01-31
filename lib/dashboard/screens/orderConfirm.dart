@@ -391,7 +391,7 @@ class CheckoutScreen extends StatelessWidget {
                             });
                       },
                       child: Text("Send Order"),
-                      
+
                     ),
                   ),
                 )
