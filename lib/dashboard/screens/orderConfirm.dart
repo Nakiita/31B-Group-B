@@ -75,6 +75,7 @@ class CheckoutScreen extends StatelessWidget {
                           "Change",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
+                            color: Colors.black
                           ),
                         ),
                       ),
@@ -116,8 +117,7 @@ class CheckoutScreen extends StatelessWidget {
                           Navigator.of(context).push(
                             //Replacement
                             MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  DeliveryTime(),
+                              builder: (BuildContext context) => DeliveryTime(),
                             ),
                           );
                         },
@@ -144,39 +144,18 @@ class CheckoutScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child:
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.purple),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MyApp(),
-                                ));
-                          },
-                          child: Text("Khalti")),
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.purple),
-                          onPressed: () {},
-                          child: Text("Cash On Delivery")),
-                    ],
-                  ),
-
+                  child: Text('Payment Method'),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
-                    onPressed: () {
-                    },
-                    child: Text('Submit'),
-                  ),                Padding(
+                // ElevatedButton(
+                //   style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                //   onPressed: () {
+                //   },
+                //   child: Text('Submit'),
+                // ),
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,8 +172,7 @@ class CheckoutScreen extends StatelessWidget {
                           Navigator.of(context).push(
                             //Replacement
                             MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  DeliveryTime(),
+                              builder: (BuildContext context) => MyApp(),
                             ),
                           );
                         },
@@ -314,9 +292,7 @@ class CheckoutScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Image.asset(
-                                        "images/HC.png"
-                                    ),
+                                    Image.asset("images/HC.png"),
                                     SizedBox(
                                       height: 20,
                                     ),
@@ -353,14 +329,6 @@ class CheckoutScreen extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 20,
                                       ),
-                                      // child: SizedBox(
-                                      //   height: 50,
-                                      //   width: double.infinity,
-                                      //   child: ElevatedButton(
-                                      //     onPressed: () {},
-                                      //     child: Text("Track My Order"),
-                                      //   ),
-                                      // ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -391,10 +359,60 @@ class CheckoutScreen extends StatelessWidget {
                             });
                       },
                       child: Text("Send Order"),
-
                     ),
                   ),
-                )
+                ),
+                GestureDetector(
+                  child: Container(
+                    margin: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: ListTile(
+                      title: Text(
+                        "Cancel",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      contentPadding: EdgeInsets.only(left: 40),
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Cancel'),
+                                content: const Text(
+                                    'Are you sure you want to logout?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                Home(),
+                                          ));
+                                    },
+                                    child: Text(
+                                      "Yes",
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    child: const Text(
+                                      'No',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

@@ -4,12 +4,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hunger_cravings/Payments.dart';
+import 'package:hunger_cravings/dashboard/screens/orderConfirm.dart';
 import 'package:intl/intl.dart';
 
 class DeliveryTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter DateTimePicker Demo',
       home: MyHomePage(),
       localizationsDelegates: [
@@ -63,8 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pushNamed("/home");
-          },
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CheckoutScreen()),
+            );          },
           icon: Icon(Icons.arrow_back),
         ),
         backgroundColor: Colors.black,
@@ -98,33 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 locale: Locale('en', 'US'),
               ),
               SizedBox(height: 50),
-              // Text(
-              //   "Payment Method",
-              //   style: TextStyle(fontSize: 18),
-              // ),
-              // SizedBox(height: 20),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     ElevatedButton(
-              //         style: ElevatedButton.styleFrom(
-              //             backgroundColor: Colors.black),
-              //         onPressed: () {
-              //           Navigator.push(
-              //               context,
-              //               MaterialPageRoute(
-              //                 builder: (context) => MyApp(),
-              //               ));
-              //         },
-              //         child: Text("Khalti")),
-              //     ElevatedButton(
-              //         style: ElevatedButton.styleFrom(
-              //             backgroundColor: Colors.black),
-              //         onPressed: () {},
-              //         child: Text("Cash On Delivery")),
-              //   ],
-              // ),
-              SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 onPressed: () {

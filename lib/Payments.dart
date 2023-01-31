@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:khalti_flutter/khalti_flutter.dart';
 
+import 'dashboard/screens/orderConfirm.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
         enabledDebugging: false,
         builder: (context, navKey) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
               home: ePayment(),
               navigatorKey: navKey,
               localizationsDelegates: const [
@@ -40,8 +43,10 @@ class _ePaymentState extends State<ePayment> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pushNamed("/deliveryTime");
-          },
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CheckoutScreen()),
+            );          },
           icon: Icon(Icons.arrow_back),
         ),
         backgroundColor: Colors.black,
@@ -95,6 +100,10 @@ class _ePaymentState extends State<ePayment> {
               InkWell(
                 splashColor: Colors.grey,
                 onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CheckoutScreen()),
+                  );
                   AlertDialog(
                     title: const Text("Cash on Delivery"),
                     content: const Text("Payment successful"),

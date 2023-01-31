@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              initialRoute: "/LoadingScreen",
+              initialRoute: "/check",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),
