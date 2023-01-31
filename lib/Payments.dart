@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         enabledDebugging: false,
         builder: (context, navKey) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false,
+              debugShowCheckedModeBanner: false,
               home: ePayment(),
               navigatorKey: navKey,
               localizationsDelegates: const [
@@ -46,7 +46,8 @@ class _ePaymentState extends State<ePayment> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => CheckoutScreen()),
-            );          },
+            );
+          },
           icon: Icon(Icons.arrow_back),
         ),
         backgroundColor: Colors.black,
