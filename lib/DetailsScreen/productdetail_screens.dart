@@ -82,7 +82,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               return Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.black,
                   child: IconButton(
                     onPressed: () => snapshot.data.docs.length == 0
                         ? addToFavourite()
@@ -146,7 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
-                                  color: Colors.red),
+                                  color: Colors.black),
                             ),
                           ],
                         ),
