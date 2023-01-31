@@ -58,7 +58,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircleAvatar(
-            backgroundColor: AppColors.deep_orange,
+            backgroundColor: AppColors.Black,
             child: IconButton(
                 onPressed: () => Navigator.pop(context),
                 icon: Icon(
@@ -190,7 +190,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          backgroundColor: AppColors.deep_orange,
+                          backgroundColor: AppColors.Black,
                           // elevation: 3,
                         ),
                       ),
@@ -217,7 +217,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          backgroundColor: AppColors.deep_orange,
+                          backgroundColor: AppColors.Black,
                           // elevation: 3,
                         ),
                       ),
