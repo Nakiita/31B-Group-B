@@ -3,26 +3,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget fetchproduct (String collectionName){
+Widget fetchproduct(String collectionName) {
   return StreamBuilder(
     stream: FirebaseFirestore.instance
         .collection(collectionName)
         .doc(FirebaseAuth.instance.currentUser!.email)
         .collection("items")
         .snapshots(),
-    builder:
-        (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
       if (snapshot.hasError) {
         return Center(
           child: Text("Something is wrong"),
         );
       }
       return ListView.builder(
-          itemCount:
-          snapshot.data == null ? 0 : snapshot.data!.docs.length,
+          itemCount: snapshot.data == null ? 0 : snapshot.data!.docs.length,
           itemBuilder: (_, index) {
-            DocumentSnapshot _documentSnapshot =
-            snapshot.data!.docs[index];
+            DocumentSnapshot _documentSnapshot = snapshot.data!.docs[index];
             print(_documentSnapshot);
             return Card(
               elevation: 5,
@@ -31,17 +28,20 @@ Widget fetchproduct (String collectionName){
                 title: Text(
                   "\$ ${_documentSnapshot['name']}",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.red),
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 ),
-                subtitle:Text(
+                subtitle: Text(
                   "\$ ${_documentSnapshot['price']}",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.red),
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 ),
-
                 trailing: GestureDetector(
                   child: CircleAvatar(
-                    child: Icon(Icons.delete),
+                    backgroundColor: Colors.black,
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                    ),
                   ),
                   onTap: () {
                     FirebaseFirestore.instance
@@ -54,8 +54,7 @@ Widget fetchproduct (String collectionName){
                 ),
               ),
             );
-          }
-          );
+          });
     },
   );
 }

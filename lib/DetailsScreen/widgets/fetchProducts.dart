@@ -40,9 +40,11 @@ class _MyWidgetState extends State<MyWidget> {
                     children: [
                       Expanded(
                         child: ListTile(
-                          leading: Image.asset("images/${_documentSnapshot['images']}",
+                          leading: Image.asset(
+                              "images/${_documentSnapshot['images']}",
                               width: 150,
-                              height: 150,fit: BoxFit.cover),
+                              height: 150,
+                              fit: BoxFit.cover),
                           trailing: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
@@ -50,16 +52,15 @@ class _MyWidgetState extends State<MyWidget> {
                                 "\$ ${_documentSnapshot['name']}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.red,
-                                  fontSize: 20
-                                ),
+                                    color: Colors.black,
+                                    fontSize: 20),
                               ),
                               Text(
                                 "\$ ${_documentSnapshot['price']}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
-                                    color: Colors.red),
+                                    color: Colors.black),
                               ),
                             ],
                           ),
@@ -76,8 +77,7 @@ class _MyWidgetState extends State<MyWidget> {
                         child: Text(
                           "Quantity: ${_documentSnapshot['quantity']}",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,fontSize: 20
-                          ),
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ),
                     ],
@@ -86,13 +86,19 @@ class _MyWidgetState extends State<MyWidget> {
                   Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.add,size: 30,),
+                        icon: Icon(
+                          Icons.add,
+                          size: 30,
+                        ),
                         onPressed: () {
                           _incrementQuantity(index, snapshot);
                         },
                       ),
                       IconButton(
-                        icon: Icon(Icons.remove,size: 30,),
+                        icon: Icon(
+                          Icons.remove,
+                          size: 30,
+                        ),
                         onPressed: _documentSnapshot['quantity'] > 1
                             ? () {
                                 _decrementQuantity(index, snapshot);
@@ -100,22 +106,26 @@ class _MyWidgetState extends State<MyWidget> {
                             : null,
                       ),
                       Spacer(),
-                      ElevatedButton.icon(onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => AddAddressScreen()),
-                        );
-                      },
-                          style: ElevatedButton.styleFrom(elevation: 10,
+                      ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AddAddressScreen()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              elevation: 10,
                               shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(30.0),
-                                side: BorderSide(color: Colors.red),
+                                side: BorderSide(color: Colors.black),
                               ),
-                              primary: Color.fromRGBO(214, 0, 27, 1)
-                          ),
+                              primary: Color.fromARGB(255, 14, 14, 14)),
                           icon: Icon(Icons.shopping_cart),
-                          label: Text("Buy Now",style: TextStyle(fontSize: 15),)),
+                          label: Text(
+                            "Buy Now",
+                            style: TextStyle(fontSize: 15),
+                          )),
                     ],
                   ),
                   Row(
@@ -133,14 +143,15 @@ class _MyWidgetState extends State<MyWidget> {
                               .collection("items")
                               .doc(_documentSnapshot.id)
                               .delete();
-                        }, icon: Icon(Icons.delete),
-                        style: ElevatedButton.styleFrom(elevation: 10,
+                        },
+                        icon: Icon(Icons.delete),
+                        style: ElevatedButton.styleFrom(
+                            elevation: 10,
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30.0),
-                              side: BorderSide(color: Colors.red),
+                              side: BorderSide(color: Colors.black),
                             ),
-                            primary: Color.fromRGBO(214, 0, 27, 1)
-                        ),
+                            primary: Color.fromARGB(255, 18, 18, 18)),
                       ),
                     ],
                   )
