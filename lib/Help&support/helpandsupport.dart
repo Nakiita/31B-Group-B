@@ -1,53 +1,40 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class HelpandSupport extends StatefulWidget {
-  const HelpandSupport({super.key});
-
-  @override
-  State<HelpandSupport> createState() => _HelpandSupportState();
+void main() async {
+  runApp(
+    MaterialApp(
+      home: HelpSupport(),
+    ),
+  );
 }
 
-class _HelpandSupportState extends State<HelpandSupport> {
+class HelpSupport extends StatefulWidget {
+  const HelpSupport({Key? key}) : super(key: key);
+
+  @override
+  State<HelpSupport> createState() => _HelpSupportState();
+}
+
+class _HelpSupportState extends State<HelpSupport> {
+  int _current = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed("/home");
-            },
-            icon: Icon(Icons.arrow_back),
+      appBar: AppBar(
+        title: Text("Help and Support"),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [],
           ),
-          backgroundColor: Colors.black,
-          title: Text('Help and Support'),
         ),
-        body: RichText(
-            text: TextSpan(
-                style: TextStyle(color: Colors.grey, fontSize: 21),
-                children: [
-              TextSpan(text: 'hello'),
-              TextSpan(
-                  text: 'World',
-                  style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold)),
-              TextSpan(
-                text: 'welcome! How can we help you?',
-              ),
-              TextSpan(
-                text: 'we are available at your service',
-              ),
-              TextSpan(
-                  text: 'flutter',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 43,
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                  ))
-            ])));
+      ),
+    );
   }
 }
