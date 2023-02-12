@@ -320,6 +320,17 @@ class _HelpSupportState extends State<HelpSupport> {
     );
   }
 
+  Widget _buildDot(BuildContext context, bool isActive) {
+    return Container(
+      width: 8,
+      height: 8,
+      margin: EdgeInsets.symmetric(horizontal: 4),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: isActive ? Theme.of(context).primaryColor : Colors.grey,
+      ),
+    );
+  }
 
   Widget _buildServiceTile(String title, String imagePath) {
     return Column(
