@@ -2,13 +2,6 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
-  runApp(
-    MaterialApp(
-      home: HelpSupport(),
-    ),
-  );
-}
 
 class HelpSupport extends StatefulWidget {
   const HelpSupport({Key? key}) : super(key: key);
