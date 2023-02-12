@@ -31,7 +31,127 @@ class _HelpSupportState extends State<HelpSupport> {
           padding: EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [],
+            children: [
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset(0, 8),
+                      blurRadius: 8,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: 200,
+                        viewportFraction: 1.0,
+                        enlargeCenterPage: false,
+                        autoPlay: true,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _current = index;
+                          });
+                        },
+                      ),
+                      items: [
+                        Image.asset("assets/images/pizza.png"),
+                        Image.asset("assets/images/burger.png"),
+                        Image.asset("assets/images/sandwich.png"),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (int i = 0; i < 3; i++)
+                          i == _current
+                              ? _buildDot(context, true)
+                              : _buildDot(context, false),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    Center(
+                      child: Text(
+                        "Help and Support",
+                        style: TextStyle(
+                            fontSize: 28, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Column(
+                      children: [
+                        Text(
+                          "Having Problem?",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(height: 12),
+                        Text(
+                          "We are 24hrs available at your service",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 16),
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      offset: Offset(0, 8),
+                      blurRadius: 8,
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 16),
+                    Text(
+                      "Support Provided",
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 16),
+                    Column(
+                      children: [
+                        _buildServiceTile(
+                            "Write a mail", "assets/images/email.png"),
+                        SizedBox(height: 16),
+                        _buildServiceTile(
+                            "Make a call", "assets/images/call.png"),
+                        SizedBox(height: 16),
+                        _buildServiceTile(
+                            "Help Yourself", "assets/images/help.png"),
+                        SizedBox(height: 16),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
