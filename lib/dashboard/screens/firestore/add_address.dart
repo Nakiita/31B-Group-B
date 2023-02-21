@@ -6,6 +6,8 @@ import 'package:hunger_cravings/DetailsScreen/productdetail_screens.dart';
 import 'package:hunger_cravings/delivery_address/delivery_time.dart';
 import 'package:hunger_cravings/models/address_model.dart';
 
+import '../orderConfirm.dart';
+
 class AddAddressScreen extends StatefulWidget {
   const AddAddressScreen({Key? key}) : super(key: key);
 
@@ -47,13 +49,15 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onTap: (() {
-            Navigator.of(context).push(
-                //Replacement
-                MaterialPageRoute(
-                  builder: (BuildContext context) => AddAddressScreen(),
-                );
-          }),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    CheckoutScreen(),
+              ),
+            );
+          },
         ),
         backgroundColor: Colors.black,
         centerTitle: true,
