@@ -48,7 +48,11 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
             color: Colors.white,
           ),
           onTap: (() {
-            Navigator.pop(context);
+            Navigator.of(context).push(
+                //Replacement
+                MaterialPageRoute(
+                  builder: (BuildContext context) => AddAddressScreen(),
+                );
           }),
         ),
         backgroundColor: Colors.black,
