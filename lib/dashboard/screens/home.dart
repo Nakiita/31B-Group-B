@@ -13,7 +13,6 @@ import '../widgets/commons.dart';
 import '../widgets/featured_products.dart';
 import '../widgets/small_floating_button.dart';
 import '../widgets/title.dart';
-import 'profile.dart';
 import 'location_screens.dart';
 
 class Home extends StatefulWidget {
@@ -70,16 +69,16 @@ class _HomeState extends State<Home> {
         backgroundColor: white,
         body: PageView(
           controller: pageController,
-          children: [Homepage(), Favourite(), Cart(), MyProfile()],
+          children: [const Homepage(), Favourite(), Cart(), MyProfile()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           elevation: 0,
           currentIndex: selectedIndex,
-          selectedItemColor: Colors.blue,
-          unselectedItemColor: Colors.grey,
-          selectedLabelStyle: TextStyle(color: Colors.blue),
-          unselectedLabelStyle: TextStyle(color: Colors.grey),
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
+          selectedLabelStyle: TextStyle(color: Colors.black),
+          unselectedLabelStyle: TextStyle(color: Colors.black),
           type: BottomNavigationBarType.fixed,
           onTap: _itemTapped,
           items: [
@@ -100,16 +99,16 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: Image.asset(
                   "images/cart.jpg",
-                  width: 33,
-                  height: 33,
+                  width: 40,
+                  height: 38,
                 ),
                 label: "Cart"),
             BottomNavigationBarItem(
-                icon: GestureDetector(
-                    onTap: () {
-                    Navigator.of(context).pushReplacementNamed("/profile");
-                    },
-                    child: Icon(Icons.person)),
+                icon: Image.asset(
+                  "images/people.png",
+                  width: 25,
+                  height: 25,
+                ),
                 label: "Profile"),
           ],
         ));
@@ -190,19 +189,19 @@ class Homepage extends StatelessWidget {
                         hintText: "Find food and resturants",
                         border: InputBorder.none),
                   ),
-                  leading: IconButton(
-                      icon: Icon(
-                        Icons.location_on,
-                        color: Colors.red,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          //Replacement
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => LocationScreen(),
-                          ),
-                        );
-                      }),
+                  // leading: IconButton(
+                  //     icon: Icon(
+                  //       Icons.location_on,
+                  //       color: Colors.red,
+                  //     ),
+                  //     onPressed: () {
+                  //       Navigator.of(context).push(
+                  //         //Replacement
+                  //         MaterialPageRoute(
+                  //           builder: (BuildContext context) => LocationScreen(),
+                  //         ),
+                  //       );
+                  //     }),
                   trailing: IconButton(
                     icon: Icon(
                       Icons.search,

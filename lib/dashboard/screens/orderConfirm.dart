@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,8 @@ import 'home.dart';
 
 class CheckoutScreen extends StatelessWidget {
   static const routeName = "/checkoutScreen";
+
+  const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class CheckoutScreen extends StatelessWidget {
                     Expanded(
                       child: Text(
                         "Confirm Order",
-                        style: Helper.getTheme(context).headline5,
+                        style: Helper.getTheme(context).headline5,selectionColor: Colors.black,
                       ),
                     ),
                   ],
@@ -44,7 +46,11 @@ class CheckoutScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text("Delivery Address"),
+                  child: Text("Delivery Address",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black87),
+                  ),
+
                 ),
                 SizedBox(
                   height: 8,
@@ -74,9 +80,8 @@ class CheckoutScreen extends StatelessWidget {
                         child: Text(
                           "Change",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black
-                          ),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
                         ),
                       ),
                     ],
@@ -95,7 +100,11 @@ class CheckoutScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text("Delivery Time"),
+                  child: Text(
+                    "Delivery Time",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black87),
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -124,8 +133,8 @@ class CheckoutScreen extends StatelessWidget {
                         child: Text(
                           "Change",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
                         ),
                       ),
                     ],
@@ -144,7 +153,10 @@ class CheckoutScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text('Payment Method'),
+                  child: Text('Payment Method',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black87),
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -179,8 +191,8 @@ class CheckoutScreen extends StatelessWidget {
                         child: Text(
                           "Change",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black87),
                         ),
                       ),
                     ],
@@ -272,6 +284,7 @@ class CheckoutScreen extends StatelessWidget {
                         showModalBottomSheet(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
+                              side: BorderSide(color: Colors.black87),
                             ),
                             isScrollControlled: true,
                             isDismissible: false,
@@ -330,35 +343,16 @@ class CheckoutScreen extends StatelessWidget {
                                         horizontal: 20,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                      ),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            //Replacement
-                                            MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  Home(),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          "Back To Home",
-                                          style: TextStyle(
-                                            color: AppColor.primary,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    )
                                   ],
                                 ),
                               );
                             });
                       },
-                      child: Text("Send Order"),
+                      child: Text(
+                        "Send Order",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
@@ -366,12 +360,14 @@ class CheckoutScreen extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(30)),
+                        color: Colors.black87,
+                        borderRadius: BorderRadius.circular(30),
+                    ),
                     child: ListTile(
                       title: Text(
                         "Cancel",
-                        style: TextStyle(fontSize: 20, color: Colors.black),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                       contentPadding: EdgeInsets.only(left: 40),
                       onTap: () {
@@ -381,15 +377,14 @@ class CheckoutScreen extends StatelessWidget {
                               return AlertDialog(
                                 title: const Text('Cancel'),
                                 content: const Text(
-                                    'Are you sure you want to logout?'),
+                                    'Are you sure you want to cancel the order?'),
                                 actions: [
                                   TextButton(
                                     onPressed: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                Home(),
+                                            builder: (context) => Home(),
                                           ));
                                     },
                                     child: Text(

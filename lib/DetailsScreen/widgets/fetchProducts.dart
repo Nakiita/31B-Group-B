@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../dashboard/screens/firestore/add_address.dart';
+import '../../dashboard/screens/orderConfirm.dart';
 
 class MyWidget extends StatefulWidget {
   final String collectionName;
@@ -111,7 +112,7 @@ class _MyWidgetState extends State<MyWidget> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AddAddressScreen()),
+                                  builder: (context) => CheckoutScreen()),
                             );
                           },
                           style: ElevatedButton.styleFrom(

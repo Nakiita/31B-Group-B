@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../widgets/title.dart';
-import 'home.dart';
+import 'firestore/add_address.dart';
 
 class LocationScreen extends StatelessWidget {
   const LocationScreen({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class LocationScreen extends StatelessWidget {
                 Navigator.of(context).push(
                   //Replacement
                   MaterialPageRoute(
-                    builder: (BuildContext context) => Home(),
+                    builder: (BuildContext context) => AddAddressScreen(),
                   ),
                 );
               },

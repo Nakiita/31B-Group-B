@@ -139,7 +139,14 @@ class _AddAdressSreenState extends State<AddAddressScreen> {
                               Navigator.of(context).pushNamed("/deliveryTime");
                             }
                           },
-                          child: Text("ADD"))
+                          child: Text("ADD")),
+                      ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed("/map");
+                          },
+                          child: Text("map")),
                     ],
                   ),
                 ),
