@@ -12,7 +12,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController emailController = TextEditingController();
   final form = GlobalKey<FormState>();
-  var _isVisible = false;
 
   @override
   Widget build(BuildContext context) {

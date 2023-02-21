@@ -128,7 +128,7 @@ class _MyProfileState extends State<MyProfile> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HelpandSupport(),
+                                builder: (context) => HelpSupport(),
                               ));
                         },
                         trailing: Padding(

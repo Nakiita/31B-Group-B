@@ -20,7 +20,6 @@ import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'dashboard/screens/location_screens.dart';
 import 'dashboard/screens/orderConfirm.dart';
-import 'dashboard/screens/orderDetail.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +44,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
-        // ChangeNotifierProvider (create: (_) => CategoryViewModel()),
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
