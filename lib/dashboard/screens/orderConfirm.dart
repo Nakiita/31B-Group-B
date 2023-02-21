@@ -1,7 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../Payments.dart';
 import '../../delivery_address/delivery_time.dart';
 import '../../ext/colo.dart';
@@ -299,7 +298,10 @@ class CheckoutScreen extends StatelessWidget {
                                       children: [
                                         IconButton(
                                           onPressed: () {
-                                            Navigator.of(context).pop();
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => Home()),
+                                            );
                                           },
                                           icon: Icon(Icons.clear),
                                         ),
