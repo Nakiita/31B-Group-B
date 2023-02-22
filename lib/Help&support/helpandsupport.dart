@@ -58,7 +58,7 @@ class _HelpSupportState extends State<HelpSupport> {
                       items: [
                         Image.asset("images/pizza.jpg"),
                         Image.asset("images/burger.jpg"),
-                        Image.asset("images/sandwich.jpg"),
+                        Image.asset("images/sandwich.png"),
                       ],
                     ),
                     SizedBox(height: 16),
