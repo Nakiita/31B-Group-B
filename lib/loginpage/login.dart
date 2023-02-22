@@ -3,6 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hunger_cravings/dashboard/screens/home.dart';
 import 'package:hunger_cravings/loginpage/register_screen.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodel/auth_view_model.dart';
 
 
 class LoginScreens extends StatefulWidget {
@@ -18,14 +21,19 @@ class _LoginScreensState extends State<LoginScreens> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  late AuthViewModel auth;
+  @override
+  void initState() {
+    // TODO: implement initState
+    auth = Provider.of<AuthViewModel>(context, listen: false);
+    super.initState();
+  }
   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> login() async {
     try {
-      final user = (await _auth.signInWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text))
-          .user;
-      if (user != null) {
+      await auth.login(
+              emailController.text, passwordController.text);
+      if (auth.user != null) {
         print("Login Sucessful");
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             backgroundColor: Colors.green, content: Text("Login Sucessful")));

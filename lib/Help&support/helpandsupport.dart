@@ -56,9 +56,9 @@ class _HelpSupportState extends State<HelpSupport> {
                         },
                       ),
                       items: [
-                        Image.asset("assets/images/pizza.png"),
-                        Image.asset("assets/images/burger.png"),
-                        Image.asset("assets/images/sandwich.png"),
+                        Image.asset("images/pizza.jpg"),
+                        Image.asset("images/burger.jpg"),
+                        Image.asset("images/sandwich.jpg"),
                       ],
                     ),
                     SizedBox(height: 16),
@@ -131,13 +131,13 @@ class _HelpSupportState extends State<HelpSupport> {
                     Column(
                       children: [
                         _buildServiceTile(
-                            "Write a mail", "assets/images/email.png"),
+                            "Write a mail", "images/email.png"),
                         SizedBox(height: 16),
                         _buildServiceTile(
-                            "Make a call", "assets/images/call.png"),
+                            "Make a call", "images/call.png"),
                         SizedBox(height: 16),
                         _buildServiceTile(
-                            "Help Yourself", "assets/images/help.png"),
+                            "Help Yourself", "images/help.png"),
                         SizedBox(height: 16),
                       ],
                     ),

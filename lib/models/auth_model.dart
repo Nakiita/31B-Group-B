@@ -14,6 +14,7 @@ String userModelToJson(UserModel? data) => json.encode(data!.toJson());
 class UserModel {
   UserModel({
     required this.id,
+    this.user_id,
     required this.username,
     required this.email,
     required this.phone,
@@ -21,6 +22,7 @@ class UserModel {
   });
 
   String? id;
+  String? user_id;
   String? username;
   String? email;
   String? phone;
@@ -30,6 +32,7 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
     id: json["id"],
+    user_id: json["user_id"],
     username: json["username"],
     email: json["email"],
     phone: json["phoneNo"],
@@ -38,6 +41,7 @@ class UserModel {
 
   Map<String, dynamic> toJson() => {
     "id": id,
+    "user_id": user_id,
     "username": username,
     "email": email,
     "phoneNo": phone,
@@ -46,6 +50,7 @@ class UserModel {
 
   factory UserModel.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => UserModel(
     id: json.id,
+    user_id: json["user_id"],
     username: json["username"],
     email: json["email"],
     phone: json["phoneNo"],

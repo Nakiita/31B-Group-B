@@ -23,7 +23,7 @@ class AuthRepository{
           .createUserWithEmailAndPassword(
           email: user.email!, password: user.password!);
 
-      user.id = uc.user!.uid;
+      user.user_id= uc.user!.uid;
       // user.fcm = "";
       // insert into firestore user table
       await userRef.add(user);
@@ -47,11 +47,11 @@ class AuthRepository{
   Future<UserModel> getUserDetail(String id) async {
     try {
       final response = await userRef
-          .where("id", isEqualTo: id).get();
+          .where("user_id", isEqualTo: id).get();
 
-      var user = response.docs.single.data();
+      var user = response.docs[0].data();
       // user.fcm="";
-      await userRef.doc(user.id).set(user);
+      await userRef.doc(user.user_id).set(user);
       return user;
     } catch (err) {
       rethrow;
