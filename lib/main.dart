@@ -20,6 +20,7 @@ import 'package:hunger_cravings/loginpage/login.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'dashboard/screens/location_screens.dart';
 import 'dashboard/screens/orderConfirm.dart';
+import 'dashboard/screens/orderDetail.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.purple,
               ),
-              initialRoute: "/LoadingScreen",
+              initialRoute: "/history",
               routes: {
                 "/LoadingScreen": (BuildContext context) => LoadingScreen(),
                 "/forgotpassword": (BuildContext context) => ForgotScreen(),
@@ -83,6 +84,7 @@ class MyApp extends StatelessWidget {
                 "/feedbacks": (BuildContext context) => Feedbacks(),
                 "/check": (BuildContext context) => CheckoutScreen(),
                 "/map": (BuildContext context) => LocationScreen(),
+                "/history": (BuildContext context) => OrderHistoryDetail(),
               });
         }),
       ),
