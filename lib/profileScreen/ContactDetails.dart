@@ -6,6 +6,7 @@ import 'package:hunger_cravings/loginpage/login.dart';
 
 import 'package:provider/provider.dart';
 
+import '../dashboard/screens/orderDetail.dart';
 import '../viewmodel/auth_view_model.dart';
 import '../viewmodel/global_ui_viewmodel.dart';
 
@@ -98,6 +99,13 @@ class _MyProfileState extends State<MyProfile> {
                           "Order History",
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => OrderHistoryDetail(),
+                              ));
+                        },
                         trailing: Padding(
                           padding: const EdgeInsets.only(right: 12.0),
                           child: Icon(
