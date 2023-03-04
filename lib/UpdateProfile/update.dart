@@ -16,7 +16,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit profile"),
+        title: Text(
+          "Edit profile",
+          style: TextStyle(backgroundColor: Colors.black),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -115,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.lightBlue,
+                              primary: Colors.black,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
